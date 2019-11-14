@@ -1,0 +1,156 @@
+/*Search Bar*/
+.logo img{
+    width:50px;
+    margin-left: 120px;
+}
+.searchBar{
+    display:flex;
+    width:100%;
+}
+.searchBar input{
+    margin:4px;
+    height:24px;
+}
+.searchBar button{
+    background-color: rgb(56, 155, 253);
+    height:30px;
+    margin:5px;
+    color:white;
+    font-weight: bold;
+}
+.searchBar form button{
+    margin-left:0px;
+}
+.logout{
+    margin-left: -15%;
+}
+.logout button{
+    width:90px;
+}
+.searchForm{
+    width:70%;
+    margin-left:40px;
+}
+.searchForm input{
+    width:35%;
+    background-color: whitesmoke;
+}  
+
+/*User*/
+.leftContent{
+    margin-top : 60px;
+    text-align: center;
+}
+.user img{
+    border-radius: 50%;
+    border: 3px solid whitesmoke;
+}
+.user p{
+    margin-top:10px;
+    font-size:24px;
+    font-weight: bold;
+    color:black;
+}
+.user span{
+    margin-top:10px;
+    font-size:12px;
+    color:rgb(134, 135, 136);
+}
+.userLikes{
+    width:50%;
+    margin-top:40px;
+    text-align: left;
+    margin-left:25%;
+}
+.userLikes span{
+    float:right;
+}
+.userLikes ul{
+    list-style-type: none;
+}
+.userLikes ul li:last-child{
+    margin-top:40px;
+}
+
+/*User and more*/
+.userContent{
+    display:flex;
+    width:100%;
+}
+.leftContent{
+    width:40%;
+}
+.rightContent{
+    width:50%;
+}
+.questionBar{
+    color:rgb(132, 133, 134)
+}
+.questionBar input, textarea{
+    width:50%;
+    margin-top:10px;
+    display: block;
+    box-sizing: border-box;
+}
+.questionBar div{
+    margin-top:10px;
+}
+.questionBar select{
+    color: rgb(56, 155, 253);
+}
+.questionBar button{
+    background-color: rgb(56, 155, 253);
+    color:white;
+    font-weight: bold;
+}
+
+/*Discussions*/
+.discussions{
+    margin-top:30px;
+    width:70%;
+}
+.discussions{
+    color:rgb(132, 133, 134);
+}
+.questionContent{
+    margin-left: 20px;
+}
+.questionContent h4, p{
+    margin:0;
+}
+.questionContent p{
+    margin-top:10px;
+    margin-left:25px;
+}
+.img img{    
+    border-radius: 50%;
+    border: 3px solid whitesmoke;
+}
+.questionContent >span{
+    border: 1px solid rgb(56, 155, 253);
+    float:right;
+    position: relative;
+    color:rgb(47, 148, 248);
+}
+.eachDiscussion{
+    display:flex;
+}
+.dateReply{
+    font-size: 15px;
+}
+.dateReply span{
+    float:right;
+}
+.nextPage{
+    float:right;
+    margin-top:40px;
+}
+.nextPage button{
+    font-size:15px;
+    color: rgb(32, 133, 235);
+    background-color: white;
+    border: 1px solid rgb(56, 155, 253);
+    padding:5px;
+    padding-left:15px;
+    padding-right:15px;
+}
