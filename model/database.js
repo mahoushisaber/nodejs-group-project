@@ -69,9 +69,29 @@ const cancelProfilecreation = (req,res)=>{
         res.end();
     })
 }
+const checkLogin = (req,res)=>{
+    const profileEmail =  "JonDavies@hotmail.com";
+    const profilePassword=  "password";
+    let sql = "SELECT email, password  FROM User ORDER BY idUser DESC LIMIT 1 ";
+    createconndb.query(sql, (err,results,fields)=>{
+        if(err){
+            console.log("Failed to add users: " + err);
+            res.sendStatus(500)
+            return
+        }
+        console.log(results[0].email)
+        if(results[0].email==profileEmail&&results[0].password==profilePassword){
+            console.log("Success");
+        } else {
+            console.log("Failed");
+        }
+        res.end();
+    })
+}
 
 module.exports = {
     creatingProfileStepOne:creatingProfileStepOne,
     creatingProfileStepTwo:creatingProfileStepTwo,
-    cancelProfilecreation:cancelProfilecreation
+    cancelProfilecreation:cancelProfilecreation,
+    checkLogin:checkLogin
   };
