@@ -11,5 +11,6 @@ router
     .get('/', logincontroller.login)
     .get('/profilecreationstep1',profilecontroller.profileCreator1)
     .get('/profilecreationstep2',profilecontroller.profileCreator2)
+    .get('/profilecreationcancel', profilecontroller.profileCreaterCancel)
 
 module.exports = router;

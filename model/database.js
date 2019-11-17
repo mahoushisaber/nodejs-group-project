@@ -57,7 +57,21 @@ const creatingProfileStepTwo = (req,res)=>{
     })
 }
 
+const cancelProfilecreation = (req,res)=>{
+
+    let sql = "DELETE FROM User ORDER BY idUser DESC LIMIT 1 ";
+    createconndb.query(sql, (err,results,fields)=>{
+        if(err){
+            console.log("Failed to add users: " + err);
+            res.sendStatus(500)
+            return
+        }
+        res.end();
+    })
+}
+
 module.exports = {
     creatingProfileStepOne:creatingProfileStepOne,
-    creatingProfileStepTwo:creatingProfileStepTwo
+    creatingProfileStepTwo:creatingProfileStepTwo,
+    cancelProfilecreation:cancelProfilecreation
   };
