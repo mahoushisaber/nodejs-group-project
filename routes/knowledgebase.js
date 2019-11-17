@@ -9,5 +9,7 @@ const profilecontroller = require('../controllers/profileController');
 
 router
     .get('/', logincontroller.login)
+    .get('/profilecreationstep1',profilecontroller.profileCreator1)
+    .get('/profilecreationstep2',profilecontroller.profileCreator2)
 
 module.exports = router;
