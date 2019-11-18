@@ -21,9 +21,9 @@ const creatingProfileStepOne = (req,res)=>{
     // const profileLname = req.body.Lname;
     // const profileEmail = req.body.email;
     // const profilePassword= req.body.passowrd;
-    const profileFname = "Jon";
+    const profileFname = "Hannah";
     const profileLname =  "Davies";
-    const profileEmail =  "JonDavies@hotmail.com";
+    const profileEmail =  "HannahDavies@hotmail.com";
     const profilePassword=  "password";
     let sql = "INSERT INTO User (firstName, lastName, email, password) VALUES (?, ?, ?,?)";
     createconndb.query(sql, [profileFname,profileLname,profileEmail,profilePassword],(err,results,fields)=>{
@@ -70,21 +70,33 @@ const cancelProfilecreation = (req,res)=>{
     })
 }
 const checkLogin = (req,res)=>{
-    const profileEmail =  "JonDavies@hotmail.com";
+    // let profileEmail = req.body.email;
+    // let profilePassword= req.body.passowrd;
+
+    const profileEmail =  "HannahDavies@hotmail.com";
     const profilePassword=  "password";
-    let sql = "SELECT email, password  FROM User ORDER BY idUser DESC LIMIT 1 ";
-    createconndb.query(sql, (err,results,fields)=>{
+    let errormessage= "";
+    let sql = "SELECT email, password  FROM User WHERE email = (?) ";
+    createconndb.query(sql,profileEmail, (err,results,fields)=>{
         if(err){
             console.log("Failed to add users: " + err);
             res.sendStatus(500)
             return
         }
-        console.log(results[0].email)
-        if(results[0].email==profileEmail&&results[0].password==profilePassword){
-            console.log("Success");
-        } else {
-            console.log("Failed");
+     
+        if(results.length!= 0){
+            if(results[0].email==profileEmail&&results[0].password==profilePassword){
+                console.log("Success");
+            } else {
+      
+                if(results[0].email == profileEmail&&results[0].password!=profilePassword){
+                    errormessage = "User Password is Wrong";
+                } 
+            }
+        }else {
+            errormessage ="User Email Can't Be Found";
         }
+        console.log(errormessage);
         res.end();
     })
 }
