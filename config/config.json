@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "admin",
+    "password": "webproject",
+    "database": "knowledgebase",
+    "host": "knowledgebase.ccuejt1beuqb.us-west-2.rds.amazonaws.com",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  },
+  "test": {
+    "username": "admin",
+    "password": "webproject",
+    "database": "knowledgebase",
+    "host": "knowledgebase.ccuejt1beuqb.us-west-2.rds.amazonaws.com",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  },
+  "production": {
+    "username": "admin",
+    "password": "webproject",
+    "database": "knowledgebase",
+    "host": "knowledgebase.ccuejt1beuqb.us-west-2.rds.amazonaws.com",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  }
+}
