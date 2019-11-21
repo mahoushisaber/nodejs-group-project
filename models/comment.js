@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     // Associate the comment with a user  Issue with Johns code commented out for now
-    //Comment.belongsTo(User);
+    Comment.belongsTo(models.User);
     
   };
   return Comment;

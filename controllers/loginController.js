@@ -1,4 +1,4 @@
-const db = require('../model/database');
+const db = require('../models');
 
 const login = (req, res, next) => {
     res.render('index', {});
