@@ -13,8 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE',
     });
 
-    // Associate the comment with a user
-    Comment.belongsTo(User);
+    // Associate the comment with a user  Issue with Johns code commented out for now
+    //Comment.belongsTo(User);
     
   };
   return Comment;
