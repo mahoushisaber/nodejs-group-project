@@ -14,7 +14,7 @@ const create = (req, res) => {
     .catch(error => res.status(400).send(error));
 };
 
-// function to get all questions
+// function to get all questions in specific category
 
 // function to get a single question
 
