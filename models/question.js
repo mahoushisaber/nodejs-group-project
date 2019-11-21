@@ -4,7 +4,6 @@ module.exports = (sequelize, DataTypes) => {
     topic: DataTypes.STRING,
     subject: DataTypes.STRING,
     details: DataTypes.STRING,
-    date: DataTypes.DATE,
     replies: DataTypes.INTEGER
   }, {});
   Question.associate = function(models) {

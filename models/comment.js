@@ -2,7 +2,6 @@
 module.exports = (sequelize, DataTypes) => {
   const Comment = sequelize.define('Comment', {
     details: DataTypes.STRING,
-    date: DataTypes.DATE
   }, {});
   Comment.associate = function(models) {
     // All comments belong to a question & user
@@ -14,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     // Associate the comment with a user  Issue with Johns code commented out for now
-    //Comment.belongsTo(User);
+    Comment.belongsTo(models.User);
     
   };
   return Comment;

@@ -9,16 +9,14 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       topic: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true
       },
       subject: {
         type: Sequelize.STRING
       },
       details: {
         type: Sequelize.STRING
-      },
-      date: {
-        type: Sequelize.DATE
       },
       replies: {
         type: Sequelize.INTEGER
