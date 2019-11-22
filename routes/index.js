@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const logincontroller = require('../controllers/loginController');
 const profilecontroller = require('../controllers/profileController');
+const messageController = require('../controllers/messageController');
 
 router
     /* Routes for home page */
@@ -13,6 +14,8 @@ router
     .get('/profilecreationcancel', profilecontroller.profileCreaterCancel)
     .get('/profilefind', profilecontroller.userfindUser)
     .get('/userlogin', profilecontroller.userLogin)
+
+    .get('/message', messageController.message)
 
 
 module.exports = router;
