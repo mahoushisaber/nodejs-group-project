@@ -1,46 +1,48 @@
 <html>
-    <head>
-        <link rel="stylesheet" href = "messageInbox.css">
-    </head>
-    <body>
-        <div id = "header">
-                <img src = "kb.png" id = "logo">
-                <input type = "text" placeholder = "Search" id = "searchBar">
-                <button type = "button" id  = "logoutButton"> logout</button>
-        </div>
 
-        <div id = "main">
-            <div id = "leftDiv">
-                <table>
-                    <tr>
-                        <td>
-                            <div id = "user">
-                                <div id = "picContainer">
-                                    <img src = "https://randomuser.me/api/portraits/med/women/1.jpg" id = "pic">
-                                </div>
-                                <div id = "titleContainer">
-                                    <p id = "name">Firstname Lastname</p>
-                                    <p id  = "title">Example of Title here</p>
-                                </div>
+<head>
+    <link rel="stylesheet" href="./stylesheets/messageInbox.css">
+</head>
+
+<body>
+    <div id="header">
+        <img src="./img/logo.png" id="logo">
+        <input type="text" placeholder="Search" id="searchBar">
+        <button type="button" id="logoutButton"> logout</button>
+    </div>
+    <div id="main">
+        <div id="leftDiv">
+            <table>
+                <tr>
+                    <td>
+                        <div id="user">
+                            <div id="picContainer">
+                                <img src="https://randomuser.me/api/portraits/med/women/1.jpg" id="pic">
                             </div>
-                        </td>
-                    </tr>
-                </table>
+                            <div id="titleContainer">
+                                <p id="name">Firstname Lastname</p>
+                                <p id="title">Example of Title here</p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="rightDiv">
+            <div id="inbox">
+                <div id="date"> 15 sept</div>
+                <div id="messages"> Test Test Test Test Test sdsdo asdajwwda Sada</div>
             </div>
-            <div id = "rightDiv">
-                <div id = "inbox">
-                    <div id = "date"> 15 sept</div>
-                    <div id  = "messages"> Test Test Test Test Test sdsdo asdajwwda Sada</div>
-                </div>
-                <div id = "textBox">
-                    <form>
-                        <textarea cols="90" rows = "10" id = "inputMessage" placeholder="Write a message..."></textarea>
-                </div>
-                <div id = "submitArea">
-                        <input type = "submit" value = "Send"></input>
-                    </form>
-                </div>
+            <div id="textBox">
+                <form>
+                    <textarea cols="90" rows="10" id="inputMessage" placeholder="Write a message..."></textarea>
+            </div>
+            <div id="submitArea">
+                <input type="submit" value="Send"></input>
+                </form>
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>

@@ -1,0 +1,82 @@
+.main{
+    margin: 0 auto;
+    margin-top: 20px;
+}
+#titlePic{
+    width: 240px;
+}
+.loginContent{
+    margin: 0px;
+}
+
+
+.divLeft{
+    margin-left: 60px;
+    margin-top: 50px;
+    float:left;
+    width: 30%;
+}
+#signupPic{
+    margin-top: 60px;
+    width: 350px;
+    height: 350px;
+}
+.textRight{
+    margin-top: 50px;
+    display: inline-block;
+    width: 400px;
+    font: 36px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+.divRight{
+    float:right;
+    width: 46%;  
+    margin-top: 30px;
+    margin-right: 10px; 
+}
+.loginContent{
+    margin-top: 30px;
+}
+#loginButton {
+    background-color: rgb(56, 155, 253);
+    color:white;
+    font-weight: bold;
+}
+
+
+
+.signupContent{
+    display: inline-block;
+    width: 300px;
+    margin-top:40px;
+    text-align: left;
+}
+.signupForm{
+    display: block;
+    margin: 0px;    
+    width: 300px;
+    
+}
+.signupForm >input{
+    display: block;
+    margin: 10px;    
+    width: 300px;
+    height: 20px;
+    font-size: 16px;
+}
+#firstName{
+    float: left;
+    width: 125px;  
+      
+}
+#lastName{
+    float: right;
+    width: 125px;
+    margin-right: -14px;
+}
+#signup{
+    background-color: rgb(56, 155, 253);
+    color:white;
+    display: block;
+    margin: 10px;    
+    width: 305px;
+}
