@@ -4,7 +4,9 @@ const bodyParser = require('body-parser');
 
 const app = express();
 const routes = require('./routes/index');
-
+app.use(bodyParser.urlencoded({
+    extended: true
+})); 
 
 app.set('views', path.join(__dirname, 'views'));
 
