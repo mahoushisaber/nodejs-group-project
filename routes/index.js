@@ -26,6 +26,7 @@ router
        /*Should be post"*/
     .get("/Questions/deletequestions", questioncontroller.deletequestion)
 
+
     /* Routes for user/profile */
      /*Should be post"*/
     .get('/Profile/profilecreationstep1',profilecontroller.usercreate1)
@@ -45,5 +46,10 @@ router
     .get('/InstantMessaging/Response/AllInstantMessage', commmessageController.findAllMessageBetweenUser)
        /*Should be post"*/
     .get('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
-
+    /* Website pages */
+    .get('/', function(req, res) { res.render('index');})
+    .get('/home', function(req, res) { res.render('home');})
+    .get('/signup', function(req, res) { res.render('signup');})
+    .get('/message', function(req, res) { res.render('message');})
+    .get('/messageInbox', function(req, res) { res.render('messageInbox');})
 module.exports = router;

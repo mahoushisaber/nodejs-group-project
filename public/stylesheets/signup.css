@@ -1,0 +1,26 @@
+#container{
+    text-align: center;
+    width:100%;
+}
+
+#div1{
+    float:left;
+    width: 20%;
+}
+
+#div2{
+    float:right;
+    width: 60%;
+    
+}
+
+#url, #about, #country, #dob, #complete{
+    float: left;
+    width: 30%;
+    margin-top: 10px;
+    margin-right: 50%;
+    
+}
+
+
+

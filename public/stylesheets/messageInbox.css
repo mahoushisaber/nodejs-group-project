@@ -1,0 +1,72 @@
+#header{
+    text-align: center;
+    height: 10%;
+    margin-left:15%;
+    margin-right: 15%;
+}
+
+#logo{
+    height: 100%;
+    float:left;
+}
+
+#searchBar{
+    float:left;
+    width: 30%;
+    margin-top: 25px;
+    height: 40%;
+}
+
+#logoutButton{
+    margin-top: 25px;
+    margin-right:0%;
+    float:right;
+    background-color: aqua;
+}
+
+#main{
+    margin-top: 50px;
+    margin-left: 15%;
+    margin-right: 15%;
+    width: 100%;
+}
+
+#leftDiv{
+    float:left;
+    width: 30%;
+}
+
+#picContainer{
+    float:left;
+    width: 30%;
+}
+
+#pic{
+    border-radius: 50%;
+    height: 90px;
+}
+
+#titleContainer{
+    float:right;
+    width: 70%;
+}
+
+#title, #name{
+    float: left;
+    margin-left: 10px;
+}
+
+#rightDiv{
+    float:right;
+    width: 70%;
+}
+
+#inbox{
+    float:left;
+    height: 50%;
+    width:100%;
+}
+
+
+
+

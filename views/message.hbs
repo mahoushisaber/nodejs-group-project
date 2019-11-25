@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <link rel = "stylesheet" href = "./stylesheets/message.css"/>
+    </head>
+    <body>
+        <div id = "header">
+            <img src = "./img/logo.png" id = "logo">
+            <input type = "text" placeholder = "Search" id = "searchBar">
+            <button type = "button" id  = "logoutButton"> logout</button>
+        </div>
+
+        <div id = "main">
+            <div id = "picContainer">
+                <img src = "https://randomuser.me/api/portraits/med/women/2.jpg" id = "pic">
+            </div>
+            <div id = "message">
+                <form action = "/", method = "POST">              
+                    <input type = "text" placeholder = "subject" id = "subject">
+                    <textarea type = "text" placeholder = "message details ...." id = "messageDetails" rows = "6"></textarea>
+                    <input type = "submit" value = "Message" id  = "messageButton">
+                </form>
+            </div>
+        </div>
+
+    </body>
+</html>
