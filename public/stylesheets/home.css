@@ -2,6 +2,7 @@
 .logo img{
     width:50px;
     margin-left: 120px;
+    margin-top: 15px;
 }
 .searchBar{
     display:flex;
@@ -12,11 +13,14 @@
     height:24px;
 }
 .searchBar button{
+    font-size: 15px;
+    color: whitesmoke;
     background-color: rgb(56, 155, 253);
-    height:30px;
-    margin:5px;
-    color:white;
-    font-weight: bold;
+    border: 1px solid rgb(56, 155, 253);
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 20px;
 }
 .searchBar form button{
     margin-left:0px;
@@ -25,7 +29,14 @@
     margin-left: -15%;
 }
 .logout button{
-    width:90px;
+    font-size: 15px;
+    color: whitesmoke;
+    background-color: rgb(56, 155, 253);
+    border: 1px solid rgb(56, 155, 253);
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 20px;
 }
 .searchForm{
     width:70%;
@@ -97,11 +108,17 @@
 }
 .questionBar select{
     color: rgb(56, 155, 253);
+    padding: 3px;
 }
 .questionBar button{
+    font-size: 15px;
+    color: whitesmoke;
     background-color: rgb(56, 155, 253);
-    color:white;
-    font-weight: bold;
+    border: 1px solid rgb(56, 155, 253);
+    padding: 3px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 20px;
 }
 
 /*Discussions*/
@@ -130,6 +147,7 @@
     border: 1px solid rgb(56, 155, 253);
     float:right;
     position: relative;
+    padding: 3px;
     color:rgb(47, 148, 248);
 }
 .eachDiscussion{
@@ -146,11 +164,15 @@
     margin-top:40px;
 }
 .nextPage button{
-    font-size:15px;
-    color: rgb(32, 133, 235);
-    background-color: white;
+    font-size: 15px;
+    color: whitesmoke;
+    background-color: rgb(56, 155, 253);
     border: 1px solid rgb(56, 155, 253);
-    padding:5px;
-    padding-left:15px;
-    padding-right:15px;
+    padding: 5px;
+    width: 80px;
+    height: 27px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 20px;
+    margin-left: 90%;
 }

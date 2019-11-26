@@ -5,12 +5,19 @@
 #titlePic{
     width: 240px;
 }
-.loginContent{
-    margin: 0px;
+.loginContentDiv{
+    margin: 0px;  
+    display: inline;  
 }
-
-
-.divLeft{
+#loginEmail{
+    font-size: 16px;
+    padding: 3.5px;
+}
+#loginPassword{
+    font-size: 16px;
+    padding: 3.5px;
+}
+.divLeftContent{
     margin-left: 60px;
     margin-top: 50px;
     float:left;
@@ -27,7 +34,7 @@
     width: 400px;
     font: 36px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-.divRight{
+.divRightContent{
     float:right;
     width: 46%;  
     margin-top: 30px;
@@ -37,14 +44,19 @@
     margin-top: 30px;
 }
 #loginButton {
+    font-size: 15px;
+    color: whitesmoke;
     background-color: rgb(56, 155, 253);
-    color:white;
-    font-weight: bold;
+    border: 1px solid rgb(56, 155, 253);
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 19px;
 }
 
 
 
-.signupContent{
+.signupContentDiv{
     display: inline-block;
     width: 300px;
     margin-top:40px;
@@ -62,6 +74,7 @@
     width: 300px;
     height: 20px;
     font-size: 16px;
+    padding: 5px;
 }
 #firstName{
     float: left;
@@ -71,12 +84,91 @@
 #lastName{
     float: right;
     width: 125px;
-    margin-right: -14px;
+    margin-right: -24px;
 }
 #signup{
+    font-size: 16px;
+    color: whitesmoke;
     background-color: rgb(56, 155, 253);
-    color:white;
-    display: block;
-    margin: 10px;    
-    width: 305px;
+    border: 1px solid rgb(56, 155, 253);
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 10px;
+    width: 105%;
+}
+
+/*  Uniform Search Bar, login, and logout*/
+.logo img{
+    width:50px;
+    margin-left: 120px;
+    margin-top: 15px;
+}
+.searchBar{
+    display:flex;
+    width:100%;
+}
+.searchBar input{
+    margin:4px;
+    height:24px;
+}
+.searchBar button{
+    font-size: 15px;
+    color: whitesmoke;
+    background-color: rgb(56, 155, 253);
+    border: 1px solid rgb(56, 155, 253);
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 20px;
+}
+.searchBar form button{
+    margin-left:0px;
+}
+.logout{
+    margin-left: -15%;
+}
+.logout button{
+    font-size: 15px;
+    color: whitesmoke;
+    background-color: rgb(56, 155, 253);
+    border: 1px solid rgb(56, 155, 253);
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 20px;
+}
+.searchForm{
+    width:70%;
+    margin-left:40px;
+}
+.searchForm input{
+    width:35%;
+    background-color: whitesmoke;
+}  
+
+/*User*/
+.leftContent{
+    margin-top : 60px;
+    text-align: center;
+}
+.user img{
+    border-radius: 50%;
+    border: 3px solid whitesmoke;
+}
+.user p{
+    margin-top:10px;
+    font-size:24px;
+    font-weight: bold;
+    color:black;
+}
+.user span{
+    margin-top:10px;
+    font-size:12px;
+    color:rgb(134, 135, 136);
+}
+
+.img img{    
+    border-radius: 50%;
+    border: 3px solid whitesmoke;
 }

@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const expressHbs = require('express-handlebars');
 
 const app = express();
 const routes = require('./routes/index');
@@ -8,9 +9,17 @@ app.use(bodyParser.urlencoded({
     extended: true
 })); 
 
+app.engine('hbs',expressHbs ({
+    defaultLayout: 'index',
+    layoutsDir: 'views/layouts/',
+    partialsDir: ['views/partials/'],
+    extname: 'hbs'
+  })
+);
 app.set('views', path.join(__dirname, 'views'));
 
 app.set("view engine","hbs")
+app.set('views', 'views');
 
 app.use(express.static(path.join(__dirname,'public')));
 

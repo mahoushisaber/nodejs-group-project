@@ -4,24 +4,7 @@
     width:50px;
     margin-left: 120px;
 }
-.searchBar{
-    display:flex;
-    width:100%;
-}
-.searchBar input{
-    margin:4px;
-    height:24px;
-}
-.searchBar button{
-    background-color: rgb(56, 155, 253);
-    height:30px;
-    margin:5px;
-    color:white;
-    font-weight: bold;
-}
-.searchBar form button{
-    margin-left:0px;
-}
+
 .logout{
     margin-left: -15%;
 }
@@ -63,11 +46,14 @@
 
 #message, #increaseLike{
     background-color: rgb(56, 155, 253);
-    height:30px;
+    height:27px;
     margin:5px;
     color:white;
-    font-weight: bold;
     margin-top: 150px;
+    font-size: 15px;
+    color: whitesmoke;
+    border: 1px solid rgb(56, 155, 253);
+    padding: 5px;
 }
 
 #moreDesc{

@@ -47,9 +47,29 @@ router
        /*Should be post"*/
     .get('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
     /* Website pages */
-    .get('/', function(req, res) { res.render('index');})
-    .get('/home', function(req, res) { res.render('home');})
-    .get('/signup', function(req, res) { res.render('signup');})
-    .get('/message', function(req, res) { res.render('message');})
-    .get('/messageInbox', function(req, res) { res.render('messageInbox');})
+    .get('/', function(req, res) { 
+        res.render('layouts/index', { title: 'Knowledge Base', heading: 'Signup', indexCSS: true})
+    })
+
+    .get('/messageInbox', function(req, res) { 
+        res.render('messageInbox', { title: 'Knowledge Base Messaging', heading: 'Messaging', messageInboxCSS: true})
+    })
+    
+    .get('/home', function(req, res) { 
+        res.render('home', { title: 'Knowledge Base Home', heading: 'Home', homeCSS: true})
+    })
+    
+    .get('/signup', function(req, res) { 
+        res.render('signup', { title: 'Knowledge Base Signup', heading: 'Signup', signupCSS: true})
+    })
+    
+    .get('/message', function(req, res) { 
+        res.render('message', { title: 'Knowledge Base Message', heading: 'Message', messageCSS: true})
+    })
+    
+    .get('/profile', function(req, res) { 
+        res.render('profile', { title: 'Knowledge Base Profile', heading: 'Profile', profileCSS: true})
+    })
+
+
 module.exports = router;
