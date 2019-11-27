@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <link rel = "stylesheet" href = "signup.css">
+    </head>
+    <body>
+        <h1>knowledgeBase</h1>
+        <div id = "container">
+            <div id = "div1">          
+                <h1>Let us know a little more about you</h1>
+            </div>
+
+            <div id = "div2">
+                <form id="completeProfileForm" method="POST" action="complete-profile">
+                    <input type = "text" placeholder="imageurl" name="url" id = "url">
+                    <textarea type = "text" placeholder= "a few lines about yourself" rows = "3" name="about" id = "about"></textarea>
+                    <input type = "text" placeholder = "country" name="country" id = "country"></input>
+                    <input type = "date" placeholder = "date of birth (mm/dd/yyyy)" name="dob" id = "dob"></input>
+                    <button id="complete" type="submit">signup</button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

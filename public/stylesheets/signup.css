@@ -21,6 +21,15 @@
     margin-right: 50%;
     
 }
-
+#complete{
+    font-size: 15px;
+    color: whitesmoke;
+    background-color: rgb(56, 155, 253);
+    border: 1px solid rgb(56, 155, 253);
+    padding: 5px;
+    padding-left: 9px;
+    padding-right: 15px;
+    margin-top: 20px;
+}
 
 

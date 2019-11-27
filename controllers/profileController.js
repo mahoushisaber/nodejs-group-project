@@ -1,95 +1,169 @@
-const userdb = require('../models').User;
+const models = require('../models');
+var session = require('express-session');
 
-// const profileCreator1 = (res, next) => {
-// Had to block out comment user to make this work
-function usercreate1(req, res) {
-  return userdb.create(
-      //   req;
-      //     // firstName: "Jonathan ",
-      //     // lastName: "Davies",
-      //     // email: "JonDavies4@hotmail.com",
-      //     // password: "Computer",
-      // }
-      {
+// Next function to check sign in for each route
+const checkSignIn = (req, res, next) => {
+  // If user is authenticated, then move on
+  if (req.session.user) {
+    return next();
+  }
+  // Else, redirect them to the signup page
+  return res.redirect('/signup');
+};
 
-        firstName: req.body.fname,
-        lastName: req.body.lname,
-        email: req.body.email,
-        password: req.body.password,
-      }
-    )
-    .then(userdb => res.status(201).send(userdb))
-    .catch(error => res.status(400).send(error));
-}
+// Controller to render the signup page
+const getSignupPage = (req, res) => {  
+  return res.render('signup', {});
+};
 
-function userfindUser(req, res) {
-  return userdb.findOne({
-      //email: "JonDavies300@hotmail.com", password: "password"
-      email: req.email,
-      password: req.password
+// Controller to signup a user
+const signupUser = (req, res) => {
+  // Check if the specified username already exists
+  models.User.findAll({
+    where: {
+      email: req.body.email
+    }
+  })
+  .then(existingUser => {
+    // If username exists, redirect back to signup
+    if(existingUser.length > 0){
+      return res.render('signup', {signupErr: "Username is already registered"});
+    }
+
+    // If username is unique, create the user
+    models.User.create({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      password: req.body.password[0]
     })
-    .then(userdb => {
-      console.log(`Found user: ${userdb.email}`);
-      res.end();
-    }).catch(error => res.status(400).send(error));
-}
-
-function userLogin(req, res) {
-  let test = -1;
-  userdb.findOne({
-      where: {
-        // email: "JonDavies30000@hotmail.com", password: "password"
-        email: req.email,
-        password: req.password
-      }
+    .then(user => {
+      // Create session for the user and redirect to next step
+      let userObj = {email: user.email};
+      req.session.user = userObj;
+      return res.redirect('/complete-profile');
     })
-    .then(userdb => {
+    .catch((err) => {
+      console.log(err);
+      return res.render('signup', {signupErr: "There was an error with signup"});
+    })
+  });
+};
 
-      console.log(`Found user: ${userdb.email}`);
+// Controller for the second step of the signup process
+const completeProfile = (req, res) => {
+  return res.render('complete-profile', {});
+};
 
-    }).catch(userdbd => {
-      console.log("Wrong email and/or password")
-    });
-  res.end();
-}
-
-
-function usercreate2(req, res) {
-  const newData = {
-    about: req.about,
-    imageUrl: req.url,
-    dob: req.dob,
-    country: req.country,
-    // about: 'Maxy-boi-boi',
-    // imageUrl: "alt",
-    // dob: "2019-09-09",
-    // country: "Canada",
+// Controller for adding the details to user profile during intial signup
+const addProfileDetails = (req, res) => {
+  const details = {
+    about: req.body.about,
+    imageUrl: req.body.url,
+    dob: req.body.dob,
+    country: req.body.country,
   };
 
-  userdb.update(newData, {
-      where: {
-        email: 'JonDavies4@hotmail.com'
-      }
+  if (req.session.user){
+    console.log("updating the user...");
+    models.User.update(details, {returning: true, where: {email: req.session.user.email}})
+    .then((result) => {
+      console.log("Data successfully updated.");
+      return res.redirect('/home');
     })
-    .then(userdb => {
-      res.status(201).send(userdb)
-    }).catch(error => res.status(400).send(error));
-}
+    .catch((err) => {
+      console.log("Error: ", err);
+    })
+  }
+};
 
-const profileCreaterCancel = (req, res, next) => {
-  userdb.destroy({
-      where: {
-        email: req.body
-      }
-    })
-    .then(userdb => {
-      res.status(201).send(userdb)
-    }).catch(error => res.status(400).send(error));
-}
+// Controller of home page of authenticated users
+const home = (req, res) => {
+  models.User.findAll({
+    where: {
+      email: req.session.user.email
+    }
+  })
+  .then(existingUser => {
+    const context = {
+      firstName: existingUser[0].firstName,
+      lastName: existingUser[0].lastName,
+      about: existingUser[0].about,
+      imageUrl: existingUser[0].imageUrl,
+      postNum: existingUser[0].postNumber,
+      msgNum: existingUser[0].messageNumber,
+      likeNum: existingUser[0].likesNumber
+    }
+    return res.render('home', {context: context});
+  })
+  .catch((err) => {
+    console.log("Not able to find user when rendering home page...");
+    return res.redirect('/signup');
+  })
+};
+
+// Controller for logging in
+const login = (req, res) => {
+  // Query db for user
+  models.User.findAll({
+    where: {
+      email: req.body.email
+    }
+  })
+  .then(existingUser => {
+    // If there is no existing user, go back to login
+    if(existingUser.length != 1){
+      return res.render('signup', {loginErr: "User with this email does not exist."});
+    }
+    // Check if password is correct
+    if(existingUser[0].password == req.body.password){
+      let userObj = {email: req.body.email};
+      req.session.user = userObj;
+      return res.redirect('/home');
+    }
+    else {
+      return res.render('signup', {loginErr: "Email or password is incorrect."});
+    }
+  })
+};
+
+// Controller for logging out
+const logout = (req, res) => {
+  req.session.destroy(function(){
+    console.log("user logged out.");
+ });
+ return res.redirect('/signup');
+};
+
+// Controller for updating profile
+const editProfile = (req, res) => {
+  const details = {
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    about: req.body.about,
+    imageUrl: req.body.url,
+    dob: req.body.dob,
+    country: req.body.country,
+  };
+
+  models.User.update(details, {returning: true, where: {email: req.session.user.email}})
+  .then((result) => {
+    console.log("Data successfully updated.");
+    return res.redirect('/home');
+  })
+  .catch((err) => {
+    console.log("Error: ", err);
+  })
+};
+
 module.exports = {
-  usercreate1: usercreate1,
-  usercreate2: usercreate2,
-  profileCreaterCancel: profileCreaterCancel,
-  userfindUser: userfindUser,
-  userLogin: userLogin
+  checkSignIn:checkSignIn,
+  getSignupPage:getSignupPage,
+  signupUser:signupUser,
+  completeProfile:completeProfile,
+  addProfileDetails:addProfileDetails,
+  login:login,
+  logout:logout,
+  editProfile:editProfile,
+  home:home
 };

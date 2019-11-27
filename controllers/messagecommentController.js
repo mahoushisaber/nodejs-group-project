@@ -1,8 +1,5 @@
 const commentmessagedb = require('../models').commentmessages;
 
-
-
-
 function findAllMessageBetweenUser(req, res) {
     commentmessagedb.findAll(
         {where: {messageid: req.body.messageid },order:[['createdAt', 'ASC']]}) //
