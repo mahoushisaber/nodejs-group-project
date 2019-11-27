@@ -28,6 +28,7 @@ router
     /*Should be post"*/
     .get('/Questions/FeedComment/createComment',commentcontroller.createComment)
     .get("/Questions/FeedComment/viewComment", commentcontroller.viewComments)
+ 
      /*Should be post"*/
     .get('/Questions/FeedComment/delComment',commentcontroller.createComment)
 
@@ -38,6 +39,7 @@ router
     .get("/Questions/questionsTop5Question", questioncontroller.viewTop5Question)
     .get("/Questions/allsearchquestion", questioncontroller.allsearchquestion)
     .get("/Questions/singlesearchquestion",questioncontroller.singlesearchquestion)
+    .get("/Questions/allyourQuestion", questioncontroller.viewAllYourQuestions)
        /*Should be post"*/
     .get("/Questions/deletequestions", questioncontroller.deletequestion)
 
@@ -48,8 +50,12 @@ router
     /*Routes for finding and creating pair on instant messaging*/
     .get('/InstantMessaging/Response/AllInstantMessage', commmessageController.findAllMessageBetweenUser)
        /*Should be post"*/
+<<<<<<< HEAD
+  //  .post('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
+=======
     .get('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
 
+>>>>>>> 9a05d234a1974a0924d3a0e592660d3dc32a02e8
     /* Website pages */
     .get('/message', function(req, res) { res.render('message');})
     .get('/messageInbox', function(req, res) { res.render('messageInbox');})

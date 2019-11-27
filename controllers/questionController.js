@@ -46,7 +46,12 @@ const singlesearchquestion = (req, res) => {
         .then(question => {console.log(question),res.status(201).send(question)})
         .catch(error => res.status(400).send(error))
 };
-
+const viewAllYourQuestions= (req, res) => {
+    questdb.findAll(
+        {where: {userId: req.body.UserId},order: [['createdAt', 'ASC']]})
+        .then(question => {console.log(question),res.status(201).send(question)})
+        .catch(error => res.status(400).send(error))
+  };
 //function to delete a question
 const deletequestion = (req, res, next) => {
     questdb.destroy({where: { subject: req.body.subject } })
@@ -59,5 +64,6 @@ module.exports = {
     viewTop5Question:viewTop5Question,
     allsearchquestion:allsearchquestion,
     singlesearchquestion:singlesearchquestion,
+    viewAllYourQuestions:viewAllYourQuestions,
     deletequestion:deletequestion
   };
