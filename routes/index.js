@@ -50,14 +50,15 @@ router
     /*Routes for finding and creating pair on instant messaging*/
     .get('/InstantMessaging/Response/AllInstantMessage', commmessageController.findAllMessageBetweenUser)
        /*Should be post"*/
-<<<<<<< HEAD
+
   //  .post('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
-=======
     .get('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
 
->>>>>>> 9a05d234a1974a0924d3a0e592660d3dc32a02e8
     /* Website pages */
     .get('/message', function(req, res) { res.render('message');})
     .get('/messageInbox', function(req, res) { res.render('messageInbox');})
+    .get('/edit', function(req, res){res.render('edit', {editCSS: true});})
+
+    
 
 module.exports = router;
