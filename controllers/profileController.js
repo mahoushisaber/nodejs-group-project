@@ -56,8 +56,9 @@ const signupUser = (req, res) => {
 // Controller for the second step of the signup process
 const completeProfile = (req, res) => {
   console.log("User session: ", req.session.user);
-  return res.render('complete-profile', {title: 'Knowledge Base Profile', heading: 'Profile', profileCSS: true});
+  return res.render('complete-profile', {title: 'Knowledge Base Profile', heading: 'Profile', signupCSS: true});
 };
+
 
 // Controller for adding the details to user profile during intial signup
 const addProfileDetails = (req, res) => {
