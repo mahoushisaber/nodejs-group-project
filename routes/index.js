@@ -51,7 +51,34 @@ router
     .get('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
 
     /* Website pages */
+<<<<<<< HEAD
     .get('/message', function(req, res) { res.render('message');})
     .get('/messageInbox', function(req, res) { res.render('messageInbox');})
+=======
+    .get('/', function(req, res) { 
+        res.render('layouts/index', { title: 'Knowledge Base', heading: 'Signup', indexCSS: true})
+    })
+
+    .get('/messageInbox', function(req, res) { 
+        res.render('messageInbox', { title: 'Knowledge Base Messaging', heading: 'Messaging', messageInboxCSS: true})
+    })
+    
+    .get('/home', function(req, res) { 
+        res.render('home', { title: 'Knowledge Base Home', heading: 'Home', homeCSS: true})
+    })
+    
+    .get('/signup', function(req, res) { 
+        res.render('signup', { title: 'Knowledge Base Signup', heading: 'Signup', signupCSS: true})
+    })
+    
+    .get('/message', function(req, res) { 
+        res.render('message', { title: 'Knowledge Base Message', heading: 'Message', messageCSS: true})
+    })
+    
+    .get('/profile', function(req, res) { 
+        res.render('profile', { title: 'Knowledge Base Profile', heading: 'Profile', profileCSS: true})
+    })
+
+>>>>>>> 7923182bcbf8dbb3b5a8b822d41291ba8e8361d6
 
 module.exports = router;

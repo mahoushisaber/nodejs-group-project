@@ -1,20 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>KnowledgeBase Signup</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="./stylesheets/home.css">
-    <script type="text/javascript" src="./js/signup.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-</head>
-
-<body>
-    <div class="searchBar">
-        <div class="logo">
-            <a href="/index"></a><img src="./img/logo.png" /></a>
+{{>searchBar}}
+<div class="userContent">
+    <div class="leftContent">
+        <div class="user">
+            <img src="https://randomuser.me/api/portraits/med/men/10.jpg">
+            <p>Sean Williamson</p>
+            <span>10 year of experience working in tech</span>
         </div>
+<<<<<<< HEAD
         <div class="searchForm">
             <form class="formSearch" action="/search" method="GET">
                 <input name="searchInput" placeholder="Search" />
@@ -44,56 +36,63 @@
                 </ul>
             </div>
         </div>
+=======
+        <div class="userLikes">
+            <ul>
+                <li><a href="/message">Posts</a><span>3</span></li>
+                <li><a href="/messageInbox">Messages</a><span>5</span></li>
+                <li>Likes<span>10</span></li>
+                <li><a href="/edit">Edit Profile</a></li>
+            </ul>
+        </div>
+    </div>
+>>>>>>> 7923182bcbf8dbb3b5a8b822d41291ba8e8361d6
 
-        <div class="rightContent">
-            <div class="questionBar">
-                <h3>whats your question today?</h3>
-                <form class="formQuestion" action="/login/submit" method="POST">
-                    <input class="subject" name="subject" placeholder="subject" />
-                    <textarea rows="5" name="detail" placeholder="explain in detail ..."></textarea>
-                    <div>
-                        <select>
-                            <option value="">topic</option>
-                        </select>
-                        <button>post to timeline</button>
+    <div class="rightContent">
+        <div class="questionBar">
+            <h3>whats your question today?</h3>
+            <form class="formQuestion" action="/login/submit" method="POST">
+                <input class="subject" name="subject" placeholder="subject" />
+                <textarea rows="5" name="detail" placeholder="explain in detail ..."></textarea>
+                <div>
+                    <select>
+                        <option value="">topic</option>
+                    </select>
+                    <button>post to timeline</button>
+                </div>
+                <div class="topics">
+                    <label>Search by topic</label>
+                    <select>
+                        <option value="">php</option>
+                        <option value="">nodejs</option>
+                        <option value="">java</option>
+                        <option value="">sql</option>
+                        <option value="">zend</option>
+                    </select>
+                    <button type="submit">go-></button>
+                </div>
+            </form>
+        </div>
+
+        <div class="discussions">
+            <h3>Latest discussions</h3>
+            <div class="eachDiscussion">
+                <div class="img">
+                    <img src="https://randomuser.me/api/portraits/med/men/39.jpg">
+                </div>
+                <div class="questionContent">
+                    <span>nodejs</span>
+                    <h4>Node not working</h4>
+                    <p>Problems..............................................................</p>
+                    <div class="dateReply">
+                        <span>5 reply</span>
+                        <p>25 oct 2019</p>
                     </div>
-                    <div class="topics">
-                        <label>Search by topic</label>
-                        <select>
-                            <option value="">php</option>
-                            <option value="">nodejs</option>
-                            <option value="">java</option>
-                            <option value="">sql</option>
-                            <option value="">zend</option>
-                        </select>
-                        <button type="submit">go-></button>
-                    </div>
-                </form>
+                </div>
             </div>
-
-            <div class="discussions">
-                <h3>Latest discussions</h3>
-                <div class="eachDiscussion">
-                    <div class="img">
-                        <img src="https://randomuser.me/api/portraits/med/men/39.jpg">
-                    </div>
-                    <div class="questionContent">
-                        <span>nodejs</span>
-                        <h4>Node not working</h4>
-                        <p>Problems..............................................................</p>
-                        <div class="dateReply">
-                            <span>5 reply</span>
-                            <p>25 oct 2019</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="nextPage">
-                    <button type="submit">Next-></button>
-                </div>
+            <div class="nextPage">
+                <button type="submit">Next-></button>
             </div>
         </div>
     </div>
-
-</body>
-
-</html>
+</div>
