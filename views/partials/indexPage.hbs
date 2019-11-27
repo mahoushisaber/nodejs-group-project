@@ -5,15 +5,17 @@
       </div>
       <div class="divRightContent">
           <div class="loginContentDiv">
-              <input id="loginEmail" type="text" name="email" placeholder="email" />
-              <input id="loginPassword" type="text" name="password" placeholder="password" />
-              <button id="loginButton" onclick="" type="submit">login</button>
+              <form class="signupForm" method="POST" action="login">
+                <input id="loginEmail" type="text" name="email" placeholder="email" />
+                <input id="loginPassword" type="text" name="password" placeholder="password" />
+                <button id="loginButton" onclick="" type="submit">login</button>
+              </form>
           </div>
           <div class="textRight">
               Join the worlds largest community for Knowledge sharing
           </div>
           <div class="signupContentDiv">
-              <form class="signupForm">
+              <form class="signupForm" method="POST" action="signup">
                   <input id="firstName" type="text" name="firstName" placeholder="firstname" />
                   <input id="lastName" type="text" name="lastName" placeholder="lastname" />
                   <input id="signupEmail" type="text" name="email" placeholder="email" />

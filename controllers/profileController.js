@@ -13,7 +13,7 @@ const checkSignIn = (req, res, next) => {
 
 // Controller to render the signup page
 const getSignupPage = (req, res) => {  
-  return res.render('signup', {});
+  return res.render('layouts/index', {title:"Knowledge Base Signup", heading:"Signup", indexCSS:true});
 };
 
 // Controller to signup a user
@@ -27,7 +27,7 @@ const signupUser = (req, res) => {
   .then(existingUser => {
     // If username exists, redirect back to signup
     if(existingUser.length > 0){
-      return res.render('signup', {signupErr: "Username is already registered"});
+      return res.render('layouts/index', {signupErr: "Username is already registered", title:"Knowledge Base Signup", heading:"Signup", indexCSS:true});
     }
 
     // If username is unique, create the user
@@ -45,14 +45,14 @@ const signupUser = (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      return res.render('signup', {signupErr: "There was an error with signup"});
+      return res.render('layouts/index', {signupErr: "There was an error with signup", title:"Knowledge Base Signup", heading:"Signup", indexCSS:true});
     })
   });
 };
 
 // Controller for the second step of the signup process
 const completeProfile = (req, res) => {
-  return res.render('complete-profile', {});
+  return res.render('complete-profile', {title: 'Knowledge Base Profile', heading: 'Profile', profileCSS: true});
 };
 
 // Controller for adding the details to user profile during intial signup
@@ -94,7 +94,7 @@ const home = (req, res) => {
       msgNum: existingUser[0].messageNumber,
       likeNum: existingUser[0].likesNumber
     }
-    return res.render('home', {context: context});
+    return res.render('home', {context: context, title:'Knowledge Base Home', heading:'Home', homeCSS: true});
   })
   .catch((err) => {
     console.log("Not able to find user when rendering home page...");
@@ -105,6 +105,7 @@ const home = (req, res) => {
 // Controller for logging in
 const login = (req, res) => {
   // Query db for user
+  console.log(req.body);
   models.User.findAll({
     where: {
       email: req.body.email
@@ -113,7 +114,7 @@ const login = (req, res) => {
   .then(existingUser => {
     // If there is no existing user, go back to login
     if(existingUser.length != 1){
-      return res.render('signup', {loginErr: "User with this email does not exist."});
+      return res.render('layouts/index', {loginErr: "User with this email does not exist.", title:"Knowledge Base Signup", heading:"Signup", indexCSS:true});
     }
     // Check if password is correct
     if(existingUser[0].password == req.body.password){
@@ -122,13 +123,14 @@ const login = (req, res) => {
       return res.redirect('/home');
     }
     else {
-      return res.render('signup', {loginErr: "Email or password is incorrect."});
+      return res.render('layouts/index', {loginErr: "Email or password is incorrect.", title:"Knowledge Base Signup", heading:"Signup", indexCSS:true});
     }
   })
 };
 
 // Controller for logging out
 const logout = (req, res) => {
+  console.log('logout');
   req.session.destroy(function(){
     console.log("user logged out.");
  });

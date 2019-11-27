@@ -1,44 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <title>KnowledgeBase Signup</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="./stylesheets/index.css">
-    <script type="text/javascript" src="./javascripts/signup.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-</head>
-
-<body>
-    <div id="main">
-        <div>
-            <h1>KnowledgeBase</h1>
-        </div>
-        <div class="searchBarContent">
-            <form id="loginForm" method="POST" action="login">
-                <input id="loginEmail" type="text" name="email" placeholder="email" />
-                <input id="loginPassword" type="text" name="password" placeholder="password" />
-                <button id="loginButton" onclick="" type="submit">login</button>
-            </form>
-            <p class="authErr">{{loginErr}}</p>
-        </div>
-        <div>
-            Some Text
-        </div>
-        <div class="signupContent">
-            <form id="signupForm" method="POST" action="signup">
-                <input id="firstName" type="text" name="firstName" placeholder="firstname" />
-                <input id="lastName" type="text" name="lastName" placeholder="lastname" />
-                <input id="signupEmail" type="text" name="email" placeholder="email" />
-                <input id="signupPassword" type="text" name="password" placeholder="password" />
-                <input id="signupPasswordConfirm" type="text" name="password" placeholder="confirm password" />
-                <button id="signup" type="submit">signup</button>
-            </form>
-            <p class="authErr">{{signupErr}}</p>
-        </div>
+<div id="main">
+    <div>
+        <h1>KnowledgeBase</h1>
     </div>
-</body>
+    <div class="searchBarContent">
+        <form id="loginForm" method="POST" action="login">
+            <input id="loginEmail" type="text" name="email" placeholder="email" />
+            <input id="loginPassword" type="text" name="password" placeholder="password" />
+            <button id="loginButton" type="submit">login</button>
+        </form>
+        <p class="authErr">{{loginErr}}</p>
+    </div>
+    <div>
+        Some Text
+    </div>
+    <div class="signupContent">
+        <form id="signupForm" method="POST" action="signup">
+            <input id="firstName" type="text" name="firstName" placeholder="firstname" />
+            <input id="lastName" type="text" name="lastName" placeholder="lastname" />
+            <input id="signupEmail" type="text" name="email" placeholder="email" />
+            <input id="signupPassword" type="text" name="password" placeholder="password" />
+            <input id="signupPasswordConfirm" type="text" name="password" placeholder="confirm password" />
+            <button id="signup" type="submit">signup</button>
+        </form>
+        <p class="authErr">{{signupErr}}</p>
+    </div>
+</div>
 
-</html>
 
