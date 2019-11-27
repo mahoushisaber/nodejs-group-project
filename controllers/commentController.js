@@ -24,6 +24,8 @@ const viewComments = (req, res) => {
         .catch(error => res.status(400).send(error))
 };
 
+
+
 module.exports={
     createComment:createComment,
     viewComments:viewComments

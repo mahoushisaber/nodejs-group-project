@@ -12,8 +12,8 @@ function findAllMessageBetweenUser(req, res) {
   function CreateInstantMessage(req, res){
     commentmessagedb.create(
         {
-                  messageid: req.body.messageId,
-                  userid: req.body.userid,
+                  messageid:2, //req.body.messageId,
+                  userid: 1,//req.body.userid,
                   convotext: req.body.convotext,
         }
       ).then( createmessage=>{

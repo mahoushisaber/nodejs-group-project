@@ -13,6 +13,7 @@ router
     /*Should be post"*/
     .get('/Questions/FeedComment/createComment',commentcontroller.createComment)
     .get("/Questions/FeedComment/viewComment", commentcontroller.viewComments)
+ 
      /*Should be post"*/
     .get('/Questions/FeedComment/delComment',commentcontroller.createComment)
 
@@ -23,6 +24,7 @@ router
     .get("/Questions/questionsTop5Question", questioncontroller.viewTop5Question)
     .get("/Questions/allsearchquestion", questioncontroller.allsearchquestion)
     .get("/Questions/singlesearchquestion",questioncontroller.singlesearchquestion)
+    .get("/Questions/allyourQuestion", questioncontroller.viewAllYourQuestions)
        /*Should be post"*/
     .get("/Questions/deletequestions", questioncontroller.deletequestion)
 
@@ -45,7 +47,7 @@ router
     /*Routes for finding and creating pair on instant messaging*/
     .get('/InstantMessaging/Response/AllInstantMessage', commmessageController.findAllMessageBetweenUser)
        /*Should be post"*/
-    .get('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
+  //  .post('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
     /* Website pages */
     .get('/', function(req, res) { res.render('index');})
     .get('/home', function(req, res) { res.render('home');})
