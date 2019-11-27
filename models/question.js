@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
   Question.associate = function(models) {
     // Each question belongs to a user
     Question.belongsTo(models.User,{
-      foreignKey: 'userId',
+      foreignKey: 'userId1',
       onDelete: 'CASCADE',
     });
 
@@ -17,6 +17,10 @@ module.exports = (sequelize, DataTypes) => {
     Question.hasMany(models.Comment,{
       foreignKey: 'questionId',
       as: 'comments',
+    });
+    Question.belongsTo(models.User,{
+      foreignKey: 'userId2',
+      onDelete: 'CASCADE',
     });
 
   };

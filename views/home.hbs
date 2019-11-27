@@ -31,15 +31,15 @@
     <div class="userContent">
         <div class="leftContent">
             <div class="user">
-                <img src="https://randomuser.me/api/portraits/med/men/10.jpg">
-                <p>Sean Williamson</p>
-                <span>10 year of experience working in tech</span>
+                <img src="{{context.imageUrl}}">
+                <p>{{context.firstName}} {{context.lastName}}</p>
+                <span>{{context.about}}</span>
             </div>
             <div class="userLikes">
                 <ul>
-                    <li><a href="/post/">Posts</a><span>3</span></li>
-                    <li><a href="/message/">Messages</a><span>5</span></li>
-                    <li>Likes<span>10</span></li>
+                    <li><a href="/post/">Posts</a><span>{{context.postNum}}</span></li>
+                    <li><a href="/message/">Messages</a><span>{{context.msgNum}}</span></li>
+                    <li>Likes<span>{{context.likeNum}}</span></li>
                     <li><a href="/edit">Edit Profile</a></li>
                 </ul>
             </div>

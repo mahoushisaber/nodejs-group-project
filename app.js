@@ -5,7 +5,9 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const app = express();
 const routes = require('./routes/index');
-
+app.use(bodyParser.urlencoded({
+    extended: true
+})); 
 
 app.set('views', path.join(__dirname, 'views'));
 
