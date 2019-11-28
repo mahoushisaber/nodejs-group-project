@@ -24,6 +24,7 @@ router
 
     /* Routes for editing profile */
     .post('/editProfile', profilecontroller.editProfile)
+
     /*Routes for Comments*/
     /*Should be post"*/
     .get('/Questions/FeedComment/createComment',commentcontroller.createComment)
@@ -50,7 +51,6 @@ router
     /*Routes for finding and creating pair on instant messaging*/
     .get('/InstantMessaging/Response/AllInstantMessage', commmessageController.findAllMessageBetweenUser)
        /*Should be post"*/
-
   //  .post('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
     .get('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
 
