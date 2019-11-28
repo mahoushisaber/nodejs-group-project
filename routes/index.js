@@ -37,26 +37,29 @@ router
 
     /* Routes for question */
        /*Should be post"*/
-    .get("/Questions/createQuestion", questioncontroller.createQuestion)
-    .get("/Questions/questionsTop5Question", questioncontroller.viewTop5Question)
+    .post("/Questions/createQuestion", questioncontroller.createQuestion)
+    .get("/Questions/ViewTopics", questioncontroller.viewAllTopicsResponses)
     .get("/Questions/allsearchquestion", questioncontroller.allsearchquestion)
     .get("/Questions/singlesearchquestion",questioncontroller.singlesearchquestion)
     .get("/Questions/allyourQuestion", questioncontroller.viewAllYourQuestions)
-       /*Should be post"*/
+    .get("/Questions/viewAllTopicsResponses", questioncontroller.viewAllTopicsResponses)
+    
+    /*Should be post"*/
     .get("/Questions/deletequestions", questioncontroller.deletequestion)
 
     /*Routes for finding and creating pair on instant messaging*/
     .get('/InstantMessaging/findPair', messageController.findPairUser)
        /*Should be post"*/
-    .get('/InstantMessaging/createPair', messageController.createPairUser)
+    .post('/InstantMessaging/createMessage', messageController.createMessage)
     /*Routes for finding and creating pair on instant messaging*/
     .get('/InstantMessaging/Response/AllInstantMessage', commmessageController.findAllMessageBetweenUser)
        /*Should be post"*/
+
+    //.post('/InstantMessaging/Response/createMessage', messageController.createMessage)
   //  .post('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
     .get('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
 
     .get('/searchByTopic', searchTopicController.topicSearch)
-
     /* Website pages */
     .get('/message', function(req, res) { res.render('message');})
     .get('/messageInbox', function(req, res) { res.render('messageInbox');})
