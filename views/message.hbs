@@ -4,9 +4,9 @@
         <img src="https://randomuser.me/api/portraits/med/women/2.jpg" id="pic">
     </div>
     <div id="message">
-        <form action="/" , method="POST">
-            <input type="text" placeholder="subject" id="subject">
-            <textarea type="text" placeholder="message details ...." id="messageDetails" rows="6"></textarea>
+        <form action="/InstantMessaging/createMessage" , method="POST">
+            <input name = "subject" type="text" placeholder="subject" id="subject">
+            <textarea name="message"type="text" placeholder="message details ...." id="messageDetails" rows="6"></textarea>
             <input type="submit" value="Message" id="messageButton">
         </form>
     </div>

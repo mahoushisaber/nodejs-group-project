@@ -39,7 +39,10 @@ const signupUser = (req, res) => {
     })
     .then(user => {
       // Create session for the user and redirect to next step
-      let userObj = {email: user.email};
+      let userObj = {
+        email: user.email,
+        id: user.id
+      };
       req.session.user = userObj;
       return res.redirect('/complete-profile');
     })
@@ -52,8 +55,10 @@ const signupUser = (req, res) => {
 
 // Controller for the second step of the signup process
 const completeProfile = (req, res) => {
-  return res.render('complete-profile', {title: 'Knowledge Base Profile', heading: 'Profile', profileCSS: true});
+  console.log("User session: ", req.session.user);
+  return res.render('complete-profile', {title: 'Knowledge Base Profile', heading: 'Profile', signupCSS: true});
 };
+
 
 // Controller for adding the details to user profile during intial signup
 const addProfileDetails = (req, res) => {
@@ -118,7 +123,10 @@ const login = (req, res) => {
     }
     // Check if password is correct
     if(existingUser[0].password == req.body.password){
-      let userObj = {email: req.body.email};
+      let userObj = {
+        email: req.body.email,
+        id: existingUser[0].id
+      };
       req.session.user = userObj;
       return res.redirect('/home');
     }
