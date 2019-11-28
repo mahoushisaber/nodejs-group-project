@@ -1,23 +1,19 @@
-<html>
-    <head>
-        <link rel = "stylesheet" href = "signup.css">
-    </head>
-    <body>
-        <h1>knowledgeBase</h1>
-        <div id = "container">
-            <div id = "div1">          
-                <h1>Let us know a little more about you</h1>
-            </div>
+<h1>knowledgeBase</h1>
+<div id="container">
+    <div id="div1">
+        <h1>Let us know a little more about you</h1>
+    </div>
 
-            <div id = "div2">
-                <form id="completeProfileForm" method="POST" action="complete-profile">
-                    <input type = "text" placeholder="imageurl" name="url" id = "url">
-                    <textarea type = "text" placeholder= "a few lines about yourself" rows = "3" name="about" id = "about"></textarea>
-                    <input type = "text" placeholder = "country" name="country" id = "country"></input>
-                    <input type = "date" placeholder = "date of birth (mm/dd/yyyy)" name="dob" id = "dob"></input>
-                    <button id="complete" type="submit">signup</button>
-                </form>
-            </div>
-        </div>
-    </body>
-</html>
+    <div id="div2">
+        <form id="completeProfileForm" method="POST" action="complete-profile">
+            <input type="text" placeholder="imageurl" name="url" id="url"
+                value="https://randomuser.me/api/portraits/med/men/15.jpg">
+            <textarea type="text" placeholder="a few lines about yourself" rows="3" name="about" id="about"></textarea>
+            <input type="text" placeholder="country" name="country" id="country"></input>
+            <input type="date" name="dob" id="dob" min="1800-01-01" max="2019-11-28" placeholder="YYYY-MM-DD"
+                pattern="(?:19|20)(?:(?:[13579][26]|[02468][048])-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))|(?:[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:29|30))|(?:(?:0[13578]|1[02])-31)))"
+                autofocus autocomplete="nope"></input>
+            <button id="complete" type="submit">signup</button>
+        </form>
+    </div>
+</div>
