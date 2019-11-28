@@ -24,6 +24,7 @@ router
 
     /* Routes for editing profile */
     .post('/editProfile', profilecontroller.editProfile)
+
     /*Routes for Comments*/
     /*Should be post"*/
     .get('/Questions/FeedComment/createComment',commentcontroller.createComment)
@@ -52,10 +53,19 @@ router
     /*Routes for finding and creating pair on instant messaging*/
     .get('/InstantMessaging/Response/AllInstantMessage', commmessageController.findAllMessageBetweenUser)
        /*Should be post"*/
+<<<<<<< HEAD
     //.post('/InstantMessaging/Response/createMessage', messageController.createMessage)
   //  .post('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
+=======
+  //  .post('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
+    .get('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
+
+>>>>>>> e9c98cc97431870e4bb1fb510690e557886791ef
     /* Website pages */
     .get('/message', function(req, res) { res.render('message');})
     .get('/messageInbox', function(req, res) { res.render('messageInbox');})
+    .get('/edit', function(req, res){res.render('edit', {editCSS: true});})
+
+    
 
 module.exports = router;
