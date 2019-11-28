@@ -6,6 +6,7 @@ const messageController = require('../controllers/messageController');
 const commmessageController = require('../controllers/messagecommentController');
 const commentcontroller = require('../controllers/commentController');
 const questioncontroller = require("../controllers/questionController")
+const searchTopicController = require("../controllers/topicController")
 
 router
     /* If user hits index, redirect to home page */
@@ -54,11 +55,13 @@ router
   //  .post('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
     .get('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
 
+    .get('/searchByTopic', searchTopicController.topicSearch)
+
     /* Website pages */
     .get('/message', function(req, res) { res.render('message');})
     .get('/messageInbox', function(req, res) { res.render('messageInbox');})
     .get('/edit', function(req, res){res.render('edit', {editCSS: true});})
-
+    
     
 
 module.exports = router;

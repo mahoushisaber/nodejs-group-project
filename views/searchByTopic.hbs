@@ -1,7 +1,6 @@
-<div class="discussions">   
-    <h3>Latest discussions</h3>
-</div>  
+{{>searchBar}}
 
+ 
 {{#each discussionDetail}}
 
 <div class="discussions">    
@@ -23,26 +22,3 @@
     </div>
 </div>
 {{/each}}
-
-
-{{log this.discussionDetail}}
-{{log this.discussionDetail.discussions1}}
-
-
-
-
-
-
-{{#if nextButton}}
-<div class="nextPage">
-    <button type="submit">Next-></button>
-</div>
-{{/if}}
-{{#if prevButton}}
-<div class="nextPage">
-    <button type="submit"><-Prev</button>
-</div>
-<div class="nextPage" style="display:none">
-    <button type="submit">Next-></button>
-</div>
-{{/if}}
