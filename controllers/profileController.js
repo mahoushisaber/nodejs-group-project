@@ -95,7 +95,20 @@ const home = (req, res) => {
       msgNum: existingUser[0].messageNumber,
       likeNum: existingUser[0].likesNumber
     }
-    return res.render('home', {context: context, title:'Knowledge Base Home', heading:'Home', homeCSS: true});
+    return res.render('home', {
+      context: context, 
+      title:'Knowledge Base Home', 
+      heading:'Home', 
+      homeCSS: true,  
+      nextButton: true,
+      discussionDetail: {
+        discussion1: [ topicTitle="php problems", subjectTitle="node", problemTitle= "something not working" ],
+        discussion2: [ topicTitle="react problems", subjectTitle="php", problemTitle= "something not working"  ],
+        discussion3: [ topicTitle="node problems", subjectTitle="react", problemTitle= "something not working"  ],
+        discussion4: [ topicTitle="zen problems", subjectTitle="react", problemTitle= "something not working"  ],
+        discussion5: [ topicTitle="sql problems", subjectTitle="zen", problemTitle= "something not working"  ],
+      }
+    });
   })
   .catch((err) => {
     console.log("Not able to find user when rendering home page...");

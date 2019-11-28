@@ -1,42 +1,42 @@
-<html>
-    <head>
-        
-    </head>
-    <body>
-        {{>searchBar}}
+{{>searchBar}}
 
-        <form id = "submitForm">
-        <table id = "information">
-            
-            <tr>
-                <td><p>First Name </p></td>
-                <td><input type = "text" placeholder= "First name"></td>
-            </tr>
-            <tr>
-                <td><p>Last Name </p></td>
-                <td><input type = "text" placeholder= "Last name"></td>
-            <tr>
-                <td><p>Image URL </p></td>
-                <td><input type = "text" placeholder= "Image URL"></td>
-                
-            </tr>
-            <tr>
-                <td><p>Country </p></td>
-                <td><input type = "text" placeholder= "Country"></td>
-            </tr>
-            <tr>
-                <td><p>Date of Birth </p></td>
-                <td><input type = "date" placeholder= "Date of Birth"></td>
-            </tr>
-                         
-        </table>
+<form id="submitForm">
+    <table id="information">
+        <tr>
+            <td>
+                <p>First Name </p>
+            </td>
+            <td><input type="text" placeholder="First name"></td>
+        </tr>
+        <tr>
+            <td>
+                <p>Last Name </p>
+            </td>
+            <td><input type="text" placeholder="Last name"></td>
+        <tr>
+            <td>
+                <p>Image URL </p>
+            </td>
+            <td><input type="text" placeholder="Image URL"></td>
 
-        <button type = "submit" id = "submitButton">Save changes</button>  
-        </form>
+        </tr>
+        <tr>
+            <td>
+                <p>Country </p>
+            </td>
+            <td><input type="text" placeholder="Country"></td>
+        </tr>
+        <tr>
+            <td>
+                <p>Date of Birth </p>
+            </td>
+            <td><input type="date" placeholder="Date of Birth"></td>
+        </tr>
+    </table>
 
-        <form action = "home">
-            <input type = "submit" value = "Cancel" id = "cancel"> 
-        </form>
+    <button type="submit" id="submitButton">Save changes</button>
+</form>
 
-    </body>
-</html>
+<form action="home">
+    <input type="submit" value="Cancel" id="cancel">
+</form>

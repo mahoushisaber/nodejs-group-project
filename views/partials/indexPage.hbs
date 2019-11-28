@@ -5,9 +5,9 @@
       </div>
       <div class="divRightContent">
           <div class="loginContentDiv">
-              <form class="signupForm" method="POST" action="login">
-                <input id="loginEmail" type="text" name="email" placeholder="email" />
-                <input id="loginPassword" type="text" name="password" placeholder="password" />
+              <form  method="POST" action="login">
+                <input id="loginEmail" maxlength="16" type="email" name="email" placeholder="email" required/>
+                <input id="loginPassword" type="text" name="password" placeholder="password"/>
                 <button id="loginButton" onclick="" type="submit">login</button>
               </form>
           </div>
@@ -16,11 +16,11 @@
           </div>
           <div class="signupContentDiv">
               <form class="signupForm" method="POST" action="signup">
-                  <input id="firstName" type="text" name="firstName" placeholder="firstname" />
-                  <input id="lastName" type="text" name="lastName" placeholder="lastname" />
-                  <input id="signupEmail" type="text" name="email" placeholder="email" />
-                  <input id="signupPassword" type="text" name="password" placeholder="password" />
-                  <input id="signupPasswordConfirm" type="text" name="password" placeholder="confirm password" />
+                  <input id="firstName" type="text" name="firstName" maxlength="16" placeholder="firstname" required/>
+                  <input id="lastName" type="text" name="lastName" maxlength="16" placeholder="lastname" required/>
+                  <input id="signupEmail" type="email" name="email" maxlength="16"placeholder="email" required/>
+                  <input id="signupPassword" type="text" name="password" minlength="4" maxlength="16" placeholder="password" required/>
+                  <input id="signupPasswordConfirm" type="text" name="password" minlength="4" maxlength="16" placeholder="confirm password" required/>
                   <button id="signup" onclick="" type="submit">signup</button>
               </form>
           </div>
