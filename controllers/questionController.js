@@ -1,7 +1,3 @@
-
-
-
-
 // User should be able to post/delete questions
 const db = require('../config/config')
 const models = require('../models');
@@ -65,7 +61,7 @@ const singlesearchquestion = (req, res) => {
 };
 const viewAllYourQuestions= (req, res) => {
     questdb.findAll(
-        {where: {userId: req.body.UserId},order: [['createdAt', 'ASC']]})
+        {where: {userId: req.session.user.email},order: [['createdAt', 'ASC']]})
         .then(question => {console.log(question),res.status(201).send(question)})
         .catch(error => res.status(400).send(error))
   };

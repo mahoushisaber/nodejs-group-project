@@ -14,7 +14,7 @@ function searchLastestDiscussionByTopic(){
     let content = document.getElementsByClassName('questionContent');
     for(let i=0;i<content.length;i++){
         let span = content[i].querySelector('span');
-        console.log(span.textContent);
+        // console.log(span.textContent);
         console.log('testing span')
         if(select[0].value != span.textContent){
             content[i].parentNode.style.display = 'none';
