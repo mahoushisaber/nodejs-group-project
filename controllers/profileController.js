@@ -104,8 +104,8 @@ const home = (req, res) => {
     .catch(error => {console.log("No question")})
     models.User.findAll({})
     .then(existingUser => {
-      allusers=existingUser
-      console.log(existingUser);
+      allusers=existingUser;
+ 
 
     })
   models.User.findAll({
@@ -123,7 +123,7 @@ const home = (req, res) => {
       msgNum: existingUser[0].messageNumber,
       likeNum: existingUser[0].likesNumber,
       questions: allquest,
-      // allusers: existingUser
+      allusers: allusers
     }
     return res.render('home', {
       context: context, 

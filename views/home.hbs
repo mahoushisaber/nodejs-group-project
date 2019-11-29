@@ -49,14 +49,15 @@
            
         </div>
 
-        <div class="discussions">
+       <div class="discussions"> 
             <h3>Latest discussions</h3>
-            <div class="eachDiscussion">
-
-                {{#list context.questions}}
+        </div> 
+            {{!-- <div class="eachDiscussion"> --}}
+{{!-- //context.allusers --}}
+                {{#list context}}
                 {{this}}
                 {{/list}}
-                </div>
+                {{!-- </div> --}}
                 {{!-- {{#5Question}}
                 {{/5Question}} --}}
                 {{!-- {{#times 10}}
@@ -72,9 +73,9 @@
                     <div class="dateReply">
                         <span>5 reply</span>
                         <p>25 oct 2019</p>
-                    </div>
+                    </div>--}}
                    
-                </div> --}}
+              
         
             <div class="nextPage">
                 <button type="submit">Next-></button>
