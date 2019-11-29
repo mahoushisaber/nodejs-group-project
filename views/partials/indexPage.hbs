@@ -6,7 +6,7 @@
       <div class="divRightContent">
           <div class="loginContentDiv">
               <form  method="POST" action="login">
-                <input id="loginEmail" maxlength="16" type="email" name="email" placeholder="email" required/>
+                <input id="loginEmail" type="email" name="email" placeholder="email" required/>
                 <input id="loginPassword" type="password" name="password" pattern="^\S{1,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 4 characters' : ''); if(this.checkValidity()) form.signupPassword_two.pattern = this.value;" placeholder="Password" required/>
                 <button id="loginButton" onclick="" type="submit">login</button>
               </form>

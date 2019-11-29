@@ -1,11 +1,16 @@
 {{>searchBar}}
 
- 
+
 {{#each discussionDetail}}
 
-<div class="discussions">    
-    <div class="eachDiscussion">
+<div class="discussions">
+    <div class="eachDiscussion" data={{this}}>
         <div class="img">
+            {{#if this.user_id.[1]}}
+            <img src={{this.image???}}></a>
+            {{else}}
+            <img src={{this.image???}}></a>
+            {{/if}}
             <img src="https://randomuser.me/api/portraits/med/men/36.jpg">
         </div>
         <div class="questionContent">
@@ -13,6 +18,21 @@
             <h4>{{this.[0]}}</h4>
             <p>{{this.[2]}}</p>
             </br>
+
+            {{#each}}
+            {{#xIf this "===" ../this}}
+            <div class="replys">
+                <div class="comment">
+                    <form action="/user/discussion/reply/submit" method="POST">
+                        <input style="display:none" name="post_id" value={{post_id}}>
+                        <input style="display:none" name="user_id" value={{../user.user_id}}>
+                        <textarea rows="3" name="comment" placeholder="add your reply ..."></textarea>
+                        <button type="submit">comment</button>
+                    </form>
+                </div>
+            </div>
+            {{/xIf}}
+            {{/each}}
             <div class="dateReply">
                 <span>5{{replyNumber}} reply</span>
                 </br>
@@ -20,5 +40,4 @@
             </div>
         </div>
     </div>
-</div>
-{{/each}}
+    {{/each}}

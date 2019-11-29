@@ -1,5 +1,5 @@
 {{>searchBar}}
-<div class="userContent">    
+<div class="userContent">
     <div class="userContent">
         <div class="leftContent">
             <div class="user">
@@ -17,58 +17,44 @@
             </div>
         </div>
 
-    <div class="rightContent">
-        <div class="questionBar">
-            <h3>whats your question today?</h3>
-            <form class="formQuestion" action="/Questions/createQuestion" method="POST">
-                <input class="subject" name="subject" placeholder="subject" />
-                <textarea rows="5" name="detail" placeholder="explain in detail ..."></textarea>
-                <div class="topics">
-                    <label value="">topic</label>
-                    <select name ="topiclist">
-                        <option value="php">PHP</option>
-                        <option value="nodejs">Nodejs</option>
-                        <option value="java">Java</option>
-                        <option value="sql">Sql</option>
-                        <option value="zend">Zend</option>
-                    </select>
-                    <button>post to timeline</button>
-                </div>
-                 </form>
-                <div class="topics">
-                    <label>Search by topic</label>
-                    <select>
-                        <option value="php">PHP</option>
-                        <option value="nodejs">Nodejs</option>
-                        <option value="java">Java</option>
-                        <option value="sql">Sql</option>
-                        <option value="zend">Zend</option>
-                    </select>
-                    <button type="submit">go-></button>
-                </div>
-           
-        </div>
-
-        <div class="discussions">
-            <h3>Latest discussions</h3>
-            <div class="eachDiscussion">
-                <div class="img">
-                    <img src="https://randomuser.me/api/portraits/med/men/39.jpg">
-                </div>
-                <div class="questionContent">
-                    <span>nodejs</span>
-                    <h4>Node not working</h4>
-                    <p>Problems..............................................................</p>
-                    <div class="dateReply">
-                        <span>5 reply</span>
-                        <p>25 oct 2019</p>
+        <div class="rightContent">
+            <div class="questionBar">
+                <h3>whats your question today?</h3>
+                <form class="formQuestion" action="/Questions/createQuestion" method="POST">
+                    <input class="subject" name="subject" placeholder="subject" />
+                    <textarea rows="5" name="detail" placeholder="explain in detail ..."></textarea>
+                    <div class="topics">
+                        <label value="">topic</label>
+                        <select name="topiclist">
+                            <option value="php">PHP</option>
+                            <option value="nodejs">Nodejs</option>
+                            <option value="java">Java</option>
+                            <option value="sql">Sql</option>
+                            <option value="zend">Zend</option>
+                        </select>
+                        <button>post to timeline</button>
                     </div>
-                   
+                </form>
+                <div>
+                    <label>Search by topic</label>
+                    <select class="searchLastestDiscussionByTopic">
+                        <option value="php">php</option>
+                        <option value="nodejs">nodejs</option>
+                        <option value="java">java</option>
+                        <option value="sql">sql</option>
+                        <option value="zend">zend</option>
+                    </select>
+                    <button onClick='searchLastestDiscussionByTopic()'>go-></button>
+                    <button onClick='clearUpDisplayNone()'>clear</button>
                 </div>
             </div>
-            <div class="nextPage">
-                <button type="submit">Next-></button>
+    <script defer type="text/javascript" src="/public/javascripts/home.js"></script>
+
+            <div class="discussions">
+                <h3>Latest discussions</h3>
             </div>
+
+            {{> discussion}}
         </div>
     </div>
 </div>
