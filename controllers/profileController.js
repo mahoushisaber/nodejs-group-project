@@ -84,6 +84,30 @@ const addProfileDetails = (req, res) => {
 
 // Controller of home page of authenticated users
 const home = (req, res) => {
+
+  let   allquest;
+  let   allusers;
+  models.Question.findAll(
+    {order: [['createdAt', 'DESC']]},{ raw: true })
+    .then(questions => 
+      {
+       
+        allquest = questions;
+        // models.User.findAll({
+        //   order: [['createdAt', 'DESC']]
+        // })
+        // .then(existingUser => {
+        // exitstingUser.
+   
+    
+      })
+    .catch(error => {console.log("No question")})
+    models.User.findAll({})
+    .then(existingUser => {
+      allusers=existingUser
+      console.log(existingUser);
+
+    })
   models.User.findAll({
     where: {
       email: req.session.user.email
@@ -97,7 +121,9 @@ const home = (req, res) => {
       imageUrl: existingUser[0].imageUrl,
       postNum: existingUser[0].postNumber,
       msgNum: existingUser[0].messageNumber,
-      likeNum: existingUser[0].likesNumber
+      likeNum: existingUser[0].likesNumber,
+      questions: allquest,
+      // allusers: existingUser
     }
     return res.render('home', {
       context: context, 
@@ -105,13 +131,7 @@ const home = (req, res) => {
       heading:'Home', 
       homeCSS: true,  
       nextButton: true,
-      discussionDetail: {
-        discussion1: [ topicTitle="php problems", subjectTitle="node", problemTitle= "something not working" ],
-        discussion2: [ topicTitle="react problems", subjectTitle="php", problemTitle= "something not working"  ],
-        discussion3: [ topicTitle="node problems", subjectTitle="react", problemTitle= "something not working"  ],
-        discussion4: [ topicTitle="zen problems", subjectTitle="react", problemTitle= "something not working"  ],
-        discussion5: [ topicTitle="sql problems", subjectTitle="zen", problemTitle= "something not working"  ],
-      }
+  
     });
   })
   .catch((err) => {
