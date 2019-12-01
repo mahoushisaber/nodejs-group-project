@@ -72,11 +72,19 @@ const deletequestion = (req, res, next) => {
       res.status(201).send(delquestion)
     }).catch(error => res.status(400).send(error));
     }
+
+const test1 = (req,res,next)=>{
+    console.log(req.body.data);
+    console.log("in test1 fucntion backendd");
+    //res.send('/search', {data: "hellloooooooodataaaaaaaa"});
+}
+
 module.exports = {
     createQuestion:createQuestion,
     viewAllTopicsResponses:viewAllTopicsResponses,
     allsearchquestion:allsearchquestion,
     singlesearchquestion:singlesearchquestion,
     viewAllYourQuestions:viewAllYourQuestions,
-    deletequestion:deletequestion
+    deletequestion:deletequestion,
+    test1:test1
   };

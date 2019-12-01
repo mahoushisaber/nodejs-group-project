@@ -32,4 +32,73 @@ function clearUpDisplayNone(){
 }
 
 
+<<<<<<< HEAD
 
+=======
+$(".repliesBox").click(function(){
+    let spanReply = document.getElementsByClassName('repliesBox');
+    
+    let divBox = document.createElement("div");
+    
+    //add a for loop here , and put the code below inside the for loop.
+    // (for let i = 0; ;i < replies.length; i ++){
+
+    //}
+
+    let pic = document.createElement("img");
+    pic.setAttribute("src", "https://randomuser.me/api/portraits/med/women/81.jpg");
+    
+    pic.classList.add("pic");
+
+    let reply = document.createElement("span");
+    reply.classList.add("reply");
+    
+    reply.innerHTML = "ayyyyyyyyy lmaooooooooo";
+
+    $(divBox).append(pic);
+    $(divBox).append(reply);
+    $(this).append(divBox);
+});
+
+// $('.formSearch').submit(function(event){
+//     event.preventDefault();
+    
+//     searchTopic = document.getElementById("searchValue").value;
+
+//     let url = $(this).attr('action');
+
+//     console.log('bethch');
+
+//     $.ajax({
+//         url: ,
+//         data : searchTopic,
+//         success: function(data){
+//             alert('success');
+//         }
+//     });
+// })
+
+// $('#search').submit(function(event){
+//     $.post('/search', (req,res)=>{
+//         searchTopic = document.getElementById("searchValue").value;
+//         //res.send(searchTopic);
+//         console.log("hallo");
+//     });
+// });
+/////////////////////////////////////////
+/////////////////////////////////////////
+//STILL WORKING ON THE SEARCH FUNCTION . HALPPPPPPP
+function test(){
+    // console.log("hallofirst");
+    // $.get('/search', (req,res)=>{
+    //     console.log(res.req.body);
+    //     searchTopic = document.getElementById("searchValue").value;
+    //     res.send('/search', {data1: searchTopic});
+    //     //res.send(searchTopic);
+        
+    // }).done(function(data){
+    //     console.log(data);
+    // })
+    $.get('/search', {data:"testetsetsetsetset"});
+}
+>>>>>>> cb741a26534d12037e8bff8790fba74c2ab93675

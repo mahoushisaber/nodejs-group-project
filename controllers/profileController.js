@@ -1,5 +1,7 @@
 const models = require('../models');
 var session = require('express-session');
+const express = require('express');
+const app = express();
 
 // Next function to check sign in for each route
 const checkSignIn = (req, res, next) => {
@@ -141,6 +143,26 @@ const home = (req, res) => {
   })
 };
 
+
+// app.get('/search', (req,res)=>{
+//   console.log("insearch");
+//   res.send("hi");
+// })
+// models.Question.findAll({
+//   where: {
+//     subject: 
+//   }
+// })
+
+// const test1 = (req,res)=>{
+//   let x3 = "hi";
+//   //res.send('/search', {data: x3});
+// }
+
+exports.test1 = (req,res,next)=>{
+  console.log("in test 1 function backend");
+}
+
 // Controller for logging in
 const login = (req, res) => {
   // Query db for user
@@ -211,6 +233,11 @@ module.exports = {
   login:login,
   logout:logout,
   editProfile:editProfile,
+<<<<<<< HEAD
   home:home,
   next5:next5
+=======
+  home:home
+  
+>>>>>>> cb741a26534d12037e8bff8790fba74c2ab93675
 };
