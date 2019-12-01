@@ -1,3 +1,5 @@
+
+
 function showReplys(event){
     let content = event.target.parentNode.parentNode;
     let replys = content.querySelector('.replys');
@@ -28,4 +30,6 @@ function clearUpDisplayNone(){
         content[i].parentNode.style.display = 'flex';
     }
 }
+
+
 

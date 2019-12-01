@@ -1,4 +1,5 @@
 {{>searchBar}}
+
 <div class="userContent">
     <div class="userContent">
         <div class="leftContent">
@@ -47,64 +48,53 @@
                     <button onClick='searchLastestDiscussionByTopic()'>go-></button>
                     <button onClick='clearUpDisplayNone()'>clear</button>
                 </div>
-<<<<<<< HEAD
            
         </div>
 
        <div class="discussions"> 
             <h3>Latest discussions</h3>
         </div> 
-            {{!-- <div class="eachDiscussion"> --}}
-{{!-- //context.allusers --}}
-                {{#list context}}
-                {{this}}
-                {{/list}}
-                {{!-- </div> --}}
-=======
-            </div>
+             <form name = "f0"  method='GET' action = "home">
+            {{#list context}}
+            {{this}}
+            {{/list}}
+            
+   {{#increment}}{{this}}{{/increment}}
+ {{#decrement}}{{this}}{{/decrement}}
+             {{!-- <input name = "f0" type="submit"  method='GET' action= action = "home" value="back">
+            <input name = "f0" type="submit"  method='GET' action =  value ="next">
+    --}}
+       </form> 
+            
 
-            <div class="discussions">
-                <h3>Latest discussions</h3>
-                <div class="eachDiscussion">
-                    <div class="questionContent">
-                        {{#list context.questions}}
-                        {{this}}
-                        {{/list}}
-                    </div>
-                </div>
->>>>>>> 1465e83b050d50f8e2540a36b8a474f351e82ffe
-                {{!-- {{#5Question}}
-                {{/5Question}} --}}
-                {{!-- {{#times 10}}
-                <div>{{this}}</div>
-                {{/times}} --}}
-                {{!-- <div class="img">
-                    <img src="https://randomuser.me/api/portraits/med/men/39.jpg">
-                </div>
-                <div class="questionContent">
-                    <span>nodejs</span>
-                    <h4>Node not working</h4>
-                    <p>Problems..............................................................</p>
-                    <div class="dateReply">
-                        <span>5 reply</span>
-                        <p>25 oct 2019</p>
-                    </div>--}}
-                   
-<<<<<<< HEAD
               
-        
-            <div class="nextPage">
-                <button type="submit">Next-></button>
-=======
-                </div> --}}
+      
+          
+          
+            {{!-- <div class="nextPage">
+            <form  method="get" action="/home">
+                <button type="button" onclick="decrement()">Back</button>
 
-                <div class="nextPage">
-                    <button type="submit">Next-></button>
-                </div>
+                 </form> 
+            </div> --}}
 
-                {{> discussion}}
->>>>>>> 1465e83b050d50f8e2540a36b8a474f351e82ffe
-            </div>
-        </div>
+
 
     </div>
+      {{!-- <form name = "f0"  method='GET' action = "home">
+               {{#increment}}
+                {{this}}
+                {{/increment}}
+   
+       </form> 
+            
+            <form name = "f1" method='GET' action = "home">
+          
+        {{#decrement}}
+    {{this}}
+    {{/decrement}} --}}
+        </form> 
+        
+
+                    
+</div>
