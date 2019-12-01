@@ -143,6 +143,11 @@
     border-radius: 50%;
     border: 3px solid whitesmoke;
 }
+
+.pic{
+    border-radius: 50%;
+    border: 3px solid whitesmoke;
+}
 .questionContent >span{
     border: 1px solid rgb(56, 155, 253);
     float:right;
@@ -176,3 +181,5 @@
     margin-top: 20px;
     margin-left: 90%;
 }
+
+

@@ -55,6 +55,8 @@ router
     .get('/InstantMessaging/Response/AllInstantMessage', commmessageController.findAllMessageBetweenUser)
        /*Should be post"*/
 
+      .get('/search', questioncontroller.test1)
+
     //.post('/InstantMessaging/Response/createMessage', messageController.createMessage)
   //  .post('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
     .get('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
@@ -64,6 +66,9 @@ router
     .get('/message', function(req, res) { res.render('message');})
     .get('/messageInbox', function(req, res) { res.render('messageInbox');})
     .get('/edit', function(req, res){res.render('edit', {editCSS: true});})
+
+
+    
     
     
 

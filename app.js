@@ -40,7 +40,8 @@ const hbs = expressHbs.create({
       out = out+"<h4>"+ questions[i].subject+"</h4>"   
         out = out+"<p >"+ questions[i].details+"</p>"
         out = out +"<div class='dateReply'>"
-          out = out +"<span>Replies</span>"
+          out = out +"<span class ='repliesBox'>Replies</span>"
+
           out = out+"<p>"+ questions[i].createdAt.toISOString().split('T')[0]+"</p>"
           out = out +"</div>"
         out = out+"</div>"
