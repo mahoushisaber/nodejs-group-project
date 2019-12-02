@@ -85,14 +85,7 @@ $(".repliesBox").click(function(){
 //STILL WORKING ON THE SEARCH FUNCTION . HALPPPPPPP
 function test(){
     console.log("hallofirst");
-    // $.get('/search', (req,res)=>{
-    //     console.log(res.req.body);
-    //     searchTopic = document.getElementById("searchValue").value;
-    //     res.send('/search', {data1: searchTopic});
-    //     //res.send(searchTopic);
-        
-    // }).done(function(data){
-    //     console.log(data);
-    // })
-    $.post('/searchByTopic', {data:"testetsetsetsetset"});
+    searchTopic = document.getElementById("searchValue").value;
+
+    $.post('/searchByTopic', {data:searchTopic});
 }
