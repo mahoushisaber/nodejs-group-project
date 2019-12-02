@@ -158,9 +158,7 @@ const home = (req, res) => {
 //   //res.send('/search', {data: x3});
 // }
 
-exports.test1 = (req,res,next)=>{
-  console.log("in test 1 function backend");
-}
+
 
 // Controller for logging in
 const login = (req, res) => {

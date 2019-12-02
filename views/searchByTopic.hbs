@@ -1,7 +1,19 @@
 {{>searchBar}}
 
  
-{{#each discussionDetail}}
+     {{!-- <div class="discussions">
+                <h3>Latest discussions</h3>
+                <div class="eachDiscussion">
+                    <div class="questionContent">
+                        {{#list context}}
+                        {{this}}
+                        {{/list}}
+                    </div>
+                </div>
+                </div>  --}}
+
+{{log testing}}
+ {{#each discussionDetail}}
 
 <div class="discussions">    
     <div class="eachDiscussion">
@@ -21,4 +33,4 @@
         </div>
     </div>
 </div>
-{{/each}}
+{{/each}} 

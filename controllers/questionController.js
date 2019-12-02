@@ -73,12 +73,18 @@ const deletequestion = (req, res, next) => {
     }).catch(error => res.status(400).send(error));
     }
 
+
 const test1 = (req,res,next)=>{
     console.log(req.body.data);
     console.log("in test1 fucntion backendd");
     //res.send('/search', {data: "hellloooooooodataaaaaaaa"});
 }
 
+// $.post('/searchByTopic', (req,res)=>{
+//     console.log(req.body.data);
+// }
+// )
+    
 module.exports = {
     createQuestion:createQuestion,
     viewAllTopicsResponses:viewAllTopicsResponses,

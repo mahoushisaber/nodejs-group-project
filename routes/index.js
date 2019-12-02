@@ -61,7 +61,7 @@ router
   //  .post('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
     .get('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
 
-    .get('/searchByTopic', searchTopicController.topicSearch)
+    .post('/searchByTopic', searchTopicController.topicSearch)
     /* Website pages */
     .get('/message', function(req, res) { res.render('message');})
     .get('/messageInbox', function(req, res) { res.render('messageInbox');})

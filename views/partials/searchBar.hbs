@@ -3,11 +3,11 @@
         <a href="/index"></a><img src="./img/logo.png" /></a>
     </div>
     <div class="searchForm">
-        <form class="formSearch"  id = "search">
+        <form class="formSearch"  id = "search" action = "/searchByTopic" method = "POST">
             <input name="searchInput" placeholder="Search" id = "searchValue">
-            
+            <button type="submit" onclick = "test()">Search</button>
         </form>
-        <button type="submit" onclick = "test()">Search</button>
+        
     </div>
     <div class="logout">
         <form method="POST" action="logout">
