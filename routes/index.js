@@ -1,21 +1,84 @@
 const express = require('express');
 const router = express.Router();
-const logincontroller = require('../controllers/loginController');
 const profilecontroller = require('../controllers/profileController');
+<<<<<<< HEAD
 const messageController = require('../controllers/messageController');
+=======
+const checkSignIn = profilecontroller.checkSignIn;
+const messageController = require('../controllers/messageController');
+const commmessageController = require('../controllers/messagecommentController');
+const commentcontroller = require('../controllers/commentController');
+const questioncontroller = require("../controllers/questionController")
+const searchTopicController = require("../controllers/topicController")
+>>>>>>> 891b1f6f5d3cf086136e86e36c783828303c9fd9
 
 router
-    /* Routes for home page */
-    .get('/', function(req, res) { res.render('index');})
+    /* If user hits index, redirect to home page */
+    .get('/', function(req, res) {return res.redirect('/home');})
 
-    /* Routes for user/profile */
-    .get('/profilecreationstep1',profilecontroller.usercreate1)
-    .get('/profilecreationstep2',profilecontroller.usercreate2)
-    .get('/profilecreationcancel', profilecontroller.profileCreaterCancel)
-    .get('/profilefind', profilecontroller.userfindUser)
-    .get('/userlogin', profilecontroller.userLogin)
+    /* Routes for signup and login */
+    .get('/signup', profilecontroller.getSignupPage)
+    .post('/signup', profilecontroller.signupUser)
+    .get('/complete-profile', checkSignIn, profilecontroller.completeProfile)
+    .post('/complete-profile', profilecontroller.addProfileDetails)
+    .post('/login', profilecontroller.login)
+    .post('/logout', profilecontroller.logout)
+    
+    /* Routes for home page*/
+    .get('/home', checkSignIn, profilecontroller.home)
+    .get('/next5', profilecontroller.next5)
+    /* Routes for editing profile */
+    .post('/editProfile', profilecontroller.editProfile)
 
+<<<<<<< HEAD
     .get('/message', messageController.message)
 
+=======
+    /*Routes for Comments*/
+    /*Should be post"*/
+    .get('/Questions/FeedComment/createComment',commentcontroller.createComment)
+    .get("/Questions/FeedComment/viewComment", commentcontroller.viewComments)
+ 
+     /*Should be post"*/
+    .get('/Questions/FeedComment/delComment',commentcontroller.createComment)
+
+
+    /* Routes for question */
+       /*Should be post"*/
+    .post("/Questions/createQuestion", questioncontroller.createQuestion)
+    .get("/Questions/ViewTopics", questioncontroller.viewAllTopicsResponses)
+    .get("/Questions/allsearchquestion", questioncontroller.allsearchquestion)
+    .get("/Questions/singlesearchquestion",questioncontroller.singlesearchquestion)
+    .get("/Questions/allyourQuestion", questioncontroller.viewAllYourQuestions)
+    .get("/Questions/viewAllTopicsResponses", questioncontroller.viewAllTopicsResponses)
+    
+    /*Should be post"*/
+    .get("/Questions/deletequestions", questioncontroller.deletequestion)
+
+    /*Routes for finding and creating pair on instant messaging*/
+    .get('/InstantMessaging/findPair', messageController.findPairUser)
+       /*Should be post"*/
+    .post('/InstantMessaging/createMessage', messageController.createMessage)
+    /*Routes for finding and creating pair on instant messaging*/
+    .get('/InstantMessaging/Response/AllInstantMessage', commmessageController.findAllMessageBetweenUser)
+       /*Should be post"*/
+
+      .get('/search', questioncontroller.test1)
+
+    //.post('/InstantMessaging/Response/createMessage', messageController.createMessage)
+  //  .post('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
+    .get('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
+
+    .get('/searchByTopic', searchTopicController.topicSearch)
+    /* Website pages */
+    .get('/message', function(req, res) { res.render('message');})
+    .get('/messageInbox', function(req, res) { res.render('messageInbox');})
+    .get('/edit', function(req, res){res.render('edit', {editCSS: true});})
+
+
+    
+    
+    
+>>>>>>> 891b1f6f5d3cf086136e86e36c783828303c9fd9
 
 module.exports = router;

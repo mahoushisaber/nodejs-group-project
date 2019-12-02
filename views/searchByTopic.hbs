@@ -1,0 +1,24 @@
+{{>searchBar}}
+
+ 
+{{#each discussionDetail}}
+
+<div class="discussions">    
+    <div class="eachDiscussion">
+        <div class="img">
+            <img src="https://randomuser.me/api/portraits/med/men/36.jpg">
+        </div>
+        <div class="questionContent">
+            <span>{{this.[1]}}</span>
+            <h4>{{this.[0]}}</h4>
+            <p>{{this.[2]}}</p>
+            </br>
+            <div class="dateReply">
+                <span>5{{replyNumber}} reply</span>
+                </br>
+                <p>22 oct 2019{{replyDateDate}} {{replyDateMonth}} {{replyDateYear}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{{/each}}

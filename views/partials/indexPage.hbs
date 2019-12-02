@@ -1,0 +1,28 @@
+  <div id="main">
+      <div class="divLeftContent">
+          <a href="/"><img id="titlePic" src="./img/knowledgeBase.png" /></a>
+          <img id="signupPic" src="./img/signupPic.png" />
+      </div>
+      <div class="divRightContent">
+          <div class="loginContentDiv">
+              <form  method="POST" action="login">
+                <input id="loginEmail" maxlength="35" type="email" name="email" placeholder="email" required/>
+                <input id="loginPassword" type="password" name="password" pattern="^\S{1,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 4 characters' : ''); if(this.checkValidity()) form.signupPassword_two.pattern = this.value;" placeholder="Password" required/>
+                <button id="loginButton" onclick="" type="submit">login</button>
+              </form>
+          </div>
+          <div class="textRight">
+              Join the worlds largest community for Knowledge sharing
+          </div>
+          <div class="signupContentDiv">
+              <form class="signupForm" method="POST" action="signup">
+                  <input id="firstName" type="text" name="firstName" maxlength="35" placeholder="firstname" required/>
+                  <input id="lastName" type="text" name="lastName" maxlength="35" placeholder="lastname" required/>
+                  <input id="signupEmail" type="email" name="email" placeholder="email" required/>
+                  <input id="singupPassword" name="password" type="password" pattern="^\S{1,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 4 characters' : ''); if(this.checkValidity()) form.signupPassword_two.pattern = this.value;" placeholder="Password" required>
+                  <input id="signupPassword_two" name="signupPassword_two" type="password" pattern="^\S{1,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');" placeholder="Verify Password" required>
+                  <button id="signup" onclick="" type="submit">signup</button>
+              </form>
+          </div>
+      </div>
+  </div>

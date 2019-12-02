@@ -1,23 +1,29 @@
-<html>
-    <head>
-        <link rel = "stylesheet" href = "signup.css">
-    </head>
-    <body>
-        <h1>knowledgeBase</h1>
-        <div id = "container">
-            <div id = "div1">          
-                <h1>Let us know a little more about you</h1>
-            </div>
+<div id="main">
+    <div>
+        <h1>KnowledgeBase</h1>
+    </div>
+    <div class="searchBarContent">
+        <form id="loginForm" method="POST" action="login">
+            <input id="loginEmail" type="text" name="email" placeholder="email" />
+            <input id="loginPassword" type="text" name="password" placeholder="password" />
+            <button id="loginButton" type="submit">login</button>
+        </form>
+        <p class="authErr">{{loginErr}}</p>
+    </div>
+    <div>
+        Some Text
+    </div>
+    <div class="signupContent">
+        <form id="signupForm" method="POST" action="signup">
+            <input id="firstName" type="text" name="firstName" placeholder="firstname" />
+            <input id="lastName" type="text" name="lastName" placeholder="lastname" />
+            <input id="signupEmail" type="text" name="email" placeholder="email" />
+            <input id="signupPassword" type="text" name="password" placeholder="password" />
+            <input id="signupPasswordConfirm" type="text" name="password" placeholder="confirm password" />
+            <button id="signup" type="submit">signup</button>
+        </form>
+        <p class="authErr">{{signupErr}}</p>
+    </div>
+</div>
 
-            <div id = "div2">
-                <form>
-                    <input type = "text" placeholder="imageurl" id = "url">
-                    <textarea type = "text" placeholder= "a few lines about yourself" rows = "3" id = "about"></textarea>
-                    <input type = "text" placeholder = "country" id = "country"></input>
-                    <input type = "text" placeholder = "date of birth (mm/dd/yyyy)" id = "dob"></input>
-                    <input type = "submit" id = "complete" value = "complete registration"> </buttn>
-                </form>
-            </div>
-        </div>
-    </body>
-</html>
+

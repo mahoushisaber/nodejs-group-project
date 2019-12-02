@@ -1,0 +1,132 @@
+/* Header */
+
+.logo img{
+    width:50px;
+    margin-left: 120px;
+}
+
+.logout{
+    margin-left: -15%;
+}
+.logout button{
+    width:90px;
+}
+.searchForm{
+    width:70%;
+    margin-left:40px;
+}
+.searchForm input{
+    width:35%;
+    background-color: whitesmoke;
+}  
+
+
+/*Profile */
+#profile{
+    width:70%;
+    height: 50%;
+}
+
+
+#left img{
+    border-radius: 50%;
+    width: 200px;
+}
+
+#left{
+    float:left;
+    margin-left: 15%;
+    width: 50%;
+}
+
+#right{
+    width: 40%;
+    margin-right: 50%;
+}
+
+#message, #increaseLike{
+    background-color: rgb(56, 155, 253);
+    height:27px;
+    margin:5px;
+    color:white;
+    margin-top: 150px;
+    font-size: 15px;
+    color: whitesmoke;
+    border: 1px solid rgb(56, 155, 253);
+    padding: 5px;
+}
+
+#moreDesc{
+    width:100%; 
+}
+
+#likes {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+#likes > button{
+    display: inline-block;
+    margin-left: 55px;
+    margin-top: -25px;
+}
+
+
+#increaseLike{
+    background-color: rgb(56, 155, 253);
+    height:25px;
+    width: 25px;
+    color:white;
+    font-weight: bold;
+    border-radius: 50%;
+}
+
+/*Posts */
+
+#postBy{
+    margin-left: 10%;
+}
+
+
+#content{
+    display: flex;
+    align-items: center;
+    margin-left: 15%;
+}
+#title{
+    margin-top:30px;
+    width:70%;
+    color:rgb(132, 133, 134);
+}
+
+.questionContent{
+    margin-left: 20px;
+}
+.questionContent h4, p{
+    margin:0;
+}
+.questionContent p{
+    margin-top:10px;
+    margin-left:25px;
+}
+.img img{    
+    border-radius: 50%;
+    border: 3px solid whitesmoke;
+}
+.questionContent >span{
+    border: 1px solid rgb(56, 155, 253);
+    float:right;
+    position: relative;
+    color:rgb(47, 148, 248);
+}
+.eachDiscussion{
+    display:flex;
+}
+
+.dateReply{
+    font-size: 15px;
+}
+.dateReply span{
+    float:right;
+}
+

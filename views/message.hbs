@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <html>
     <head>
         <link rel = "stylesheet" href = "../stylesheets/message.css">
@@ -24,3 +25,18 @@
 
     </body>
 </html>
+=======
+{{>searchBar}}
+<div id="main">
+    <div id="picContainer">
+        <img src="https://randomuser.me/api/portraits/med/women/2.jpg" id="pic">
+    </div>
+    <div id="message">
+        <form action="/InstantMessaging/createMessage" , method="POST">
+            <input name = "subject" type="text" placeholder="subject" id="subject">
+            <textarea name="message"type="text" placeholder="message details ...." id="messageDetails" rows="6"></textarea>
+            <input type="submit" value="Message" id="messageButton">
+        </form>
+    </div>
+</div>
+>>>>>>> 891b1f6f5d3cf086136e86e36c783828303c9fd9
