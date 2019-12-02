@@ -32,9 +32,6 @@ function clearUpDisplayNone(){
 }
 
 
-<<<<<<< HEAD
-
-=======
 $(".repliesBox").click(function(){
     let spanReply = document.getElementsByClassName('repliesBox');
     
@@ -94,4 +91,3 @@ function test(){
 
     $.post('/searchByTopic', {data:searchTopic});
 }
->>>>>>> cb741a26534d12037e8bff8790fba74c2ab93675

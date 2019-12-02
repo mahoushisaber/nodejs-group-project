@@ -91,7 +91,6 @@ const hbs = expressHbs.create({
         out = out+"</div>"
         out = out+"</br>"
       }
-<<<<<<< HEAD
     //Makes a checks how many people are left in the array  and displays them
     }else {
       console.log("Number left "+buttonpress[1]);
@@ -118,19 +117,6 @@ const hbs = expressHbs.create({
             out = out+"<p>"+ questions[i].createdAt.toISOString().split('T')[0]+"</p>"
             out = out +"</div>"
           out = out+"</div>"
-=======
- 
-      //out = out+"<img src="+ listofUsers[0].imageUrl+"></img>"
-      out = out+"<div class='questionContent'>"
-      out = out+"<span >"+ questions[i].topic+"</span>"  
-      out = out+"<h4>"+ questions[i].subject+"</h4>"   
-        out = out+"<p >"+ questions[i].details+"</p>"
-        out = out +"<div class='dateReply'>"
-          out = out +"<span class ='repliesBox'>Replies</span>"
-
-          out = out+"<p>"+ questions[i].createdAt.toISOString().split('T')[0]+"</p>"
-          out = out +"</div>"
->>>>>>> cb741a26534d12037e8bff8790fba74c2ab93675
         out = out+"</div>"
         out = out+"</br>"
       }

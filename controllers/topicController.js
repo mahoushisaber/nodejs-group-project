@@ -51,6 +51,6 @@ const topicSearch = (req, res, next) => {
 
 
   module.exports = {
-    topicSearch: topicSearch,
+    // topicSearch: topicSearch,
     test1:test1
   };

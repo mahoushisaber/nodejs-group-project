@@ -231,11 +231,6 @@ module.exports = {
   login:login,
   logout:logout,
   editProfile:editProfile,
-<<<<<<< HEAD
-  home:home,
-  next5:next5
-=======
   home:home
   
->>>>>>> cb741a26534d12037e8bff8790fba74c2ab93675
 };
