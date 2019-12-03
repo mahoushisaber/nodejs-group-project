@@ -147,22 +147,36 @@ const logout = (req, res) => {
 
 // Controller for updating profile
 const editProfile = (req, res) => {
-  const details = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    about: req.body.about,
-    imageUrl: req.body.url,
-    dob: req.body.dob,
-    country: req.body.country,
-  };
 
-  models.User.update(details, {returning: true, where: {email: req.session.user.email}})
-  .then((result) => {
-    console.log("Data successfully updated.");
-    return res.redirect('/home');
+  // Get users existing details
+  models.User.findAll({
+    where: {
+      email: req.body.email
+    }
+  })
+  .then(existingUser => {
+    let firstName = req.body.firstName == "" ? existingUser[0].firstName : req.body.firstName;
+    let lastName = req.body.lastName == "" ? existingUser[0].lastName : req.body.lastName;
+    let imageUrl = req.body.url == "" ? existingUser[0].imageUrl : req.body.url;
+    let dob = req.body.dob == "" ? existingUser[0].dob : req.body.dob;
+    let country = req.body.country == "" ? existingUser[0].country : req.body.country;
+
+    const details = {
+      firstName: firstName,
+      lastName: lastName,
+      imageUrl: imageUrl,
+      dob: dob,
+      country: country
+    };
+  
+    models.User.update(details, {returning: true, where: {email: req.session.user.email}})
+    .then((result) => {
+      console.log("Data successfully updated.");
+      return res.redirect('/home');
+    })
   })
   .catch((err) => {
-    console.log("Error: ", err);
+    res.render('edit', {error:"Something went wrong with updating profile.", editCSS: true});
   })
 };
 

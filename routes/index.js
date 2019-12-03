@@ -23,6 +23,7 @@ router
     .get('/home', checkSignIn, profilecontroller.home)
 
     /* Routes for editing profile */
+    .get('/edit', function(req, res){res.render('edit', {editCSS: true});})
     .post('/editProfile', profilecontroller.editProfile)
 
     /*Routes for Comments*/
@@ -57,7 +58,6 @@ router
     /* Website pages */
     .get('/message', function(req, res) { res.render('message');})
     .get('/messageInbox', function(req, res) { res.render('messageInbox');})
-    .get('/edit', function(req, res){res.render('edit', {editCSS: true});})
 
     
 
