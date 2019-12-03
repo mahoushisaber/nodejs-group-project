@@ -86,6 +86,7 @@ $(".repliesBox").click(function(){
 function test(){
     console.log("hallofirst");
     searchTopic = document.getElementById("searchValue").value;
+<<<<<<< HEAD
     // $.get('/search', (req,res)=>{
     //     console.log(res.req.body);
     //     searchTopic = document.getElementById("searchValue").value;
@@ -95,5 +96,7 @@ function test(){
     // }).done(function(data){
     //     console.log(data);
     // })
+=======
+>>>>>>> 2a6cb64554d4e2df4c087f046aba6cf60bd46716
     $.post('/searchByTopic', {data:searchTopic});
 }
