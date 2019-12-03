@@ -5,6 +5,13 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const expressHbs = require('express-handlebars');
 const helpers = require('handlebars-helpers')
+const buttonpress =  [0];
+function plus(){
+  (buttonpress[0] = buttonpress[0] + 10)
+}
+function minus(){
+  (buttonpress[0] = buttonpress[0] - 5)
+}
 const hbs = expressHbs.create({
 
   defaultLayout: 'index',
@@ -13,6 +20,30 @@ const hbs = expressHbs.create({
   extname: 'hbs',
 
   helpers:{
+    decrement: function () {
+      let five = 5;
+      // To error check to see if it will go outof bounds or not
+      //   if(buttonpress[0]>4){
+      //     buttonpress[0]= buttonpress[0]-five;
+      // }
+      let out;
+
+      out = out + "<input type='submit'  name='button_2'  value= 'Back' onclick = "+minus()+" > "
+      return out;
+    },
+    //Adds 5 to do the next 5 discussion
+    increment: function () {
+      let five = 5;
+
+
+      // To error check to see if it will go outof bounds or not
+      // if(buttonpress[1]>=5){
+      //  buttonpress[0]= buttonpress[0]+5;
+      // }
+      let out;
+      out = out + "<input type='submit' id = 'inc1' name='button_1' value= 'Next' onclick = " + plus() + " >Next"
+      return out;
+    },
   list: function(context){
     //let listofquestions=context.questions;
    let listofUsers = context.allusers;
@@ -20,19 +51,22 @@ const hbs = expressHbs.create({
    // console.log(listofquestions[0].dataValues.subject);
     let out ="<div>"
 
-    for(let i =0; i < 5;i++){
-      out = out+"<div class='questionContent'>"
-      for(let y = 0; y <listofUsers.length; y++){
-        console.log(questions[y].userId+" "+listofUsers[i].id);
-        if(questions[i].userId==listofUsers[y].id){
-          out = out+"<div  class='img'>"
-          out = out+"<img src="+ listofUsers[y].imageUrl+"></img>"
-          out = out+"</div>"
-          console.log(listofUsers[y].imageUrl);
-          break;
+
+    //Makes a list of 5 people on screen
+  
+      for(let i =(0+buttonpress[0]); i < 5+buttonpress[0];i++){
+        out = out+"<div class='questionContent'>"
+        for(let y = 0; y <listofUsers.length; y++){
+
+          if(questions[i].userId==listofUsers[y].id){
+            out = out+"<div  class='img'>"
+            out = out+"<img src="+ listofUsers[y].imageUrl+"></img>"
+            out = out+"</div>"
+            console.log(listofUsers[y].imageUwrl);
+            break;
+          }
+
         }
-       
-      }
  
       //out = out+"<img src="+ listofUsers[0].imageUrl+"></img>"
       out = out+"<div class='questionContent'>"
@@ -50,8 +84,9 @@ const hbs = expressHbs.create({
     }
     out = out+"</div>"
      return out+"</div>"
+    }
   }
-  }
+  
 })
 const app = express();
 const routes = require('./routes/index');

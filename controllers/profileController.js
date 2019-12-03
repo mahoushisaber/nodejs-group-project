@@ -2,7 +2,7 @@ const models = require('../models');
 var session = require('express-session');
 const express = require('express');
 const app = express();
-
+const click = [0]
 // Next function to check sign in for each route
 const checkSignIn = (req, res, next) => {
   // If user is authenticated, then move on
@@ -125,7 +125,8 @@ const home = (req, res) => {
       msgNum: existingUser[0].messageNumber,
       likeNum: existingUser[0].likesNumber,
       questions: allquest,
-      allusers: allusers
+      allusers: allusers,
+      pressbutton: click[0]
     }
     return res.render('home', {
       context: context, 

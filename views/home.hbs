@@ -48,14 +48,30 @@
                     <button onClick='clearUpDisplayNone()'>clear</button>
                 </div>
             </div>
-
+<script>
+    function submitcheck(element)
+{
+  alert("The action to execute is " + element.action);
+  return true;
+}
+</script>
             <div class="discussions">
                 <h3>Latest discussions</h3>
                 <div class="eachDiscussion">
                     <div class="questionContent">
+                        {{!-- <form action= "/" method = "GET" onSubmit='return submitcheck(this);'> --}}
+                         <form  method = "GET" action= 'home'  onSubmit='return submitcheck(this);'>
                         {{#list context}}
                         {{this}}
                         {{/list}}
+
+                        {{#increment}}
+                        {{this}}
+                        {{/increment}}
+                          {{#decrement}}
+                        {{this}}
+                        {{/decrement}}
+                        </form>
                     </div>
                 </div>
                 {{!-- {{#5Question}}
