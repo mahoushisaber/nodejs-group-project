@@ -1,36 +1,49 @@
 {{>searchBar}}
 
- 
-     {{!-- <div class="discussions">
+ {{!-- <div class="discussions">
                 <h3>Latest discussions</h3>
                 <div class="eachDiscussion">
                     <div class="questionContent">
-                        {{#list context}}
+                        {{#list question}}
                         {{this}}
                         {{/list}}
                     </div>
                 </div>
-                </div>  --}}
 
-{{log testing}}
- {{#each discussionDetail}}
+                   
+                </div>  
+
+                <div class="nextPage">
+                    <button type="submit">Next-></button>
+                </div>
+
+                {{> discussion}}
+            </div> --}}
+
+
 
 <div class="discussions">    
     <div class="eachDiscussion">
+{{#each question}}
         <div class="img">
             <img src="https://randomuser.me/api/portraits/med/men/36.jpg">
         </div>
-        <div class="questionContent">
-            <span>{{this.[1]}}</span>
-            <h4>{{this.[0]}}</h4>
-            <p>{{this.[2]}}</p>
-            </br>
+        <div class="questionContent">           
+                       
+                     <span>{{this.subject}}</span>
+                    <h4>{{this.topic}}</h4>
+                    <p>{{this.details}}</p> 
+                    </br>
+                    <span></span>
+         
+            
             <div class="dateReply">
-                <span>5{{replyNumber}} reply</span>
+                <span></span>
+                {{!-- <span>5{{replyNumber}} reply</span> --}}
                 </br>
-                <p>22 oct 2019{{replyDateDate}} {{replyDateMonth}} {{replyDateYear}}</p>
-            </div>
+                {{!-- <p>22 oct 2019{{replyDateDate}} {{replyDateMonth}} {{replyDateYear}}</p> --}}
+            {{/each}}
         </div>
     </div>
 </div>
-{{/each}} 
+

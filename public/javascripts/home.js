@@ -9,8 +9,9 @@ function showReplys(event){
 }
 
 function searchLastestDiscussionByTopic(){
-    let select = document.getElementsByClassName("searchLastestDiscussionByTopic");
-    clearUpDisplayNone();
+    let select = document.getElementById("searchLastestDiscussionByTopic");
+    console.log(select.textContent);
+    //clearUpDisplayNone();
     let content = document.getElementsByClassName('questionContent');
     for(let i=0;i<content.length;i++){
         let span = content[i].querySelector('span');
@@ -85,6 +86,7 @@ $(".repliesBox").click(function(){
 //STILL WORKING ON THE SEARCH FUNCTION . HALPPPPPPP
 function test(){
     console.log("hallofirst");
+    searchTopic = document.getElementById("searchValue").value;
     // $.get('/search', (req,res)=>{
     //     console.log(res.req.body);
     //     searchTopic = document.getElementById("searchValue").value;
@@ -94,5 +96,5 @@ function test(){
     // }).done(function(data){
     //     console.log(data);
     // })
-    $.post('/searchByTopic', {data:"testetsetsetsetset"});
+    $.post('/searchByTopic', {data:searchTopic});
 }

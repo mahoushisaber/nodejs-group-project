@@ -4,7 +4,15 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const expressHbs = require('express-handlebars');
-const helpers = require('handlebars-helpers')
+const buttonpress =  [0];
+//expressHbs.registerHelper('dateFormat', require('handlebars-dateformat'));
+function plus(){
+  
+  (buttonpress[0] = buttonpress[0] + 10)
+}
+function minus(){
+  (buttonpress[0] = buttonpress[0] - 5)
+}
 const hbs = expressHbs.create({
 
   defaultLayout: 'index',
@@ -13,46 +21,10 @@ const hbs = expressHbs.create({
   extname: 'hbs',
 
   helpers:{
-  list: function(context){
-    //let listofquestions=context.questions;
-   let listofUsers = context.allusers;
-  let questions =context.questions;
-   // console.log(listofquestions[0].dataValues.subject);
-    let out ="<div>"
-
-    for(let i =0; i < 5;i++){
-      out = out+"<div class='questionContent'>"
-      for(let y = 0; y <listofUsers.length; y++){
-        console.log(questions[y].userId+" "+listofUsers[i].id);
-        if(questions[i].userId==listofUsers[y].id){
-          out = out+"<div  class='img'>"
-          out = out+"<img src="+ listofUsers[y].imageUrl+"></img>"
-          out = out+"</div>"
-          console.log(listofUsers[y].imageUrl);
-          break;
-        }
-       
-      }
- 
-      //out = out+"<img src="+ listofUsers[0].imageUrl+"></img>"
-      out = out+"<div class='questionContent'>"
-      out = out+"<span >"+ questions[i].topic+"</span>"  
-      out = out+"<h4>"+ questions[i].subject+"</h4>"   
-        out = out+"<p >"+ questions[i].details+"</p>"
-        out = out +"<div class='dateReply'>"
-          out = out +"<span class ='repliesBox'>Replies</span>"
-
-          out = out+"<p>"+ questions[i].createdAt.toISOString().split('T')[0]+"</p>"
-          out = out +"</div>"
-        out = out+"</div>"
-      out = out+"</div>"
-      out = out+"</br>"
-    }
-    out = out+"</div>"
-     return out+"</div>"
-  }
-  }
+    
+  }  
 })
+
 const app = express();
 const routes = require('./routes/index');
 app.use(bodyParser.urlencoded({

@@ -2,7 +2,7 @@ const models = require('../models');
 var session = require('express-session');
 const express = require('express');
 const app = express();
-
+const click = [0]
 // Next function to check sign in for each route
 const checkSignIn = (req, res, next) => {
   // If user is authenticated, then move on
@@ -86,30 +86,26 @@ const addProfileDetails = (req, res) => {
 
 // Controller of home page of authenticated users
 const home = (req, res) => {
+  let top5questions = [];
+  let questionPics = [];
+  // get 5 most recent questions
+  models.Question.findAll({
+    limit: 5,
+    order: [['createdAt', 'DESC']],
+    include: [{
+      model: models.User,
+      attributes: ['imageUrl']
+    }]
+  })
+  .then(questions => {
+    // Assign questions to variable
+    top5questions = questions;
+  })
+  .catch((err) => {
+    console.log("Error when getting questions.");
+    console.log(err);
+  })
 
-  let   allquest;
-  let   allusers;
-  models.Question.findAll(
-    {order: [['createdAt', 'DESC']]},{ raw: true })
-    .then(questions => 
-      {
-       
-        allquest = questions;
-        // models.User.findAll({
-        //   order: [['createdAt', 'DESC']]
-        // })
-        // .then(existingUser => {
-        // exitstingUser.
-   
-    
-      })
-    .catch(error => {console.log("No question")})
-    models.User.findAll({})
-    .then(existingUser => {
-      allusers=existingUser;
- 
-
-    })
   models.User.findAll({
     where: {
       email: req.session.user.email
@@ -124,8 +120,7 @@ const home = (req, res) => {
       postNum: existingUser[0].postNumber,
       msgNum: existingUser[0].messageNumber,
       likeNum: existingUser[0].likesNumber,
-      questions: allquest,
-      allusers: allusers
+      questions: top5questions,
     }
     return res.render('home', {
       context: context, 
@@ -138,27 +133,10 @@ const home = (req, res) => {
   })
   .catch((err) => {
     console.log("Not able to find user when rendering home page...");
+    console.log(err);
     return res.redirect('/signup');
   })
 };
-
-
-// app.get('/search', (req,res)=>{
-//   console.log("insearch");
-//   res.send("hi");
-// })
-// models.Question.findAll({
-//   where: {
-//     subject: 
-//   }
-// })
-
-// const test1 = (req,res)=>{
-//   let x3 = "hi";
-//   //res.send('/search', {data: x3});
-// }
-
-
 
 // Controller for logging in
 const login = (req, res) => {
@@ -200,22 +178,37 @@ const logout = (req, res) => {
 
 // Controller for updating profile
 const editProfile = (req, res) => {
-  const details = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    about: req.body.about,
-    imageUrl: req.body.url,
-    dob: req.body.dob,
-    country: req.body.country,
-  };
 
-  models.User.update(details, {returning: true, where: {email: req.session.user.email}})
-  .then((result) => {
-    console.log("Data successfully updated.");
-    return res.redirect('/home');
+  // Get users existing details
+  models.User.findAll({
+    where: {
+      email: req.session.user.email
+    }
+  })
+  .then(existingUser => {
+    let firstName = req.body.firstName == "" ? existingUser[0].firstName : req.body.firstName;
+    let lastName = req.body.lastName == "" ? existingUser[0].lastName : req.body.lastName;
+    let imageUrl = req.body.url == "" ? existingUser[0].imageUrl : req.body.url;
+    let dob = req.body.dob == "" ? existingUser[0].dob : req.body.dob;
+    let country = req.body.country == "" ? existingUser[0].country : req.body.country;
+
+    const details = {
+      firstName: firstName,
+      lastName: lastName,
+      imageUrl: imageUrl,
+      dob: dob,
+      country: country
+    };
+  
+    models.User.update(details, {returning: true, where: {email: req.session.user.email}})
+    .then((result) => {
+      console.log("Data successfully updated.");
+      return res.redirect('/home');
+    })
   })
   .catch((err) => {
-    console.log("Error: ", err);
+    console.log(err);
+    res.render('edit', {error:"Something went wrong with updating profile.", editCSS: true});
   })
 };
 
