@@ -1,15 +1,31 @@
+const db = require('../config/config')
 const models = require('../models');
-var session = require('express-session');
+const questdb = require('../models').Question;
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
+
 
 // search function for topic 
-const test1 = (req,res,next)=>{
-  console.log(req.body.data);
-  testing: 0
-  console.log("in test1 fucntion backendd");
-  //res.send('/search', {data: "hellloooooooodataaaaaaaa"});
+let arr = [];
+var length;
+
+const test1 = (req, res) => {
+  arr.splice(length);
+  questdb.findAll(
+    {where: {subject: {[Op.like] : '%' + req.body.data + '%'}}})
+    .then(question => {
+      length = question.length;
+      for (let i = 0; i < question.length; i++){
+        arr[i] = question[i].dataValues;
+      }
+      res.render('searchByTopic', {nextButton: true,
+        searchTopicCSS: true, question:arr })
+    })
+    
+    .catch(error => res.status(400).send(error))
 }
-const re = (req, res)=> { res.render('searchByTopic')
-}
+
+
 const topicSearch = (req, res, next) => {
     models.User.findAll({
       where: {
@@ -39,6 +55,6 @@ const topicSearch = (req, res, next) => {
 
 
   module.exports = {
-    topicSearch: topicSearch,
+    //topicSearch: topicSearch,
     test1:test1
   };
