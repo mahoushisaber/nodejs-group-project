@@ -10,6 +10,7 @@
                 <input id="loginPassword" type="password" name="password" pattern="^\S{1,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 4 characters' : ''); if(this.checkValidity()) form.signupPassword_two.pattern = this.value;" placeholder="Password" required/>
                 <button id="loginButton" onclick="" type="submit">login</button>
               </form>
+              <p class="authErr">{{loginErr}}</p>
           </div>
           <div class="textRight">
               Join the worlds largest community for Knowledge sharing
@@ -23,6 +24,7 @@
                   <input id="signupPassword_two" name="signupPassword_two" type="password" pattern="^\S{1,}$" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');" placeholder="Verify Password" required>
                   <button id="signup" onclick="" type="submit">signup</button>
               </form>
+              <p class="authErr">{{signupErr}}</p>
           </div>
       </div>
   </div>

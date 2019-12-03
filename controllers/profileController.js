@@ -204,7 +204,7 @@ const editProfile = (req, res) => {
   // Get users existing details
   models.User.findAll({
     where: {
-      email: req.body.email
+      email: req.session.user.email
     }
   })
   .then(existingUser => {
@@ -229,6 +229,7 @@ const editProfile = (req, res) => {
     })
   })
   .catch((err) => {
+    console.log(err);
     res.render('edit', {error:"Something went wrong with updating profile.", editCSS: true});
   })
 };
