@@ -86,30 +86,26 @@ const addProfileDetails = (req, res) => {
 
 // Controller of home page of authenticated users
 const home = (req, res) => {
+  let top5questions = [];
+  let questionPics = [];
+  // get 5 most recent questions
+  models.Question.findAll({
+    limit: 5,
+    order: [['createdAt', 'DESC']],
+    include: [{
+      model: models.User,
+      attributes: ['imageUrl']
+    }]
+  })
+  .then(questions => {
+    // Assign questions to variable
+    top5questions = questions;
+  })
+  .catch((err) => {
+    console.log("Error when getting questions.");
+    console.log(err);
+  })
 
-  let   allquest;
-  let   allusers;
-  models.Question.findAll(
-    {order: [['createdAt', 'DESC']]},{ raw: true })
-    .then(questions => 
-      {
-       
-        allquest = questions;
-        // models.User.findAll({
-        //   order: [['createdAt', 'DESC']]
-        // })
-        // .then(existingUser => {
-        // exitstingUser.
-   
-    
-      })
-    .catch(error => {console.log("No question")})
-    models.User.findAll({})
-    .then(existingUser => {
-      allusers=existingUser;
- 
-
-    })
   models.User.findAll({
     where: {
       email: req.session.user.email
@@ -124,9 +120,7 @@ const home = (req, res) => {
       postNum: existingUser[0].postNumber,
       msgNum: existingUser[0].messageNumber,
       likeNum: existingUser[0].likesNumber,
-      questions: allquest,
-      allusers: allusers,
-      pressbutton: click[0]
+      questions: top5questions,
     }
     return res.render('home', {
       context: context, 
@@ -139,27 +133,10 @@ const home = (req, res) => {
   })
   .catch((err) => {
     console.log("Not able to find user when rendering home page...");
+    console.log(err);
     return res.redirect('/signup');
   })
 };
-
-
-// app.get('/search', (req,res)=>{
-//   console.log("insearch");
-//   res.send("hi");
-// })
-// models.Question.findAll({
-//   where: {
-//     subject: 
-//   }
-// })
-
-// const test1 = (req,res)=>{
-//   let x3 = "hi";
-//   //res.send('/search', {data: x3});
-// }
-
-
 
 // Controller for logging in
 const login = (req, res) => {

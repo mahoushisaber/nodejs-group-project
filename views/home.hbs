@@ -37,7 +37,7 @@
                 </form>
                 <div>
                     <label>Search by topic</label>
-                    <select class="searchLastestDiscussionByTopic">
+                    <select id="searchLastestDiscussionByTopic">
                         <option value="php">php</option>
                         <option value="nodejs">nodejs</option>
                         <option value="java">java</option>
@@ -55,50 +55,23 @@
   return true;
 }
 </script>
-            <div class="discussions">
-                <h3>Latest discussions</h3>
+        <div class="discussions">
+            <h3>Latest discussions</h3>
+            {{#each context.questions}}
                 <div class="eachDiscussion">
-                    <div class="questionContent">
-                        {{!-- <form action= "/" method = "GET" onSubmit='return submitcheck(this);'> --}}
-                         <form  method = "GET" action= 'home'  onSubmit='return submitcheck(this);'>
-                        {{#list context}}
-                        {{this}}
-                        {{/list}}
-
-                        {{#increment}}
-                        {{this}}
-                        {{/increment}}
-                          {{#decrement}}
-                        {{this}}
-                        {{/decrement}}
-                        </form>
+                    <div id="questionPic">
+                        <img src="{{this.User.dataValues.imageUrl}}">
+                    </div>
+                    <div id="question">
+                        <h3 id="questionSubject">{{this.dataValues.subject}}</h3>
+                        <p id="questionsContent">{{this.dataValues.details}}</p>
                     </div>
                 </div>
-                {{!-- {{#5Question}}
-                {{/5Question}} --}}
-                {{!-- {{#times 10}}
-                <div>{{this}}</div>
-                {{/times}} --}}
-                {{!-- <div class="img">
-                    <img src="https://randomuser.me/api/portraits/med/men/39.jpg">
-                </div>
-                <div class="questionContent">
-                    <span>nodejs</span>
-                    <h4>Node not working</h4>
-                    <p>Problems..............................................................</p>
-                    <div class="dateReply">
-                        <span>5 reply</span>
-                        <p>25 oct 2019</p>
-                    </div>--}}
-                   
-                </div> 
-
-                <div class="nextPage">
-                    <button type="submit">Next-></button>
-                </div>
-
-                {{> discussion}}
+            {{/each}}
+        </div>
+            <div class="nextPage">
+                <button type="submit">Next-></button>
             </div>
         </div>
-
     </div>
+</div>

@@ -9,8 +9,9 @@ function showReplys(event){
 }
 
 function searchLastestDiscussionByTopic(){
-    let select = document.getElementsByClassName("searchLastestDiscussionByTopic");
-    clearUpDisplayNone();
+    let select = document.getElementById("searchLastestDiscussionByTopic");
+    console.log(select.textContent);
+    //clearUpDisplayNone();
     let content = document.getElementsByClassName('questionContent');
     for(let i=0;i<content.length;i++){
         let span = content[i].querySelector('span');
