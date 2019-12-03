@@ -22,7 +22,7 @@ router
     
     /* Routes for home page*/
     .get('/home', checkSignIn, profilecontroller.home)
-
+   //  .get('/next5', profilecontroller.next5)
     /* Routes for editing profile */
     .post('/editProfile', profilecontroller.editProfile)
 

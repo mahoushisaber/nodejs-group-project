@@ -1,3 +1,5 @@
+
+
 function showReplys(event){
     let content = event.target.parentNode.parentNode;
     let replys = content.querySelector('.replys');
@@ -86,14 +88,5 @@ $(".repliesBox").click(function(){
 function test(){
     console.log("hallofirst");
     searchTopic = document.getElementById("searchValue").value;
-    // $.get('/search', (req,res)=>{
-    //     console.log(res.req.body);
-    //     searchTopic = document.getElementById("searchValue").value;
-    //     res.send('/search', {data1: searchTopic});
-    //     //res.send(searchTopic);
-        
-    // }).done(function(data){
-    //     console.log(data);
-    // })
     $.post('/searchByTopic', {data:searchTopic});
 }
