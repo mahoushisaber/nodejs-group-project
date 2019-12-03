@@ -5,12 +5,13 @@ module.exports = (sequelize, DataTypes) => {
     subject: DataTypes.STRING,
     details: DataTypes.STRING,
     replies: DataTypes.INTEGER,
-    likes: DataTypes.INTEGER
+    userId: DataTypes.INTEGER,
+  //  likes: DataTypes.INTEGER
   }, {});
   Question.associate = function(models) {
     // Each question belongs to a user
     Question.belongsTo(models.User,{
-      foreignKey: 'userId1',
+      foreignKey: 'userId',
       onDelete: 'CASCADE',
     });
 
@@ -19,10 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'questionId',
       as: 'comments',
     });
-    Question.belongsTo(models.User,{
-      foreignKey: 'userId2',
-      onDelete: 'CASCADE',
-    });
+   
 
   };
   return Question;

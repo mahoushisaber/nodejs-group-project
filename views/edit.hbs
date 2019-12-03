@@ -1,9 +1,4 @@
-<html>
-    <head>
-        
-    </head>
-    <body>
-        {{>searchBar}}
+{{>searchBar}}
 
         <form id = "submitForm" method="POST" action="editProfile">
         <table id = "information">
@@ -39,5 +34,6 @@
         </form>
         <p id="err">{{error}}</p>
 
-    </body>
-</html>
+<form action="home">
+    <input type="submit" value="Cancel" id="cancel">
+</form>

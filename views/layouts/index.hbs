@@ -6,8 +6,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="./stylesheets/index.css">
-    <script type="text/javascript" src="./js/signup.js"></script>
+    <script defer type="text/javascript" src="./javascripts/home.js"></script>
+    <script type="text/javascript" src="./javascripts/signup.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="./javascripts/signup.js"></script>
+    <script type="text/javascript" src="./javascripts/home.js"></script>
     {{#if messageInboxCSS}}
 	<link href='/stylesheets/messageInbox.css' type="text/css" rel="stylesheet" />
 	{{/if}}
@@ -25,6 +28,9 @@
 	{{/if}}
     {{#if editCSS}}
 	<link href='/stylesheets/edit.css' type="text/css" rel="stylesheet" />
+	{{/if}}
+    {{#if searchTopicCSS}}
+	<link href='/stylesheets/index.css' type="text/css" rel="stylesheet" />
 	{{/if}}
 
 </head>

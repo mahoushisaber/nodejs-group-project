@@ -1,5 +1,7 @@
 const models = require('../models');
 var session = require('express-session');
+const express = require('express');
+const app = express();
 
 // Next function to check sign in for each route
 const checkSignIn = (req, res, next) => {
@@ -84,6 +86,30 @@ const addProfileDetails = (req, res) => {
 
 // Controller of home page of authenticated users
 const home = (req, res) => {
+
+  let   allquest;
+  let   allusers;
+  models.Question.findAll(
+    {order: [['createdAt', 'DESC']]},{ raw: true })
+    .then(questions => 
+      {
+       
+        allquest = questions;
+        // models.User.findAll({
+        //   order: [['createdAt', 'DESC']]
+        // })
+        // .then(existingUser => {
+        // exitstingUser.
+   
+    
+      })
+    .catch(error => {console.log("No question")})
+    models.User.findAll({})
+    .then(existingUser => {
+      allusers=existingUser;
+ 
+
+    })
   models.User.findAll({
     where: {
       email: req.session.user.email
@@ -97,15 +123,42 @@ const home = (req, res) => {
       imageUrl: existingUser[0].imageUrl,
       postNum: existingUser[0].postNumber,
       msgNum: existingUser[0].messageNumber,
-      likeNum: existingUser[0].likesNumber
+      likeNum: existingUser[0].likesNumber,
+      questions: allquest,
+      allusers: allusers
     }
-    return res.render('home', {context: context, title:'Knowledge Base Home', heading:'Home', homeCSS: true});
+    return res.render('home', {
+      context: context, 
+      title:'Knowledge Base Home', 
+      heading:'Home', 
+      homeCSS: true,  
+      nextButton: true,
+  
+    });
   })
   .catch((err) => {
     console.log("Not able to find user when rendering home page...");
     return res.redirect('/signup');
   })
 };
+
+
+// app.get('/search', (req,res)=>{
+//   console.log("insearch");
+//   res.send("hi");
+// })
+// models.Question.findAll({
+//   where: {
+//     subject: 
+//   }
+// })
+
+// const test1 = (req,res)=>{
+//   let x3 = "hi";
+//   //res.send('/search', {data: x3});
+// }
+
+
 
 // Controller for logging in
 const login = (req, res) => {
@@ -190,4 +243,5 @@ module.exports = {
   logout:logout,
   editProfile:editProfile,
   home:home
+  
 };
