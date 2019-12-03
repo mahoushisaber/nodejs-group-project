@@ -1,15 +1,27 @@
+const db = require('../config/config')
 const models = require('../models');
-var session = require('express-session');
+const questdb = require('../models').Question;
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
+
 
 // search function for topic 
-const test1 = (req,res,next)=>{
-  console.log(req.body.data);
-  testing: 0
-  console.log("in test1 fucntion backendd");
-  //res.send('/search', {data: "hellloooooooodataaaaaaaa"});
+var arr = [];
+const test1 = (req, res) => {
+  
+  questdb.findAll(
+    {where: {subject: {[Op.like] : '%' + req.body.data + '%'}}})
+    .then(question => {
+      for (let i = 0; i < question.length; i++){
+        arr[i] = question[i].dataValues;
+      }
+      return res.render('searchByTopic', {nextButton: true,
+        searchTopicCSS: true,question:arr  })
+    })
+    .catch(error => res.status(400).send(error))
 }
-const re = (req, res)=> { res.render('searchByTopic')
-}
+
+
 const topicSearch = (req, res, next) => {
     models.User.findAll({
       where: {
