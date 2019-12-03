@@ -9,16 +9,32 @@ function showReplys(event){
 }
 
 function searchLastestDiscussionByTopic(){
-    let select = document.getElementById("searchLastestDiscussionByTopic");
-    console.log(select.textContent);
-    //clearUpDisplayNone();
+    let select = document.getElementsByClassName("searchLastestDiscussionByTopic");
+    let selected =  $("#searchLastestDiscussionByTopic").find(':selected').text();
     let content = document.getElementsByClassName('questionContent');
-    for(let i=0;i<content.length;i++){
-        let span = content[i].querySelector('span');
-        // console.log(span.textContent);
-        console.log('testing span')
-        if(select[0].value != span.textContent){
+    console.log(selected)
+
+    for(let i=0;i<5;i++){
+    let span = content[i].querySelector('span'); 
+        console.log(span.textContent);
+        if(selected != span.textContent){
+            console.log('not found')
+            console.log('when not matching, selected option is ' + selected + ' topic contains ' + span.textContent )
             content[i].parentNode.style.display = 'none';
+
+        }
+        if(selected == span.textContent){
+            content[i].parentNode.style.display = 'inline-block';
+            clearUpDisplayNone()
+            console.log('found')
+            console.log(selected)
+            console.log('when matching, selected option is ' + selected + ' topic contains ' + span.textContent )
+             
+            if(content[i].parentNode.style.display == 'none'){
+                 content[i].parentNode.style.display = 'inline-block'; 
+            }else if(content[i].parentNode.style.display != 'none'){
+                content[i].parentNode.style.display = 'none';
+            }
         }
     }
 }
@@ -26,7 +42,7 @@ function searchLastestDiscussionByTopic(){
 function clearUpDisplayNone(){
     let content = document.getElementsByClassName('questionContent');
     for(let i=0;i<content.length;i++){
-        content[i].parentNode.style.display = 'flex';
+        content[i].parentNode.style.display = 'none';
     }
 }
 
