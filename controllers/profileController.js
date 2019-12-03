@@ -86,7 +86,7 @@ const addProfileDetails = (req, res) => {
 
 // Controller of home page of authenticated users
 const home = (req, res) => {
- 
+
   let   allquest;
   let   allusers;
   models.Question.findAll(
@@ -133,7 +133,6 @@ const home = (req, res) => {
       heading:'Home', 
       homeCSS: true,  
       nextButton: true,
-    
   
     });
   })
@@ -219,9 +218,7 @@ const editProfile = (req, res) => {
     console.log("Error: ", err);
   })
 };
-const next5 = (req,res) =>{
-  return res.redirect('/home');
-}
+
 module.exports = {
   checkSignIn:checkSignIn,
   getSignupPage:getSignupPage,

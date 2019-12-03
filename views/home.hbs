@@ -1,5 +1,4 @@
 {{>searchBar}}
-
 <div class="userContent">
     <div class="userContent">
         <div class="leftContent">
@@ -48,8 +47,7 @@
                     <button onClick='searchLastestDiscussionByTopic()'>go-></button>
                     <button onClick='clearUpDisplayNone()'>clear</button>
                 </div>
-           
-        </div>
+            </div>
 
             <div class="discussions">
                 <h3>Latest discussions</h3>
@@ -77,36 +75,14 @@
                         <p>25 oct 2019</p>
                     </div>--}}
                    
-                </div> --}}
+                </div> 
 
-              
-      
-          
-          
-            {{!-- <div class="nextPage">
-            <form  method="get" action="/home">
-                <button type="button" onclick="decrement()">Back</button>
+                <div class="nextPage">
+                    <button type="submit">Next-></button>
+                </div>
 
-                 </form> 
-            </div> --}}
-
-
+                {{> discussion}}
+            </div>
+        </div>
 
     </div>
-      {{!-- <form name = "f0"  method='GET' action = "home">
-               {{#increment}}
-                {{this}}
-                {{/increment}}
-   
-       </form> 
-            
-            <form name = "f1" method='GET' action = "home">
-          
-        {{#decrement}}
-    {{this}}
-    {{/decrement}} --}}
-        </form> 
-        
-
-                    
-</div>
