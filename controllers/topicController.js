@@ -29,33 +29,53 @@ const test1 = (req, res) => {
   .catch(error => res.status(400).send(error))
 }
 
+const test2 = (req, res) => {
+  let arr2 = []
+  arr2.splice(length);
+  questdb.findAll({
+    where: {subject: {[Op.like] : '%' + req.body.data + '%'}},
+    include:[{
+      model: models.User,
+      attributes: ['imageUrl', 'id', 'firstName', 'lastName']
+    }]
+  })
+  .then(question => {
+    length = question.length;
+    for (let i = 0; i < question.length; i++){
+      arr2[i] = question[i].dataValues;
+    }
+    res.render('userPost', {nextButton: true,
+      userPostCSS: true, question:arr2})
+  })
+  .catch(error => res.status(400).send(error))
+}
 
-const topicSearch = (req, res, next) => {
-  models.User.findAll({
-      where: {
-        // email: req.session.user.email,
-      }
-    })
-    .then(existingUser => {
+// const topicSearch = (req, res, next) => {
+//   models.User.findAll({
+//       where: {
+//         // email: req.session.user.email,
+//       }
+//     })
+//     .then(existingUser => {
 
-      return res.render('searchByTopic', {
+//       return res.render('searchByTopic', {
 
-        nextButton: true,
-        searchTopicCSS: true,
-        discussionDetail: {
-          discussion1: [topicTitle = "php problems", subjectTitle = "node", problemTitle = "something not working"],
-          discussion2: [topicTitle = "react problems", subjectTitle = "php", problemTitle = "something not working"],
-          discussion3: [topicTitle = "node problems", subjectTitle = "react", problemTitle = "something not working"],
-          discussion4: [topicTitle = "zen problems", subjectTitle = "react", problemTitle = "something not working"],
-          discussion5: [topicTitle = "sql problems", subjectTitle = "zen", problemTitle = "something not working"],
-        }
-      });
-    })
-    .catch((err) => {
-      console.log("Sorry. Not able to find what you are looking for...");
-      return res.redirect('/home');
-    })
-};
+//         nextButton: true,
+//         searchTopicCSS: true,
+//         discussionDetail: {
+//           discussion1: [topicTitle = "php problems", subjectTitle = "node", problemTitle = "something not working"],
+//           discussion2: [topicTitle = "react problems", subjectTitle = "php", problemTitle = "something not working"],
+//           discussion3: [topicTitle = "node problems", subjectTitle = "react", problemTitle = "something not working"],
+//           discussion4: [topicTitle = "zen problems", subjectTitle = "react", problemTitle = "something not working"],
+//           discussion5: [topicTitle = "sql problems", subjectTitle = "zen", problemTitle = "something not working"],
+//         }
+//       });
+//     })
+//     .catch((err) => {
+//       console.log("Sorry. Not able to find what you are looking for...");
+//       return res.redirect('/home');
+//     })
+// };
 
 const gettingImage = (req, res) => {
   models.User.findAll({
@@ -100,5 +120,6 @@ const gettingImage = (req, res) => {
 
 module.exports = {
   //topicSearch: topicSearch,
-  test1: test1
+  test1: test1,
+  test2: test2
 };

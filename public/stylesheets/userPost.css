@@ -1,0 +1,223 @@
+/* Header */
+
+.logo img{
+    width:50px;
+    margin-left: 120px;
+}
+
+.logout{
+    margin-left: -15%;
+}
+.logout button{
+    width:90px;
+}
+.searchForm{
+    width:70%;
+    margin-left:40px;
+}
+.searchForm input{
+    width:35%;
+    background-color: whitesmoke;
+}  
+
+
+/*Profile */
+#profile{
+    margin-top: 50px;
+    width:40%;
+    height: 50%;
+    float: left;
+
+}
+
+#left{
+    float:left;
+    margin-left: 15%;
+    width: 50%;
+}
+
+#middle{
+    width: 40%;
+    margin-right:0;
+    float: left;
+}
+
+#message, #increaseLike{
+    background-color: rgb(56, 155, 253);
+    height:27px;
+    margin:5px;
+    color:white;
+    margin-top: 150px;
+    font-size: 15px;
+    color: whitesmoke;
+    border: 1px solid rgb(56, 155, 253);
+    padding: 5px;
+}
+
+#moreDesc{
+    width:100%; 
+}
+
+#likes {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+#likes > button{
+    display: inline-block;
+    margin-left: 55px;
+    margin-top: -25px;
+}
+
+
+#increaseLike{
+    background-color: rgb(56, 155, 253);
+    height:25px;
+    width: 25px;
+    color:white;
+    font-weight: bold;
+    border-radius: 50%;
+}
+
+/*Posts */
+
+#postBy {
+    margin-top: 0px;
+    margin-right: 10%;
+    width: 60%;
+}
+
+#content{
+    display: flex;
+    align-items: center;
+    margin-left: 15%;
+}
+#title{
+    margin-top:30px;
+    width:70%;
+    color:rgb(132, 133, 134);
+}
+.rightContent{
+    width:60%;
+    float: right;
+}
+/*Discussions*/
+.discussions{
+    margin-top:50px;
+    width:70%;
+    margin-left: 20%;
+    color:rgb(132, 133, 134);
+}
+.questionContent{
+    margin-left: 20px;
+}
+.questionContent h4, p{
+    margin:0;
+}
+.questionContent p{
+    margin-top:10px;
+    margin-left:25px;
+}
+.discussions img{    
+    border-radius: 50%;
+    border: 3px solid whitesmoke;
+    width: 60%;
+    float: right;
+}
+.img{    
+    border-radius: 50%;
+    border: 3px solid whitesmoke;
+}
+.pic{
+    border-radius: 50%;
+    border: 3px solid whitesmoke;
+}
+.questionContent >span{
+    border: 1px solid rgb(56, 155, 253);
+    float:right;
+    position: static;
+    padding: 30px;
+    color:rgb(47, 148, 248);
+}
+.eachDiscussion{
+    display:flex;
+}
+.dateReply{
+    font-size: 15px;
+}
+.dateReply span{
+    float:right;
+}
+.nextPage{
+    float:right;
+    margin-top:40px;
+}
+.nextPage button{
+    font-size: 15px;
+    color: whitesmoke;
+    background-color: rgb(56, 155, 253);
+    border: 1px solid rgb(56, 155, 253);
+    padding: 5px;
+    width: 80px;
+    height: 27px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 20px;
+    margin-left: 90%;
+}
+
+
+
+
+
+/*Discussions*/
+.discussions{
+    margin-top:30px;
+    width:70%;
+}
+.discussions{
+    color:rgb(132, 133, 134);
+}
+.questionContent{
+    margin-left: 20px;
+}
+.questionContent h4, p{
+    margin:0;
+}
+.questionContent p{
+    margin-top:10px;
+    margin-left:25px;
+}
+#left img{    
+    border-radius: 50%;
+    border: 3px solid whitesmoke;
+    width: 150px;
+}
+
+.pic{
+    border-radius: 50%;
+    border: 3px solid whitesmoke;
+}
+.questionContent >span{
+    border: 1px solid rgb(56, 155, 253);
+    float:right;
+    position: relative;
+    padding: 3px;
+    color:rgb(47, 148, 248);
+}
+.eachDiscussion{
+    display:flex;
+    border: 1px solid rgb(253, 251, 251) ;
+    background-color: rgb(253, 251, 251);
+    padding: 10px;
+    width: 100%;
+    border-radius: 2px;
+}
+.eachDiscussion:hover{
+    display:flex;
+    padding: 10.1px;
+    width: 100%;
+    border: 1px solid rgb(236, 226, 226);
+    background-color: rgb(236, 226, 226);
+    border-radius: 2px;
+}
