@@ -60,7 +60,7 @@
             {{#each context.questions}}
                 <div class="eachDiscussion">
                     <div id="questionPic">
-                        <img src="{{this.User.dataValues.imageUrl}}">
+                        <a href = "/profile"><img src="{{this.User.dataValues.imageUrl}}" ></a>
                     </div>
                     <div id="question" class='questionContent'>
                         <span id = "questionTopic">{{this.topic}}</span>
