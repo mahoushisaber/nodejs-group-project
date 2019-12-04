@@ -4,9 +4,10 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const expressHbs = require('express-handlebars');
-const helpers = require('handlebars-helpers')
 const buttonpress =  [0];
+//expressHbs.registerHelper('dateFormat', require('handlebars-dateformat'));
 function plus(){
+  
   (buttonpress[0] = buttonpress[0] + 10)
 }
 function minus(){
@@ -19,7 +20,9 @@ const hbs = expressHbs.create({
   partialsDir: ['views/partials/'],
   extname: 'hbs',
 
-  helpers:{}  
+  helpers:{
+    
+  }  
 })
 
 const app = express();

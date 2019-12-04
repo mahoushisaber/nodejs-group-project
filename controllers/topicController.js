@@ -6,18 +6,22 @@ const Op = Sequelize.Op;
 
 
 // search function for topic 
-var arr = [];
+let arr = [];
+var length;
+
 const test1 = (req, res) => {
-  
+  arr.splice(length);
   questdb.findAll(
     {where: {subject: {[Op.like] : '%' + req.body.data + '%'}}})
     .then(question => {
+      length = question.length;
       for (let i = 0; i < question.length; i++){
         arr[i] = question[i].dataValues;
       }
-      return res.render('searchByTopic', {nextButton: true,
-        searchTopicCSS: true,question:arr  })
+      res.render('searchByTopic', {nextButton: true,
+        searchTopicCSS: true, question:arr })
     })
+    
     .catch(error => res.status(400).send(error))
 }
 
@@ -51,6 +55,6 @@ const topicSearch = (req, res, next) => {
 
 
   module.exports = {
-    topicSearch: topicSearch,
+    //topicSearch: topicSearch,
     test1:test1
   };
