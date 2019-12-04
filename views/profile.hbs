@@ -9,7 +9,7 @@
 
     <div id "middle">
             <input name="searchInput" placeholder="Search" id = "searchValue">
-            <button type="submit" onclick = "test()">Search</button>
+            <button type="submit" >Search</button>
         
             <a href="/messageInbox"><button type="button" id="message"> Message </button></a>
             <div id="moreDesc">
@@ -17,8 +17,8 @@
                     <p>Likes</p>
                     <button type="button" id="increaseLike"> + </button>
                 </span>
-                <form id = "search" action = "/userPost" method = "POST"></form>
-                    <button type="submit" oncClick="postCall()">Post</button>
+                <form id = "search" action = "/userPost" method = "GET"></form>
+                    <button type="submit">Post</button>
                 </form>
             </div>
         

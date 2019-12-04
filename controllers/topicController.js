@@ -29,11 +29,11 @@ const test1 = (req, res) => {
   .catch(error => res.status(400).send(error))
 }
 
-const test2 = (req, res) => {
+const userPost = (req, res) => {
   let arr2 = []
   arr2.splice(length);
   questdb.findAll({
-    where: {subject: {[Op.like] : '%' + req.body.data + '%'}},
+    where: {userId: 5}, //req.body.userId
     include:[{
       model: models.User,
       attributes: ['imageUrl', 'id', 'firstName', 'lastName']
@@ -41,85 +41,87 @@ const test2 = (req, res) => {
   })
   .then(question => {
     length = question.length;
-    for (let i = 0; i < question.length; i++){
-      arr2[i] = question[i].dataValues;
-    }
+    question = question
+    // console.log(question)
+    // for (let i = 0; i < question.length; i++){
+    //   arr2[i] = question[i].dataValues;
+    // }
+    // console.log(arr2)
     res.render('userPost', {nextButton: true,
-      userPostCSS: true, question:arr2})
+      userPostCSS: true, question:question })
   })
   .catch(error => res.status(400).send(error))
 }
 
-// const topicSearch = (req, res, next) => {
+
+const reply = (req, res) => {
+  let arr2 = []
+  arr2.splice(length);
+  questdb.findAll({
+    where: {userId: 5}, //req.body.userId
+    include:[{
+      model: models.User,
+      attributes: ['imageUrl', 'id', 'firstName', 'lastName']
+    }]
+  })
+  .then(question => {
+    length = question.length;
+    question = question
+    // console.log(question)
+    // for (let i = 0; i < question.length; i++){
+    //   arr2[i] = question[i].dataValues;
+    // }
+    // console.log(arr2)
+    res.render('reply', {nextButton: true,
+      replyCSS: true, question:question })
+  })
+  .catch(error => res.status(400).send(error))
+}
+
+// const gettingImage = (req, res) => {
 //   models.User.findAll({
 //       where: {
-//         // email: req.session.user.email,
+//         email: req.session.user.email
 //       }
 //     })
 //     .then(existingUser => {
+//       let firstName = req.body.firstName == "" ? existingUser[0].firstName : req.body.firstName;
+//       let lastName = req.body.lastName == "" ? existingUser[0].lastName : req.body.lastName;
+//       let imageUrl = req.body.url == "" ? existingUser[0].imageUrl : req.body.url;
+//       let dob = req.body.dob == "" ? existingUser[0].dob : req.body.dob;
+//       let country = req.body.country == "" ? existingUser[0].country : req.body.country;
 
-//       return res.render('searchByTopic', {
+//       const details = {
+//         firstName: firstName,
+//         lastName: lastName,
+//         imageUrl: imageUrl,
+//         dob: dob,
+//         country: country
+//       };
 
-//         nextButton: true,
-//         searchTopicCSS: true,
-//         discussionDetail: {
-//           discussion1: [topicTitle = "php problems", subjectTitle = "node", problemTitle = "something not working"],
-//           discussion2: [topicTitle = "react problems", subjectTitle = "php", problemTitle = "something not working"],
-//           discussion3: [topicTitle = "node problems", subjectTitle = "react", problemTitle = "something not working"],
-//           discussion4: [topicTitle = "zen problems", subjectTitle = "react", problemTitle = "something not working"],
-//           discussion5: [topicTitle = "sql problems", subjectTitle = "zen", problemTitle = "something not working"],
-//         }
-//       });
+//       models.User.update(details, {
+//           returning: true,
+//           where: {
+//             email: req.session.user.email
+//           }
+//         })
+//         .then((result) => {
+//           console.log("Data successfully updated.");
+//           return res.redirect('/home');
+//         })
 //     })
 //     .catch((err) => {
-//       console.log("Sorry. Not able to find what you are looking for...");
-//       return res.redirect('/home');
+//       console.log(err);
+//       res.render('edit', {
+//         error: "Something went wrong with updating profile.",
+//         editCSS: true
+//       });
 //     })
 // };
-
-const gettingImage = (req, res) => {
-  models.User.findAll({
-      where: {
-        email: req.session.user.email
-      }
-    })
-    .then(existingUser => {
-      let firstName = req.body.firstName == "" ? existingUser[0].firstName : req.body.firstName;
-      let lastName = req.body.lastName == "" ? existingUser[0].lastName : req.body.lastName;
-      let imageUrl = req.body.url == "" ? existingUser[0].imageUrl : req.body.url;
-      let dob = req.body.dob == "" ? existingUser[0].dob : req.body.dob;
-      let country = req.body.country == "" ? existingUser[0].country : req.body.country;
-
-      const details = {
-        firstName: firstName,
-        lastName: lastName,
-        imageUrl: imageUrl,
-        dob: dob,
-        country: country
-      };
-
-      models.User.update(details, {
-          returning: true,
-          where: {
-            email: req.session.user.email
-          }
-        })
-        .then((result) => {
-          console.log("Data successfully updated.");
-          return res.redirect('/home');
-        })
-    })
-    .catch((err) => {
-      console.log(err);
-      res.render('edit', {
-        error: "Something went wrong with updating profile.",
-        editCSS: true
-      });
-    })
-};
 
 module.exports = {
   //topicSearch: topicSearch,
   test1: test1,
-  test2: test2
+  userPost:userPost,
+  reply: reply
 };

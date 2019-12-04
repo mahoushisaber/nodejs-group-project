@@ -64,13 +64,14 @@ router
 
     .post('/searchByTopic', searchTopicController.test1)
     //for post of the selected user when clicked post from user profile
-    .post('/userPost', searchTopicController.test1)
-    .get('/userPost', function(req, res){res.render('userPost', {userPostCSS: true});})
+    .get('/userPost', searchTopicController.userPost)
+   //  .get('/userPost', function(req, res){res.render('userPost', {userPostCSS: true});})
     /* Website pages */
     .get('/message', function(req, res) { res.render('message');})
     .get('/messageInbox', function(req, res) { res.render('messageInbox', {messageInboxCSS: true});})
+    .get('/reply', searchTopicController.reply)
 
-    .get('/profile', function(req, res) { res.render('profile', {profileCSS: true});})
+    //.get('/profile', function(req, res) { res.render('profile', {profileCSS: true});})
 
     /* Profile of another user */
     .get('/:username/:userId', profilecontroller.userProfile)
