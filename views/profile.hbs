@@ -23,26 +23,28 @@
 
 <h1 id="postBy">All posts by {{context.firstName}}</h1>
 
-<script>
-    function submitcheck(element) {
-        alert("The action to execute is " + element.action);
-        return true;
-    }
-</script>
-<div class="discussions">
-    {{#each context.questions}}
-    <div class="eachDiscussion">
-        <div id="questionPic">
-            <img src="{{this.User.dataValues.imageUrl}}">
+<div id="content">
+    <form method= "POST", action="/home/next5discuession">
+        {{#each context.questions}}
+            <div class="eachDiscussion">
+                <div class="profilePictureQuestion" id="questionPic">
+                    <img src="{{this.User.dataValues.imageUrl}}">
+                    <input type="hidden" class= "firstNameQuestion" id="firstNameQuestion" name="firstName" value="{{this.User.dataValues.firstName}}">
+                        <input type="hidden" class= "userIdQuestion" id="userIdQuestion" name="userId" value="{{this.User.dataValues.id}}">
+                </div>
+                <div id="question" class='questionContent'>
+                    <span name="questionTopic" id = "questionTopic">{{this.topic}}</span>
+                    <h4 name="questionsubject" id="questionSubject">{{this.dataValues.subject}}</h4>
+                    <p name="questionDetails" id="questionsContent">{{this.dataValues.details}}</p>
+                    <div class = "dateReply"></div>
+                        <span class= 'repliesBox'>Replies</span>
+                        {{{this.dataValues.createdAt}}}
+                        {{!-- <input name="date" id ="questiondate">{{{this.dataValues.createdAt}}}</input> --}}
+                </div>
+            </div>
+        {{/each}}
+        <div class="nextPage">
+            <button type="submit">Next-></button>
         </div>
-        <div id="question" class='questionContent'>
-            <span id="questionTopic">{{this.topic}}</span>
-            <h4 id="questionSubject">{{this.dataValues.subject}}</h4>
-            <p id="questionsContent">{{this.dataValues.details}}</p>
-            <div class="dateReply"> </div>
-            <span class='repliesBox'>Replies</span>
-            <p>{{this.dataValues.createdAt}}</p>
-        </div>
-    </div>
-    {{/each}}
+    </form>
 </div>

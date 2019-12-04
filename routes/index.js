@@ -67,7 +67,10 @@ router
 
     .get('/profile', function(req, res) { res.render('profile', {profileCSS: true});})
 
+    /* View question */
+    .get('/question/:questionId', checkSignIn, questioncontroller.getQuestion)
     /* Profile of another user */
     .get('/:firstName/:userId', checkSignIn, profilecontroller.userProfile)
+    
 
 module.exports = router;

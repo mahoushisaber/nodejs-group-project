@@ -73,12 +73,12 @@ const deletequestion = (req, res, next) => {
     }).catch(error => res.status(400).send(error));
     }
 
+const getQuestion = (req, res) => {
+    console.log("Getting the question");
+}
 
-
-
-
-    
 module.exports = {
+    getQuestion:getQuestion,
     createQuestion:createQuestion,
     viewAllTopicsResponses:viewAllTopicsResponses,
     allsearchquestion:allsearchquestion,

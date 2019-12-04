@@ -62,12 +62,15 @@
                 <div class="eachDiscussion">
                     <div class="profilePictureQuestion" id="questionPic">
                         <img src="{{this.User.dataValues.imageUrl}}">
+                        <input type="hidden" class= "firstNameQuestion" id="firstNameQuestion" name="firstName" value="{{this.User.dataValues.firstName}}">
+                        <input type="hidden" class= "userIdQuestion" id="userIdQuestion" name="userId" value="{{this.User.dataValues.id}}">
                     </div>
                     <div id="question" class='questionContent'>
-                        <input type="hidden" id="firstNameQuestion" name="firstName" value="{{this.User.dataValues.firstName}}">
-                        <input type="hidden" id="userIdQuestion" name="userId" value="{{this.User.dataValues.id}}">
                         <span name="questionTopic" id = "questionTopic">{{this.topic}}</span>
-                        <h4 name="questionsubject" id="questionSubject">{{this.dataValues.subject}}</h4>
+                        <div class="questionClickable">
+                            <input type="hidden" class= "questionId" id="questionId" name="questionId" value="{{this.dataValues.id}}">
+                            <h4 name="questionsubject" id="questionSubject">{{this.dataValues.subject}}</h4>
+                        </div>
                         <p name="questionDetails" id="questionsContent">{{this.dataValues.details}}</p>
                         <div class = "dateReply"></div>
                             <span class= 'repliesBox'>Replies</span>

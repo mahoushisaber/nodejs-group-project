@@ -99,8 +99,15 @@ function test(){
 }
 
 $(".profilePictureQuestion").click(function(){
-    let firstName = document.getElementById('firstNameQuestion').value;
-    let id = document.getElementById('userIdQuestion').value;
+    let firstName = $(this).children(".firstNameQuestion").val();
+    let id = $(this).children(".userIdQuestion").val();
     let url = '/' + firstName + '/' + id;
+    window.location.href = url;
+})
+
+$(".questionClickable").click(function(){
+    let questionId = $(this).children(".questionId").val();
+    console.log(questionId);
+    let url = '/question/' + questionId;
     window.location.href = url;
 })
