@@ -9,16 +9,32 @@ function showReplys(event){
 }
 
 function searchLastestDiscussionByTopic(){
-    let select = document.getElementById("searchLastestDiscussionByTopic");
-    console.log(select.textContent);
-    //clearUpDisplayNone();
+    let select = document.getElementsByClassName("searchLastestDiscussionByTopic");
+    let selected =  $("#searchLastestDiscussionByTopic").find(':selected').text();
     let content = document.getElementsByClassName('questionContent');
-    for(let i=0;i<content.length;i++){
-        let span = content[i].querySelector('span');
-        // console.log(span.textContent);
-        console.log('testing span')
-        if(select[0].value != span.textContent){
+    console.log(selected)
+
+    for(let i=0;i<5;i++){
+    let span = content[i].querySelector('span'); 
+        console.log(span.textContent);
+        if(selected != span.textContent){
+            console.log('not found')
+            console.log('when not matching, selected option is ' + selected + ' topic contains ' + span.textContent )
             content[i].parentNode.style.display = 'none';
+
+        }
+        if(selected == span.textContent){
+            content[i].parentNode.style.display = 'inline-block';
+            clearUpDisplayNone()
+            console.log('found')
+            console.log(selected)
+            console.log('when matching, selected option is ' + selected + ' topic contains ' + span.textContent )
+             
+            if(content[i].parentNode.style.display == 'none'){
+                 content[i].parentNode.style.display = 'inline-block'; 
+            }else if(content[i].parentNode.style.display != 'none'){
+                content[i].parentNode.style.display = 'none';
+            }
         }
     }
 }
@@ -26,14 +42,16 @@ function searchLastestDiscussionByTopic(){
 function clearUpDisplayNone(){
     let content = document.getElementsByClassName('questionContent');
     for(let i=0;i<content.length;i++){
-        content[i].parentNode.style.display = 'flex';
+        content[i].parentNode.style.display = 'none';
     }
 }
 
 
 $(".repliesBox").click(function(){
     let spanReply = document.getElementsByClassName('repliesBox');
-    
+    let eachDiscussion = document.getElementsByClassName('eachDiscussion');
+
+    var $block = $(this).parent(eachDiscussion);
     let divBox = document.createElement("div");
     
     //add a for loop here , and put the code below inside the for loop.
@@ -51,39 +69,19 @@ $(".repliesBox").click(function(){
     
     reply.innerHTML = "ayyyyyyyyy lmaooooooooo";
 
+    let textarea  = document.createElement("textarea");
+    textarea.classList.add("textarea");
+
+    let commentButton = document.createElement("button");
+    commentButton.classList.add("commentButton");
+
     $(divBox).append(pic);
     $(divBox).append(reply);
-    $(this).append(divBox);
+    $(divBox).append(textarea);
+    $(divBox).append(commentButton);    
+    $(divBox).insertAfter($block);
+    //$(eachDiscussion).append(divBox);
 });
-
-// $('.formSearch').submit(function(event){
-//     event.preventDefault();
-    
-//     searchTopic = document.getElementById("searchValue").value;
-
-//     let url = $(this).attr('action');
-
-//     console.log('bethch');
-
-//     $.ajax({
-//         url: ,
-//         data : searchTopic,
-//         success: function(data){
-//             alert('success');
-//         }
-//     });
-// })
-
-// $('#search').submit(function(event){
-//     $.post('/search', (req,res)=>{
-//         searchTopic = document.getElementById("searchValue").value;
-//         //res.send(searchTopic);
-//         console.log("hallo");
-//     });
-// });
-/////////////////////////////////////////
-/////////////////////////////////////////
-//STILL WORKING ON THE SEARCH FUNCTION . HALPPPPPPP
 function test(){
     console.log("hallofirst");
     searchTopic = document.getElementById("searchValue").value;
