@@ -1,57 +1,26 @@
 {{>searchBar}}
-{{!-- <div class="discussions">
-                <h3>Latest discussions</h3>
-                <div class="eachDiscussion">
-                    <div class="questionContent">
-                        {{#list question}}
-                        {{this}}
-                        {{/list}}
-                    </div>
-                </div>
-
-                   
-                </div>  
-
-                <div class="nextPage">
-                    <button type="submit">Next-></button>
-                </div>
-
-                {{> discussion}}
-            </div> --}}
-
-{{#each question}}
-<div class="eachDiscussion">
-    <div id="questionPic">
-        <img src="{{log this}}">
-
+<div class="discussions">
+    {{#each question}}
+    <div class="eachDiscussion">
+        <div class="profilePictureQuestion" id="questionPic">
+            <img src="{{this.User.dataValues.imageUrl}}" onclick="loadUserProfile()">
+        </div>
+        <div id="question" class='questionContent'>
+            <input type="hidden" id="firstNameQuestion" name="firstName" value="{{this.User.dataValues.firstName}}">
+            <input type="hidden" id="lastNameQuestion" name="lastName" value="{{this.User.dataValues.lastName}}">
+            <input type="hidden" id="userIdQuestion" name="userId" value="{{this.User.dataValues.id}}">
+            <span name="questionTopic" id="questionTopic">{{this.topic}}</span>
+            <h4 name="questionsubject" id="questionSubject">{{this.subject}}</h4>
+            <p name="questionDetails" id="questionsContent">{{this.details}}</p>
+            <div class="dateReply"></div>
+            <span class='repliesBox'>Replies</span>
+            <p>{{this.createdAt}}</p>
+            {{!-- <input name="date" id ="questiondate">{{{this.dataValues.createdAt}}}</input> --}}
+        </div>
     </div>
-    <div id="question" class='questionContent'>
-        <span id="questionTopic">{{this.topic}}</span>
-        <h4 id="questionSubject">{{this.subject}}</h4>
-        <p id="questionsContent">{{this.details}}</p>
-        <div class="dateReply"> </div>
-        <span class='repliesBox'>Replies</span>
-        <p>{{this.dataValues.createdAt}}</p>
-    </div>
+    {{/each}}
+{{!-- 
+    <div class="nextPage">
+        <button type="submit">Next-></button>
+    </div> --}}
 </div>
-{{/each}}
-{{!-- {{#each question}}
-        <div class="img">
-            <img src="https://randomuser.me/api/portraits/med/men/36.jpg">
-        </div>
-        <div class="questionContent">           
-                       
-                     <span>{{this.subject}}</span>
-                    <h4>{{this.topic}}</h4>
-                    <p>{{this.details}}</p> 
-                    </br>
-                    <span></span>
-         
-            
-            <div class="dateReply">
-                <span></span>
-                {{!-- <span>5{{replyNumber}} reply</span> --}}
-{{!-- <p>22 oct 2019{{replyDateDate}} {{replyDateMonth}} {{replyDateYear}}</p>
-            {{/each}}
-        </div>
- --}}
