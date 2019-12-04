@@ -1,4 +1,4 @@
-{{>searchBar}}
+{{> searchBar}}
 <div class="discussions">
     {{#each question}}
     <div class="eachDiscussion">
@@ -15,6 +15,7 @@
             <div class="dateReply"></div>
             <span class='repliesBox'>Replies</span>
             <p>{{this.createdAt}}</p>
+            
             {{!-- <input name="date" id ="questiondate">{{{this.dataValues.createdAt}}}</input> --}}
         </div>
     </div>

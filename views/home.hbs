@@ -54,19 +54,22 @@
         <div class="discussions">
             <h3>Latest discussions</h3>
             
-            {{!-- <form method= "POST" action="/home/next5discuession">  --}}
+
             {{#each context.questions}}
                 <div class="eachDiscussion">
-                    <div id="questionPic">
-                        <img src="{{this.User.dataValues.imageUrl}}">
+                    <div class="profilePictureQuestion" id="questionPic">
+                        <img src="{{this.User.dataValues.imageUrl}}" onclick="loadUserProfile()">
                     </div>
                     <div id="question" class='questionContent'>
+                        <input type="hidden" id="firstNameQuestion" name="firstName" value="{{this.User.dataValues.firstName}}">
+                        <input type="hidden" id="lastNameQuestion" name="lastName" value="{{this.User.dataValues.lastName}}">
+                        <input type="hidden" id="userIdQuestion" name="userId" value="{{this.User.dataValues.id}}">
                         <span name="questionTopic" id = "questionTopic">{{this.topic}}</span>
                         <h4 name="questionsubject" id="questionSubject">{{this.dataValues.subject}}</h4>
                         <p name="questionDetails" id="questionsContent">{{this.dataValues.details}}</p>
-                        <div class = "dateReply">   </div>
+                        <div class = "dateReply"></div>
                             <span class= 'repliesBox'>Replies</span>
-                              <span name="questionDate">{{this.dataValues.createdAt}}</span>
+                              <span name="questionDate">{{this.dataValues.createdAt }}</span>
                             <input name="date" type="hidden" id ="questiondate" class ="questdate"value="{{this.dataValues.createdAt}}"></input>
                            
                     </div>
@@ -78,13 +81,6 @@
                 <button type="button" id="next" onclick='nextfunc()'>Next</button>
                 <button type="button" id="next" onclick='previousfunc()'>Previous</button>
             </div>
-            {{!-- <div class="nextPage">
-                <button type="button"id= "Back" onclick ="" >Back</button>
-            </div> --}}
-            {{!-- </form> --}}
-             
-      
-            
             </div>
               
         </div>
@@ -92,46 +88,36 @@
          </div>
     </div>
 </div>
-<script >
-    function nextfunc(){
+<script>
+ function nextfunc(){
   
-      let lastquest = document.getElementsByClassName("questdate");
-      let createdAt= lastquest[lastquest.length-1].defaultValue
-      console.log(createdAt);
-         let  strcreatedAt  = String(createdAt);
-        
-        let dstrcreatedAt;
-      
-        //console.log(strcreatedAt);
-        dstrcreatedAt = strcreatedAt.replace(/ /g, "_")
-                 console.log(dstrcreatedAt);
-    //Add code here to do the translation
+    let lastquest = document.getElementsByClassName("questdate");
+    let createdAt= lastquest[lastquest.length-1].defaultValue
 
-        console.log(dstrcreatedAt)
-        let url = '/home/next5discuession/' + dstrcreatedAt;
-        console.log(url)
-        window.location.href = url;
-    
-    }
- function previousfunc(){
-      let lastquest = document.getElementsByClassName("questdate");
+       let  strcreatedAt  = String(createdAt);
+      
+      let dstrcreatedAt;
+      dstrcreatedAt = strcreatedAt.replace(/ /g, "_")
+          
+      let url = '/home/next5discuession/' + dstrcreatedAt;
      
-      let createdAt= lastquest[lastquest.length-1].defaultValue
-      console.log(createdAt);
-         let  strcreatedAt  = String(createdAt);
-        
-        let dstrcreatedAt;
+      window.location.href = url;
+  
+  }
+function previousfunc(){
+    let lastquest = document.getElementsByClassName("questdate");
+   
+    let createdAt= lastquest[lastquest.length-1].defaultValue
+       let  strcreatedAt  = String(createdAt);
       
-        //console.log(strcreatedAt);
-        dstrcreatedAt = strcreatedAt.replace(/ /g, "_")
-                 console.log(dstrcreatedAt);
-    //Add code here to do the translation
+      let dstrcreatedAt;
+  
+      dstrcreatedAt = strcreatedAt.replace(/ /g, "_")
+              
 
-        console.log(dstrcreatedAt)
-        let url = '/home/previous5discussion/' + dstrcreatedAt;
-        console.log(url)
-        window.location.href = url;
       
-    }
-
+      let url = '/home/previous5discussion/' + dstrcreatedAt;
+      window.location.href = url;
+    
+  }
 </script>

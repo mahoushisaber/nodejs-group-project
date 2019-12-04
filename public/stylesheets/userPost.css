@@ -24,8 +24,10 @@
 /*Profile */
 #profile{
     margin-top: 50px;
-    width:70%;
+    width:40%;
     height: 50%;
+    float: left;
+
 }
 
 #left{
@@ -34,9 +36,10 @@
     width: 50%;
 }
 
-#right{
+#middle{
     width: 40%;
-    margin-right: 50%;
+    margin-right:0;
+    float: left;
 }
 
 #message, #increaseLike{
@@ -78,11 +81,11 @@
 
 /*Posts */
 
-#postBy{
-    margin-top: 150px;
-    margin-left: 10%;
+#postBy {
+    margin-top: 0px;
+    margin-right: 10%;
+    width: 60%;
 }
-
 
 #content{
     display: flex;
@@ -95,7 +98,8 @@
     color:rgb(132, 133, 134);
 }
 .rightContent{
-    width:50%;
+    width:60%;
+    float: right;
 }
 /*Discussions*/
 .discussions{
@@ -117,6 +121,8 @@
 .discussions img{    
     border-radius: 50%;
     border: 3px solid whitesmoke;
+    width: 60%;
+    float: right;
 }
 .img{    
     border-radius: 50%;

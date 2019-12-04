@@ -143,7 +143,10 @@
     border-radius: 50%;
     border: 3px solid whitesmoke;
 }
-
+.discussions img{    
+    border-radius: 50%;
+    border: 3px solid whitesmoke;
+}
 .pic{
     border-radius: 50%;
     border: 3px solid whitesmoke;
@@ -157,6 +160,19 @@
 }
 .eachDiscussion{
     display:flex;
+    border: 1px solid rgb(253, 251, 251) ;
+    background-color: rgb(253, 251, 251);
+    padding: 10px;
+    width: 100%;
+    border-radius: 2px;
+}
+.eachDiscussion:hover{
+    display:flex;
+    padding: 10.1px;
+    width: 100%;
+    border: 1px solid rgb(236, 226, 226);
+    background-color: rgb(236, 226, 226);
+    border-radius: 2px;
 }
 .dateReply{
     font-size: 15px;

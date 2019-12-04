@@ -32,7 +32,7 @@ const signupUser = (req, res) => {
     // If username exists, redirect back to signup
     if(existingUser.length > 0){
       return res.render('layouts/index', {signupErr: "Username is already registered", title:"Knowledge Base Signup", heading:"Signup", indexCSS:true});
-    }
+    } 
 
     // If username is unique, create the user
     models.User.create({
@@ -96,7 +96,7 @@ const home = (req, res) => {
     order: [['createdAt', 'DESC']],
     include: [{
       model: models.User,
-      attributes: ['imageUrl']
+      attributes: ['imageUrl', 'id', 'firstName', 'lastName']
     }]
   })
   .then(questions => {
@@ -143,7 +143,6 @@ const home = (req, res) => {
 // Controller for logging in
 const login = (req, res) => {
   // Query db for user
-  console.log(req.body);
   models.User.findAll({
     where: {
       email: req.body.email
@@ -171,7 +170,6 @@ const login = (req, res) => {
 
 // Controller for logging out
 const logout = (req, res) => {
-  console.log('logout');
   req.session.destroy(function(){
     console.log("user logged out.");
  });
@@ -213,47 +211,20 @@ const editProfile = (req, res) => {
     res.render('edit', {error:"Something went wrong with updating profile.", editCSS: true});
   })
 };
+
+const userProfile = (req, res) => {
+  res.render('profile', {profileCSS:true});
+}
+
 const previous5discussion =(req,res) => {
-  //console.log(req.body.date[4]);
-  console.log(req.params.createdAt)
-  // models.Question.findAll({
-  //   limit: 5,
-  //   order: [['createdAt', 'DESC']],
-  //   include: [{
-  //     model: models.User,
-  //     attributes: ['imageUrl']
-   
-  //   }],
-  //   where: {
-  //     createdAt: {
-  //       [Op.lt]:req.body.date[4]
-  //     }
-  //   }
-  // })
-  // .then(next5questions => {
-  //   console.log("Im in question")
-  //   console.log(next5questions[0]);
-  //   // Assign questions to variable
-  //   const context = {
-  //     questions: next5questions
-  //   }
-  //   return res.render("home", {
-  //     context:context,
-  //     title:'Knowledge Base Home', 
-  //     heading:'Home', 
-  //     homeCSS: true,  
-  //     nextButton: true,})
-  // })
-  //console.log(req.body.date[4]);
 
   let  strcreatedAt  = String(req.params.createdAt);
-        
   let dstrcreatedAt;
   let next5;
-  //console.log(strcreatedAt);
+
   dstrcreatedAt = strcreatedAt.replace(/_/g, " ")
   dated= new Date(dstrcreatedAt);
-  console.log(dated)
+
   models.Question.findAll({
     limit: 5,
     order: [['createdAt', 'DESC']],
@@ -269,15 +240,9 @@ const previous5discussion =(req,res) => {
     }
   })
   .then(next5questions => {
-    //console.log("Im in question")
-    //console.log(next5questions[0]);
-    // Assign questions to variable
     next5=next5questions;
  
   })
-  let top5questions = [];
-  let questionPics = [];
-  // get 5 most recent questions
   models.Question.findAll({
     limit: 5,
     order: [['createdAt', 'DESC']],
@@ -287,12 +252,9 @@ const previous5discussion =(req,res) => {
     }]
   })
   .then(questions => {
-    // Assign questions to variable
     top5questions = questions;
   })
   .catch((err) => {
-    console.log("Error when getting questions.");
-    console.log(err);
   })
 
   models.User.findAll({
@@ -322,17 +284,13 @@ const previous5discussion =(req,res) => {
 })
 }
 const next5discussion =(req,res) => {
-  
-  //console.log(req.body.date[4]);
-
   let  strcreatedAt  = String(req.params.createdAt);
         
   let dstrcreatedAt;
   let next5;
-  //console.log(strcreatedAt);
   dstrcreatedAt = strcreatedAt.replace(/_/g, " ")
   dated= new Date(dstrcreatedAt);
-  console.log(dated)
+
   models.Question.findAll({
     limit: 5,
     order: [['createdAt', 'DESC']],
@@ -351,9 +309,6 @@ const next5discussion =(req,res) => {
     next5=next5questions;
  
   })
-  let top5questions = [];
-  let questionPics = [];
-  // get 5 most recent questions
   models.Question.findAll({
     limit: 5,
     order: [['createdAt', 'DESC']],
@@ -363,7 +318,6 @@ const next5discussion =(req,res) => {
     }]
   })
   .then(questions => {
-    // Assign questions to variable
     top5questions = questions;
   })
   .catch((err) => {
@@ -397,6 +351,7 @@ const next5discussion =(req,res) => {
     });
 })
 }
+
 module.exports = {
   next5discussion:next5discussion,
   previous5discussion,
@@ -408,6 +363,7 @@ module.exports = {
   login:login,
   logout:logout,
   editProfile:editProfile,
+  userProfile:userProfile,
   home:home
   
 };

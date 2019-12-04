@@ -7,35 +7,66 @@
         <p> Canada </p>
     </div>
 
-    <div id "right">
-        <button type="button" id="message"> Message </button>
-        <div id="moreDesc">
-            <span id="likes">
-                <p> 5 Likes</p>
-                <button type="button" id="increaseLike"> + </button>
-            </span>
-            <p>2 Posts</p>
-        </div>
+    <div id "middle">
+            <input name="searchInput" placeholder="Search" id = "searchValue">
+            <button type="submit" >Search</button>
+        
+            <a href="/messageInbox"><button type="button" id="message"> Message </button></a>
+            <div id="moreDesc">
+                <span id="likes">
+                    <p>Likes</p>
+                    <button type="button" id="increaseLike"> + </button>
+                </span>
+                <form id = "search" action = "/userPost" method = "GET"></form>
+                    <button type="submit">Post</button>
+                </form>
+            </div>
+        
     </div>
 
 </div>
 
 
-<h1 id="postBy">All posts by Kevin</h1>
 
-<div id="content">
-    <div class="eachDiscussion">
-        <div class="img">
-            <img src="https://randomuser.me/api/portraits/med/men/39.jpg">
-        </div>
-        <div class="questionContent">
-            <span>nodejs</span>
-            <h4>Node not working</h4>
-            <p>Problems..............................................................</p>
-            <div class="dateReply">
-                <span>5 reply</span>
-                <p>25 oct 2019</p>
+
+<script>
+    function postCall(){
+    console.log("post call");
+    //searchTopic = document.getElementById("searchValue").value;
+    // $.get('/search', (req,res)=>{
+    //     console.log(res.req.body);
+    //     searchTopic = document.getElementById("searchValue").value;
+    //     res.send('/search', {data1: searchTopic});
+    //     //res.send(searchTopic);
+        
+    // }).done(function(data){
+    //     console.log(data);
+    // })
+    $.post('/userPost', {data:t});
+    }
+
+    function submitcheck(element) {
+        alert("The action to execute is " + element.action);
+        return true;
+    }
+</script>
+<div class="rightContent">
+    <div class="discussions">
+        <h1 id="postBy">All posts by Kevin</h1>
+        {{#each context.questions}}
+        <div class="eachDiscussion">
+            <div id="questionPic">
+                <img src="{{this.User.dataValues.imageUrl}}">
+            </div>
+            <div id="question" class='questionContent'>
+                <span id="questionTopic">{{this.topic}}</span>
+                <h4 id="questionSubject">{{this.dataValues.subject}}</h4>
+                <p id="questionsContent">{{this.dataValues.details}}</p>
+                <div class="dateReply"> </div>
+                <span class='repliesBox'>Replies</span>
+                <p>{{this.dataValues.createdAt}}</p>
             </div>
         </div>
+        {{/each}}
     </div>
 </div>

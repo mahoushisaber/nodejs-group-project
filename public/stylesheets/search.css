@@ -1,15 +1,42 @@
-/* Header */
-
+/*Search Bar*/
 .logo img{
     width:50px;
     margin-left: 120px;
+    margin-top: 15px;
 }
-
+.searchBar{
+    display:flex;
+    width:100%;
+}
+.searchBar input{
+    margin:4px;
+    height:24px;
+}
+.searchBar button{
+    font-size: 15px;
+    color: whitesmoke;
+    background-color: rgb(56, 155, 253);
+    border: 1px solid rgb(56, 155, 253);
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 20px;
+}
+.searchBar form button{
+    margin-left:0px;
+}
 .logout{
     margin-left: -15%;
 }
 .logout button{
-    width:90px;
+    font-size: 15px;
+    color: whitesmoke;
+    background-color: rgb(56, 155, 253);
+    border: 1px solid rgb(56, 155, 253);
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 20px;
 }
 .searchForm{
     width:70%;
@@ -20,83 +47,82 @@
     background-color: whitesmoke;
 }  
 
-
-/*Profile */
-#profile{
-    margin-top: 50px;
-    width:70%;
-    height: 50%;
+/*User*/
+.leftContent{
+    margin-top : 60px;
+    text-align: center;
 }
-
-#left{
-    float:left;
-    margin-left: 15%;
-    width: 50%;
-}
-
-#right{
-    width: 40%;
-    margin-right: 50%;
-}
-
-#message, #increaseLike{
-    background-color: rgb(56, 155, 253);
-    height:27px;
-    margin:5px;
-    color:white;
-    margin-top: 150px;
-    font-size: 15px;
-    color: whitesmoke;
-    border: 1px solid rgb(56, 155, 253);
-    padding: 5px;
-}
-
-#moreDesc{
-    width:100%; 
-}
-
-#likes {
-    display: inline-block;
-    margin-top: 20px;
-}
-
-#likes > button{
-    display: inline-block;
-    margin-left: 55px;
-    margin-top: -25px;
-}
-
-
-#increaseLike{
-    background-color: rgb(56, 155, 253);
-    height:25px;
-    width: 25px;
-    color:white;
-    font-weight: bold;
+.user img{
     border-radius: 50%;
+    border: 3px solid whitesmoke;
+}
+.user p{
+    margin-top:10px;
+    font-size:24px;
+    font-weight: bold;
+    color:black;
+}
+.user span{
+    margin-top:10px;
+    font-size:12px;
+    color:rgb(134, 135, 136);
+}
+.userLikes{
+    width:50%;
+    margin-top:40px;
+    text-align: left;
+    margin-left:25%;
+}
+.userLikes span{
+    float:right;
+}
+.userLikes ul{
+    list-style-type: none;
+}
+.userLikes ul li:last-child{
+    margin-top:40px;
 }
 
-/*Posts */
-
-#postBy{
-    margin-top: 150px;
-    margin-left: 10%;
+/*User and more*/
+.userContent{
+    display:flex;
+    width:100%;
 }
-
-
-#content{
-    display: flex;
-    align-items: center;
-    margin-left: 15%;
-}
-#title{
-    margin-top:30px;
-    width:70%;
-    color:rgb(132, 133, 134);
+.leftContent{
+    width:40%;
 }
 .rightContent{
     width:50%;
 }
+.questionBar{
+    color:rgb(132, 133, 134)
+}
+.questionBar input, textarea{
+    width:50%;
+    margin-top:10px;
+    display: block;
+    box-sizing: border-box;
+}
+.questionBar div{
+    margin-top:10px;
+}
+.questionBar select{
+    color: rgb(56, 155, 253);
+    padding: 3px;
+}
+.questionBar button{
+    font-size: 15px;
+    color: whitesmoke;
+    background-color: rgb(56, 155, 253);
+    border: 1px solid rgb(56, 155, 253);
+    padding: 3px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 20px;
+}
+
+
+
 /*Discussions*/
 .discussions{
     margin-top:50px;
@@ -182,10 +208,9 @@
     margin-top:10px;
     margin-left:25px;
 }
-#left img{    
+.img img{    
     border-radius: 50%;
     border: 3px solid whitesmoke;
-    width: 150px;
 }
 
 .pic{

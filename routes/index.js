@@ -47,7 +47,6 @@ router
     .get("/Questions/allyourQuestion", questioncontroller.viewAllYourQuestions)
     .get("/Questions/viewAllTopicsResponses", questioncontroller.viewAllTopicsResponses)
     
-    /*Should be post"*/
     .get("/Questions/deletequestions", questioncontroller.deletequestion)
 
     /*Routes for finding and creating pair on instant messaging*/
@@ -60,14 +59,20 @@ router
 
       
 
-    //.post('/InstantMessaging/Response/createMessage', messageController.createMessage)
-  //  .post('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
     .get('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
 
     .post('/searchByTopic', searchTopicController.test1)
+    .get('/userPost', searchTopicController.userPost)
+
     /* Website pages */
     .get('/message', function(req, res) { res.render('message');})
-    .get('/messageInbox', function(req, res) { res.render('messageInbox');})
+    .get('/messageInbox', function(req, res) { res.render('messageInbox', {messageInboxCSS: true});})
+    .get('/reply', searchTopicController.reply)
+
+
+
+    /* Profile of another user */
+    .get('/:username/:userId', profilecontroller.userProfile)
 
 
     
