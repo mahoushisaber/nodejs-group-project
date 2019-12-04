@@ -79,6 +79,7 @@ $(".repliesBox").click(function(){
     $(divBox).append(reply);
     $(divBox).append(textarea);
     $(divBox).append(commentButton);    
+
     $(divBox).insertAfter($block);
     //$(eachDiscussion).append(divBox);
 });

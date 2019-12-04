@@ -1,6 +1,5 @@
 {{>searchBar}}
-
- {{!-- <div class="discussions">
+{{!-- <div class="discussions">
                 <h3>Latest discussions</h3>
                 <div class="eachDiscussion">
                     <div class="questionContent">
@@ -20,11 +19,23 @@
                 {{> discussion}}
             </div> --}}
 
-
-
-<div class="discussions">    
-    <div class="eachDiscussion">
 {{#each question}}
+<div class="eachDiscussion">
+    <div id="questionPic">
+        <img src="{{log this}}">
+
+    </div>
+    <div id="question" class='questionContent'>
+        <span id="questionTopic">{{this.topic}}</span>
+        <h4 id="questionSubject">{{this.subject}}</h4>
+        <p id="questionsContent">{{this.details}}</p>
+        <div class="dateReply"> </div>
+        <span class='repliesBox'>Replies</span>
+        <p>{{this.dataValues.createdAt}}</p>
+    </div>
+</div>
+{{/each}}
+{{!-- {{#each question}}
         <div class="img">
             <img src="https://randomuser.me/api/portraits/med/men/36.jpg">
         </div>
@@ -40,10 +51,7 @@
             <div class="dateReply">
                 <span></span>
                 {{!-- <span>5{{replyNumber}} reply</span> --}}
-                </br>
-                {{!-- <p>22 oct 2019{{replyDateDate}} {{replyDateMonth}} {{replyDateYear}}</p> --}}
+{{!-- <p>22 oct 2019{{replyDateDate}} {{replyDateMonth}} {{replyDateYear}}</p>
             {{/each}}
         </div>
-    </div>
-</div>
-
+ --}}

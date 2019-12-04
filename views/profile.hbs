@@ -23,19 +23,26 @@
 
 <h1 id="postBy">All posts by Kevin</h1>
 
-<div id="content">
+<script>
+    function submitcheck(element) {
+        alert("The action to execute is " + element.action);
+        return true;
+    }
+</script>
+<div class="discussions">
+    {{#each context.questions}}
     <div class="eachDiscussion">
-        <div class="img">
-            <img src="https://randomuser.me/api/portraits/med/men/39.jpg">
+        <div id="questionPic">
+            <img src="{{this.User.dataValues.imageUrl}}">
         </div>
-        <div class="questionContent">
-            <span>nodejs</span>
-            <h4>Node not working</h4>
-            <p>Problems..............................................................</p>
-            <div class="dateReply">
-                <span>5 reply</span>
-                <p>25 oct 2019</p>
-            </div>
+        <div id="question" class='questionContent'>
+            <span id="questionTopic">{{this.topic}}</span>
+            <h4 id="questionSubject">{{this.dataValues.subject}}</h4>
+            <p id="questionsContent">{{this.dataValues.details}}</p>
+            <div class="dateReply"> </div>
+            <span class='repliesBox'>Replies</span>
+            <p>{{this.dataValues.createdAt}}</p>
         </div>
     </div>
+    {{/each}}
 </div>
