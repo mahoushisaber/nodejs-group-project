@@ -141,7 +141,6 @@ const home = (req, res) => {
 // Controller for logging in
 const login = (req, res) => {
   // Query db for user
-  console.log(req.body);
   models.User.findAll({
     where: {
       email: req.body.email
@@ -169,7 +168,6 @@ const login = (req, res) => {
 
 // Controller for logging out
 const logout = (req, res) => {
-  console.log('logout');
   req.session.destroy(function(){
     console.log("user logged out.");
  });
@@ -212,6 +210,10 @@ const editProfile = (req, res) => {
   })
 };
 
+const userProfile = (req, res) => {
+  res.render('profile', {profileCSS:true});
+}
+
 module.exports = {
   checkSignIn:checkSignIn,
   getSignupPage:getSignupPage,
@@ -221,6 +223,7 @@ module.exports = {
   login:login,
   logout:logout,
   editProfile:editProfile,
+  userProfile:userProfile,
   home:home
   
 };

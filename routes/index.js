@@ -67,6 +67,9 @@ router
     .get('/message', function(req, res) { res.render('message');})
     .get('/messageInbox', function(req, res) { res.render('messageInbox');})
 
+    /* Profile of another user */
+    .get('/:username/:userId', profilecontroller.userProfile)
+
 
     
     
