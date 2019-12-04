@@ -57,26 +57,31 @@
 </script>
         <div class="discussions">
             <h3>Latest discussions</h3>
+            <form method= "POST", action="/home/next5discuession">
             {{#each context.questions}}
                 <div class="eachDiscussion">
                     <div id="questionPic">
                         <a href = "/profile"><img src="{{this.User.dataValues.imageUrl}}" ></a>
                     </div>
                     <div id="question" class='questionContent'>
-                        <span id = "questionTopic">{{this.topic}}</span>
-                        <h4 id="questionSubject">{{this.dataValues.subject}}</h4>
-                        <p id="questionsContent">{{this.dataValues.details}}</p>
+                        <span name="questionTopic" id = "questionTopic">{{this.topic}}</span>
+                        <h4 name="questionsubject" id="questionSubject">{{this.dataValues.subject}}</h4>
+                        <p name="questionDetails" id="questionsContent">{{this.dataValues.details}}</p>
                         <div class = "dateReply">   </div>
                             <span class= 'repliesBox'>Replies</span>
-                            <p>{{this.dataValues.createdAt}}</p>
-                     
+                              <span name="questionDate">{{this.dataValues.createdAt}}</span>
+                            <input name="date" type="hidden" id ="questiondate" value="{{this.dataValues.createdAt}}"></input>
+                           
                     </div>
                 </div>
             {{/each}}
-        </div>
+       
             <div class="nextPage">
                 <button type="submit">Next-></button>
             </div>
+              </form>
         </div>
+      
+         </div>
     </div>
 </div>
