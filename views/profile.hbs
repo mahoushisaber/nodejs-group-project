@@ -7,21 +7,21 @@
         <p> Canada </p>
     </div>
 
-    <div id "right">
-        <a href = "/messageInbox"><button type="button" id="message"> Message </button></a>
+    <div id "middle">
+        <a href="/messageInbox"><button type="button" id="message"> Message </button></a>
         <div id="moreDesc">
             <span id="likes">
-                <p> 5 Likes</p>
+                <p>Likes</p>
                 <button type="button" id="increaseLike"> + </button>
             </span>
-            <p>2 Posts</p>
+            <p>Posts</p>
         </div>
     </div>
 
 </div>
 
 
-<h1 id="postBy">All posts by Kevin</h1>
+
 
 <script>
     function submitcheck(element) {
@@ -29,20 +29,23 @@
         return true;
     }
 </script>
-<div class="discussions">
-    {{#each context.questions}}
-    <div class="eachDiscussion">
-        <div id="questionPic">
-            <img src="{{this.User.dataValues.imageUrl}}">
+<div class="rightContent">
+    <div class="discussions">
+        <h1 id="postBy">All posts by Kevin</h1>
+        {{#each context.questions}}
+        <div class="eachDiscussion">
+            <div id="questionPic">
+                <img src="{{this.User.dataValues.imageUrl}}">
+            </div>
+            <div id="question" class='questionContent'>
+                <span id="questionTopic">{{this.topic}}</span>
+                <h4 id="questionSubject">{{this.dataValues.subject}}</h4>
+                <p id="questionsContent">{{this.dataValues.details}}</p>
+                <div class="dateReply"> </div>
+                <span class='repliesBox'>Replies</span>
+                <p>{{this.dataValues.createdAt}}</p>
+            </div>
         </div>
-        <div id="question" class='questionContent'>
-            <span id="questionTopic">{{this.topic}}</span>
-            <h4 id="questionSubject">{{this.dataValues.subject}}</h4>
-            <p id="questionsContent">{{this.dataValues.details}}</p>
-            <div class="dateReply"> </div>
-            <span class='repliesBox'>Replies</span>
-            <p>{{this.dataValues.createdAt}}</p>
-        </div>
+        {{/each}}
     </div>
-    {{/each}}
 </div>
