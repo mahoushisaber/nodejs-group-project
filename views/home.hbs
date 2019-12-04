@@ -60,18 +60,19 @@
             <form method= "POST", action="/home/next5discuession">
             {{#each context.questions}}
                 <div class="eachDiscussion">
-                    <div id="questionPic">
-                        <img src="{{this.User.dataValues.imageUrl}}">
+                    <div class="profilePictureQuestion" id="questionPic">
+                        <img src="{{this.User.dataValues.imageUrl}}" onclick="loadUserProfile()">
                     </div>
                     <div id="question" class='questionContent'>
+                        <input type="hidden" id="firstNameQuestion" name="firstName" value="{{this.User.dataValues.firstName}}">
+                        <input type="hidden" id="lastNameQuestion" name="lastName" value="{{this.User.dataValues.lastName}}">
+                        <input type="hidden" id="userIdQuestion" name="userId" value="{{this.User.dataValues.id}}">
                         <span name="questionTopic" id = "questionTopic">{{this.topic}}</span>
                         <h4 name="questionsubject" id="questionSubject">{{this.dataValues.subject}}</h4>
                         <p name="questionDetails" id="questionsContent">{{this.dataValues.details}}</p>
-                        <div class = "dateReply">   </div>
+                        <div class = "dateReply"></div>
                             <span class= 'repliesBox'>Replies</span>
-                              <span name="questionDate">{{this.dataValues.createdAt}}</span>
-                            <input name="date" type="hidden" id ="questiondate" value="{{this.dataValues.createdAt}}"></input>
-                           
+                            <input name="date" id ="questiondate">{{{this.dataValues.createdAt}}}"</input>
                     </div>
                 </div>
             {{/each}}

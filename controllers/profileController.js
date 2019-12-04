@@ -30,7 +30,7 @@ const signupUser = (req, res) => {
     // If username exists, redirect back to signup
     if(existingUser.length > 0){
       return res.render('layouts/index', {signupErr: "Username is already registered", title:"Knowledge Base Signup", heading:"Signup", indexCSS:true});
-    }
+    } 
 
     // If username is unique, create the user
     models.User.create({
@@ -94,7 +94,7 @@ const home = (req, res) => {
     order: [['createdAt', 'DESC']],
     include: [{
       model: models.User,
-      attributes: ['imageUrl']
+      attributes: ['imageUrl', 'id', 'firstName', 'lastName']
     }]
   })
   .then(questions => {

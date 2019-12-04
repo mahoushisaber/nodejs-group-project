@@ -11,18 +11,22 @@ var length;
 
 const test1 = (req, res) => {
   arr.splice(length);
-  questdb.findAll(
-    {where: {subject: {[Op.like] : '%' + req.body.data + '%'}}})
-    .then(question => {
-      length = question.length;
-      for (let i = 0; i < question.length; i++){
-        arr[i] = question[i].dataValues;
-      }
-      res.render('searchByTopic', {nextButton: true,
-        searchTopicCSS: true, question:arr })
-    })
-    
-    .catch(error => res.status(400).send(error))
+  questdb.findAll({
+    where: {subject: {[Op.like] : '%' + req.body.data + '%'}},
+    include:[{
+      model: models.User,
+      attributes: ['imageUrl', 'id', 'firstName', 'lastName']
+    }]
+  })
+  .then(question => {
+    length = question.length;
+    for (let i = 0; i < question.length; i++){
+      arr[i] = question[i].dataValues;
+    }
+    res.render('searchByTopic', {nextButton: true,
+      searchTopicCSS: true, question:arr})
+  })
+  .catch(error => res.status(400).send(error))
 }
 
 
