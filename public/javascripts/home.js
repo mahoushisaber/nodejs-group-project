@@ -131,8 +131,14 @@ function test(){
 }
 
 $(".profilePictureQuestion").click(function(){
-    let firstName = document.getElementById('firstNameQuestion').value;
-    let lastName = document.getElementById('lastNameQuestion').value;
-    let id = document.getElementById('userIdQuestion').value;
-    console.log(firstName, lastName, id);
+    let firstName = $(this).children(".firstNameQuestion").val();
+    let id = $(this).children(".userIdQuestion").val();
+    let url = '/' + firstName + '/' + id;
+    window.location.href = url;
+})
+
+$(".questionClickable").click(function(){
+    let questionId = $(this).children(".questionId").val();
+    let url = '/question/' + questionId;
+    window.location.href = url;
 })

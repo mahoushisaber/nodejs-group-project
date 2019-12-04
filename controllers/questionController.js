@@ -73,12 +73,37 @@ const deletequestion = (req, res, next) => {
     }).catch(error => res.status(400).send(error));
     }
 
+const getQuestion = (req, res) => {
+    models.Question.findAll({
+        where: {id: req.params.questionId},
+        include: [{
+            model: models.Comment,
+            as: 'comments'
+        },
+        {
+            model: models.User
+        }]
+    })
+    .then(question => {
+        console.log(question[0]);
+        return res.render('reply', {replyCSS:true, context:question[0]});
+    })
+}
 
+const addComment = (req, res) => {
+    models.Comment.create({
+        details: req.body.comment,
+        questionId: req.body.questionId,
+        userId: req.session.user.id
+      })
+      .then(comment => {
+        return res.redirect('/question/' + req.body.questionId);
+      })
+}
 
-
-
-    
 module.exports = {
+    getQuestion:getQuestion,
+    addComment:addComment,
     createQuestion:createQuestion,
     viewAllTopicsResponses:viewAllTopicsResponses,
     allsearchquestion:allsearchquestion,

@@ -22,9 +22,12 @@ router
     
     /* Routes for home page*/
     .get('/home', checkSignIn, profilecontroller.home)
-   .get('/home/next5discuession/:createdAt', profilecontroller.next5discussion)
-   .get('/home/previous5discussion/:createdAt', profilecontroller.previous5discussion)
+    .get('/home/next5discuession/:createdAt', profilecontroller.next5discussion)
+    .get('/home/previous5discussion/:createdAt', profilecontroller.previous5discussion)
    
+    /* Add comment to question */
+    .post('/addComment', questioncontroller.addComment)
+
     /* Routes for editing profile */
     .get('/edit', function(req, res){res.render('edit', {editCSS: true});})
     .post('/editProfile', profilecontroller.editProfile)
@@ -57,8 +60,6 @@ router
     .get('/InstantMessaging/Response/AllInstantMessage', commmessageController.findAllMessageBetweenUser)
        /*Should be post"*/
 
-      
-
     .get('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
 
     .post('/searchByTopic', searchTopicController.test1)
@@ -69,14 +70,10 @@ router
     .get('/messageInbox', function(req, res) { res.render('messageInbox', {messageInboxCSS: true});})
     .get('/reply', searchTopicController.reply)
 
-
-
+    /* View question */
+    .get('/question/:questionId', checkSignIn, questioncontroller.getQuestion)
     /* Profile of another user */
-    .get('/:username/:userId', profilecontroller.userProfile)
-
-
-    
-    
+    .get('/:firstName/:userId', checkSignIn, profilecontroller.userProfile)
     
 
 module.exports = router;

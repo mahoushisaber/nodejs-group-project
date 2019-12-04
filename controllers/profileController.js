@@ -89,7 +89,6 @@ const addProfileDetails = (req, res) => {
 // Controller of home page of authenticated users
 const home = (req, res) => {
   let top5questions = [];
-  let questionPics = [];
   // get 5 most recent questions
   models.Question.findAll({
     limit: 5,
@@ -208,12 +207,60 @@ const editProfile = (req, res) => {
   })
   .catch((err) => {
     console.log(err);
-    res.render('edit', {error:"Something went wrong with updating profile.", editCSS: true});
+    return res.render('edit', {error:"Something went wrong with updating profile.", editCSS: true});
   })
 };
 
 const userProfile = (req, res) => {
-  res.render('profile', {profileCSS:true});
+
+  if(req.params.userId == req.session.user.id){
+    return res.redirect('/home');
+  }
+
+  let top5questions = [];
+  // get 5 most recent questions
+  models.Question.findAll({
+    limit: 5,
+    order: [['createdAt', 'DESC']],
+    where: {userId: req.params.userId},
+    include: [{
+      model: models.User,
+      attributes: ['imageUrl', 'id', 'firstName', 'lastName']
+    }]
+  })
+  .then(questions => {
+    // Find the specified user
+    models.User.findAll({
+      where: {
+        id: req.params.userId
+      }
+    })
+    .then(existingUser => {
+      const context = {
+        firstName: existingUser[0].firstName,
+        lastName: existingUser[0].lastName,
+        about: existingUser[0].about,
+        imageUrl: existingUser[0].imageUrl,
+        postNum: existingUser[0].postNumber,
+        msgNum: existingUser[0].messageNumber,
+        likeNum: existingUser[0].likesNumber,
+        questions: questions
+      }
+      return res.render('profile', {
+        context: context,
+        profileCSS: true 
+      });
+    })
+    .catch((err) => {
+      console.log("Not able to find user when rendering home page...");
+      console.log(err);
+      return res.redirect('/home');
+    })
+  })
+  .catch((err) => {
+    console.log("Error when getting questions.");
+    console.log(err);
+  })
 }
 
 const previous5discussion =(req,res) => {

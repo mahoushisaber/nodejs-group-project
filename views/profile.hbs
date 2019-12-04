@@ -1,10 +1,10 @@
 {{> searchBar}}
 <div id="profile">
     <div id="left">
-        <img src="https://randomuser.me/api/portraits/med/men/10.jpg">
-        <h1> Kevin Hudson </h1>
-        <p> Team Lead | Part Time Singer | Full time dad</p>
-        <p> Canada </p>
+        <img src="{{context.imageUrl}}">
+        <h1> {{context.firstName}} {{context.lastName}}</h1>
+        <p> {{context.about}}</p>
+        <p> {{context.country}} </p>
     </div>
 
     <div id "middle">
@@ -25,9 +25,6 @@
     </div>
 
 </div>
-
-
-
 
 <script>
     function postCall(){
@@ -50,9 +47,10 @@
         return true;
     }
 </script>
+
 <div class="rightContent">
     <div class="discussions">
-        <h1 id="postBy">All posts by Kevin</h1>
+        <h1 id="postBy">All posts by {{context.firstName}}</h1>
         {{#each context.questions}}
         <div class="eachDiscussion">
             <div id="questionPic">
