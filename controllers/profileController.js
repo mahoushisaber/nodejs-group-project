@@ -2,6 +2,8 @@ const models = require('../models');
 var session = require('express-session');
 const express = require('express');
 const app = express();
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 const click = [0]
 // Next function to check sign in for each route
 const checkSignIn = (req, res, next) => {
@@ -261,29 +263,145 @@ const userProfile = (req, res) => {
   })
 }
 
-const next5discussion =(req,res) => {
-  console.log(req.body.date[4]);
-  // res.end();
-  // models.Question.findAll({
-  //   limit: 5,
-  //   order: [['createdAt', 'DESC']],
-  //   include: [{
-  //     model: models.User,
-  //     attributes: ['imageUrl']
+const previous5discussion =(req,res) => {
+
+  let  strcreatedAt  = String(req.params.createdAt);
+  let dstrcreatedAt;
+  let next5;
+
+  dstrcreatedAt = strcreatedAt.replace(/_/g, " ")
+  dated= new Date(dstrcreatedAt);
+
+  models.Question.findAll({
+    limit: 5,
+    order: [['createdAt', 'DESC']],
+    include: [{
+      model: models.User,
+      attributes: ['imageUrl']
    
-  //   }],
-  //   where:req.questiondate < req.body.date[4]
-  // })
-  // .then(questions => {
-  //   console.log("Im in question")
-  //   console.log(questions);
-  //   // Assign questions to variable
-  //   next5questions = questions;
-  // })
+    }],
+    where: {
+      createdAt: {
+        [Op.gt]:dated
+      }
+    }
+  })
+  .then(next5questions => {
+    next5=next5questions;
+ 
+  })
+  models.Question.findAll({
+    limit: 5,
+    order: [['createdAt', 'DESC']],
+    include: [{
+      model: models.User,
+      attributes: ['imageUrl']
+    }]
+  })
+  .then(questions => {
+    top5questions = questions;
+  })
+  .catch((err) => {
+  })
+
+  models.User.findAll({
+    where: {
+      email: req.session.user.email
+    }
+  })
+  .then(existingUser => {
+    const context = {
+      firstName: existingUser[0].firstName,
+      lastName: existingUser[0].lastName,
+      about: existingUser[0].about,
+      imageUrl: existingUser[0].imageUrl,
+      postNum: existingUser[0].postNumber,
+      msgNum: existingUser[0].messageNumber,
+      likeNum: existingUser[0].likesNumber,
+      questions: next5,
+    }
+    return res.render('home', {
+      context: context, 
+      title:'Knowledge Base Home', 
+      heading:'Home', 
+      homeCSS: true,  
+      nextButton: true,
+  
+    });
+})
+}
+const next5discussion =(req,res) => {
+  let  strcreatedAt  = String(req.params.createdAt);
+        
+  let dstrcreatedAt;
+  let next5;
+  dstrcreatedAt = strcreatedAt.replace(/_/g, " ")
+  dated= new Date(dstrcreatedAt);
+
+  models.Question.findAll({
+    limit: 5,
+    order: [['createdAt', 'DESC']],
+    include: [{
+      model: models.User,
+      attributes: ['imageUrl']
+   
+    }],
+    where: {
+      createdAt: {
+        [Op.lt]:dated
+      }
+    }
+  })
+  .then(next5questions => {
+    next5=next5questions;
+ 
+  })
+  models.Question.findAll({
+    limit: 5,
+    order: [['createdAt', 'DESC']],
+    include: [{
+      model: models.User,
+      attributes: ['imageUrl']
+    }]
+  })
+  .then(questions => {
+    top5questions = questions;
+  })
+  .catch((err) => {
+    console.log("Error when getting questions.");
+    console.log(err);
+  })
+
+  models.User.findAll({
+    where: {
+      email: req.session.user.email
+    }
+  })
+  .then(existingUser => {
+    const context = {
+      firstName: existingUser[0].firstName,
+      lastName: existingUser[0].lastName,
+      about: existingUser[0].about,
+      imageUrl: existingUser[0].imageUrl,
+      postNum: existingUser[0].postNumber,
+      msgNum: existingUser[0].messageNumber,
+      likeNum: existingUser[0].likesNumber,
+      questions: next5,
+    }
+    return res.render('home', {
+      context: context, 
+      title:'Knowledge Base Home', 
+      heading:'Home', 
+      homeCSS: true,  
+      nextButton: true,
+  
+    });
+})
 }
 
 module.exports = {
   next5discussion:next5discussion,
+  previous5discussion,
   checkSignIn:checkSignIn,
   getSignupPage:getSignupPage,
   signupUser:signupUser,

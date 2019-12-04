@@ -22,7 +22,12 @@ router
     
     /* Routes for home page*/
     .get('/home', checkSignIn, profilecontroller.home)
-   .post('/home/next5discuession', profilecontroller.next5discussion)
+    .get('/home/next5discuession/:createdAt', profilecontroller.next5discussion)
+    .get('/home/previous5discussion/:createdAt', profilecontroller.previous5discussion)
+   
+    /* Add comment to question */
+    .post('/addComment', questioncontroller.addComment)
+
     /* Routes for editing profile */
     .get('/edit', function(req, res){res.render('edit', {editCSS: true});})
     .post('/editProfile', profilecontroller.editProfile)
@@ -45,7 +50,6 @@ router
     .get("/Questions/allyourQuestion", questioncontroller.viewAllYourQuestions)
     .get("/Questions/viewAllTopicsResponses", questioncontroller.viewAllTopicsResponses)
     
-    /*Should be post"*/
     .get("/Questions/deletequestions", questioncontroller.deletequestion)
 
     /*Routes for finding and creating pair on instant messaging*/
@@ -56,20 +60,15 @@ router
     .get('/InstantMessaging/Response/AllInstantMessage', commmessageController.findAllMessageBetweenUser)
        /*Should be post"*/
 
-    //.post('/InstantMessaging/Response/createMessage', messageController.createMessage)
-  //  .post('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
     .get('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
 
     .post('/searchByTopic', searchTopicController.test1)
-    //for post of the selected user when clicked post from user profile
     .get('/userPost', searchTopicController.userPost)
-   //  .get('/userPost', function(req, res){res.render('userPost', {userPostCSS: true});})
+
     /* Website pages */
     .get('/message', function(req, res) { res.render('message');})
     .get('/messageInbox', function(req, res) { res.render('messageInbox', {messageInboxCSS: true});})
     .get('/reply', searchTopicController.reply)
-
-    //.get('/profile', function(req, res) { res.render('profile', {profileCSS: true});})
 
     /* View question */
     .get('/question/:questionId', checkSignIn, questioncontroller.getQuestion)

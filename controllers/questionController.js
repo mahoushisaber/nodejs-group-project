@@ -90,8 +90,20 @@ const getQuestion = (req, res) => {
     })
 }
 
+const addComment = (req, res) => {
+    models.Comment.create({
+        details: req.body.comment,
+        questionId: req.body.questionId,
+        userId: req.session.user.id
+      })
+      .then(comment => {
+        return res.redirect('/question/' + req.body.questionId);
+      })
+}
+
 module.exports = {
     getQuestion:getQuestion,
+    addComment:addComment,
     createQuestion:createQuestion,
     viewAllTopicsResponses:viewAllTopicsResponses,
     allsearchquestion:allsearchquestion,
