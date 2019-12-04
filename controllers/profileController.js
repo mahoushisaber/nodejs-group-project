@@ -215,8 +215,8 @@ const userProfile = (req, res) => {
 }
 
 const next5discussion =(req,res) => {
-  console.log(req);
-  res.end();
+  console.log(req.body.date[4]);
+  // res.end();
   // models.Question.findAll({
   //   limit: 5,
   //   order: [['createdAt', 'DESC']],
@@ -225,7 +225,7 @@ const next5discussion =(req,res) => {
   //     attributes: ['imageUrl']
    
   //   }],
-  //   where:req.questiondate > req[5].questiondate
+  //   where:req.questiondate < req.body.date[4]
   // })
   // .then(questions => {
   //   console.log("Im in question")
