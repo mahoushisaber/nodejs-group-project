@@ -74,7 +74,20 @@ const deletequestion = (req, res, next) => {
     }
 
 const getQuestion = (req, res) => {
-    console.log("Getting the question");
+    models.Question.findAll({
+        where: {id: req.params.questionId},
+        include: [{
+            model: models.Comment,
+            as: 'comments'
+        },
+        {
+            model: models.User
+        }]
+    })
+    .then(question => {
+        console.log(question[0]);
+        return res.render('reply', {replyCSS:true, context:question[0]});
+    })
 }
 
 module.exports = {

@@ -1,0 +1,24 @@
+{{> searchBar}}
+<div class="discussions">
+    <div class="eachDiscussion">
+        <div class="profilePictureQuestion" id="questionPic">
+            <img src="{{context.User.dataValues.imageUrl}}" onclick="loadUserProfile()">
+        </div>
+        <div id="question" class='questionContent'>
+            <input type="hidden" id="firstNameQuestion" name="firstName" value="{{context.User.dataValues.firstName}}">
+            <input type="hidden" id="userIdQuestion" name="userId" value="{{context.User.dataValues.id}}">
+            <span name="questionTopic" id="questionTopic">{{context.dataValues.topic}}</span>
+            <h4 name="questionsubject" id="questionSubject">{{context.dataValues.subject}}</h4>
+            <p name="questionDetails" id="questionsContent">{{context.dataValues.details}}</p>
+            <div class="dateReply"></div>
+            <span class='repliesBox'>Replies</span>
+            <p>{{context.dataValues.createdAt}}</p>
+            
+            {{!-- <input name="date" id ="questiondate">{{{this.dataValues.createdAt}}}</input> --}}
+        </div>
+    </div>
+{{!-- 
+    <div class="nextPage">
+        <button type="submit">Next-></button>
+    </div> --}}
+</div>

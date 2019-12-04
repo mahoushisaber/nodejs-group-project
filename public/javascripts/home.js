@@ -107,7 +107,6 @@ $(".profilePictureQuestion").click(function(){
 
 $(".questionClickable").click(function(){
     let questionId = $(this).children(".questionId").val();
-    console.log(questionId);
     let url = '/question/' + questionId;
     window.location.href = url;
 })

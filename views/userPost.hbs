@@ -1,15 +1,33 @@
 {{>searchBar}}
+<div class="leftContent">
+    <div class="user">
+        <img src="{{context.imageUrl}}">
+        <p>{{context.firstName}} {{context.lastName}}</p>
+        <span>{{context.about}}</span>
+    </div>
+    <div class="userLikes">
+        <ul>
+            <li><a href="/post/">Posts</a><span>{{context.postNum}}</span></li>
+            <li><a href="/message/">Messages</a><span>{{context.msgNum}}</span></li>
+            <li>Likes<span>{{context.likeNum}}</span></li>
+            <li><a href="/edit">Edit Profile</a></li>
+        </ul>
+    </div>
+</div>
 <div class="discussions">
+    
     {{#each question}}
+          {{log this}}
     <div class="eachDiscussion">
         <div class="profilePictureQuestion" id="questionPic">
             <img src="{{this.User.dataValues.imageUrl}}" onclick="loadUserProfile()">
         </div>
         <div id="question" class='questionContent'>
+     
             <input type="hidden" id="firstNameQuestion" name="firstName" value="{{this.User.dataValues.firstName}}">
             <input type="hidden" id="lastNameQuestion" name="lastName" value="{{this.User.dataValues.lastName}}">
             <input type="hidden" id="userIdQuestion" name="userId" value="{{this.User.dataValues.id}}">
-            <span name="questionTopic" id="questionTopic">{{this.topic}}</span>
+            <span name="questionTopic" id="questionTopic">{{this.dataValues.topic}}</span>
             <h4 name="questionsubject" id="questionSubject">{{this.subject}}</h4>
             <p name="questionDetails" id="questionsContent">{{this.details}}</p>
             <div class="dateReply"></div>
