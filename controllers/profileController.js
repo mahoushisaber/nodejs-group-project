@@ -30,7 +30,7 @@ const signupUser = (req, res) => {
     // If username exists, redirect back to signup
     if(existingUser.length > 0){
       return res.render('layouts/index', {signupErr: "Username is already registered", title:"Knowledge Base Signup", heading:"Signup", indexCSS:true});
-    }
+    } 
 
     // If username is unique, create the user
     models.User.create({
@@ -94,7 +94,7 @@ const home = (req, res) => {
     order: [['createdAt', 'DESC']],
     include: [{
       model: models.User,
-      attributes: ['imageUrl']
+      attributes: ['imageUrl', 'id', 'firstName', 'lastName']
     }]
   })
   .then(questions => {
@@ -141,7 +141,6 @@ const home = (req, res) => {
 // Controller for logging in
 const login = (req, res) => {
   // Query db for user
-  console.log(req.body);
   models.User.findAll({
     where: {
       email: req.body.email
@@ -169,7 +168,6 @@ const login = (req, res) => {
 
 // Controller for logging out
 const logout = (req, res) => {
-  console.log('logout');
   req.session.destroy(function(){
     console.log("user logged out.");
  });
@@ -212,7 +210,33 @@ const editProfile = (req, res) => {
   })
 };
 
+const userProfile = (req, res) => {
+  res.render('profile', {profileCSS:true});
+}
+
+const next5discussion =(req,res) => {
+  console.log(req.body.date[4]);
+  // res.end();
+  // models.Question.findAll({
+  //   limit: 5,
+  //   order: [['createdAt', 'DESC']],
+  //   include: [{
+  //     model: models.User,
+  //     attributes: ['imageUrl']
+   
+  //   }],
+  //   where:req.questiondate < req.body.date[4]
+  // })
+  // .then(questions => {
+  //   console.log("Im in question")
+  //   console.log(questions);
+  //   // Assign questions to variable
+  //   next5questions = questions;
+  // })
+}
+
 module.exports = {
+  next5discussion:next5discussion,
   checkSignIn:checkSignIn,
   getSignupPage:getSignupPage,
   signupUser:signupUser,
@@ -221,6 +245,7 @@ module.exports = {
   login:login,
   logout:logout,
   editProfile:editProfile,
+  userProfile:userProfile,
   home:home
   
 };

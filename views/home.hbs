@@ -57,26 +57,32 @@
 </script>
         <div class="discussions">
             <h3>Latest discussions</h3>
+            <form method= "POST", action="/home/next5discuession">
             {{#each context.questions}}
                 <div class="eachDiscussion">
-                    <div id="questionPic">
-                        <img src="{{this.User.dataValues.imageUrl}}">
+                    <div class="profilePictureQuestion" id="questionPic">
+                        <img src="{{this.User.dataValues.imageUrl}}" onclick="loadUserProfile()">
                     </div>
                     <div id="question" class='questionContent'>
-                        <span id = "questionTopic">{{this.topic}}</span>
-                        <h4 id="questionSubject">{{this.dataValues.subject}}</h4>
-                        <p id="questionsContent">{{this.dataValues.details}}</p>
-                        <div class = "dateReply">   </div>
+                        <input type="hidden" id="firstNameQuestion" name="firstName" value="{{this.User.dataValues.firstName}}">
+                        <input type="hidden" id="lastNameQuestion" name="lastName" value="{{this.User.dataValues.lastName}}">
+                        <input type="hidden" id="userIdQuestion" name="userId" value="{{this.User.dataValues.id}}">
+                        <span name="questionTopic" id = "questionTopic">{{this.topic}}</span>
+                        <h4 name="questionsubject" id="questionSubject">{{this.dataValues.subject}}</h4>
+                        <p name="questionDetails" id="questionsContent">{{this.dataValues.details}}</p>
+                        <div class = "dateReply"></div>
                             <span class= 'repliesBox'>Replies</span>
-                            <p>{{this.dataValues.createdAt}}</p>
-                     
+                            <input name="date" id ="questiondate">{{{this.dataValues.createdAt}}}"</input>
                     </div>
                 </div>
             {{/each}}
-        </div>
+       
             <div class="nextPage">
                 <button type="submit">Next-></button>
             </div>
+              </form>
         </div>
+      
+         </div>
     </div>
 </div>

@@ -97,3 +97,10 @@ function test(){
     // })
     $.post('/searchByTopic', {data:searchTopic});
 }
+
+$(".profilePictureQuestion").click(function(){
+    let firstName = document.getElementById('firstNameQuestion').value;
+    let lastName = document.getElementById('lastNameQuestion').value;
+    let id = document.getElementById('userIdQuestion').value;
+    console.log(firstName, lastName, id);
+})
