@@ -1,8 +1,7 @@
 {{>searchBar}}
 <div class="leftContent">
     <div class="user">
- 
-        
+        {{log context}}
         <img src="{{context.imageUrl}}">
         <p>{{context.firstName}} {{context.lastName}}</p>
         <span>{{context.about}}</span>
@@ -46,9 +45,9 @@
         <button type="submit">Next-></button>
     </div> --}}
 </div>
-
+{{!-- 
  {{log 0}}
  {{log this.question.User}}
  {{log 1}}
- {{log this.question.User.dataValues}}.
+ {{log this.question.User.dataValues}} --}}
   {{!-- {{log this.question}} --}}

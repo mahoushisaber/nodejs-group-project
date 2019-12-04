@@ -58,7 +58,7 @@ const reply = (req, res) => {
   let arr2 = []
   arr2.splice(length);
   questdb.findAll({
-    where: {userId: 5}, //req.body.userId
+    where: {userId: 2}, //req.body.userId
     include:[{
       model: models.User,
       attributes: ['imageUrl', 'id', 'firstName', 'lastName']
@@ -73,7 +73,7 @@ const reply = (req, res) => {
     // }
     // console.log(arr2)
     res.render('reply', {nextButton: true,
-      replyCSS: true, question:question })
+      replyCSS: true, question:question, reply: question})
   })
   .catch(error => res.status(400).send(error))
 }
