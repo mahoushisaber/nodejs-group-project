@@ -211,7 +211,32 @@ const editProfile = (req, res) => {
 };
 
 const userProfile = (req, res) => {
-  res.render('profile', {profileCSS:true});
+  // Find the specified user
+  models.User.findAll({
+    where: {
+      id: req.params.userId
+    }
+  })
+  .then(existingUser => {
+    const context = {
+      firstName: existingUser[0].firstName,
+      lastName: existingUser[0].lastName,
+      about: existingUser[0].about,
+      imageUrl: existingUser[0].imageUrl,
+      postNum: existingUser[0].postNumber,
+      msgNum: existingUser[0].messageNumber,
+      likeNum: existingUser[0].likesNumber,
+    }
+    return res.render('profile', {
+      context: context,
+      profileCSS: true 
+    });
+  })
+  .catch((err) => {
+    console.log("Not able to find user when rendering home page...");
+    console.log(err);
+    return res.redirect('/home');
+  })
 }
 
 const next5discussion =(req,res) => {

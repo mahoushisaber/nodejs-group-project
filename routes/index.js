@@ -56,8 +56,6 @@ router
     .get('/InstantMessaging/Response/AllInstantMessage', commmessageController.findAllMessageBetweenUser)
        /*Should be post"*/
 
-      
-
     //.post('/InstantMessaging/Response/createMessage', messageController.createMessage)
   //  .post('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
     .get('/InstantMessaging/Response/createInstantMessage', commmessageController.CreateInstantMessage)
@@ -70,11 +68,6 @@ router
     .get('/profile', function(req, res) { res.render('profile', {profileCSS: true});})
 
     /* Profile of another user */
-    .get('/:username/:userId', profilecontroller.userProfile)
-
-
-    
-    
-    
+    .get('/:firstName/:userId', checkSignIn, profilecontroller.userProfile)
 
 module.exports = router;

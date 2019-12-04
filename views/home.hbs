@@ -61,11 +61,10 @@
             {{#each context.questions}}
                 <div class="eachDiscussion">
                     <div class="profilePictureQuestion" id="questionPic">
-                        <img src="{{this.User.dataValues.imageUrl}}" onclick="loadUserProfile()">
+                        <img src="{{this.User.dataValues.imageUrl}}">
                     </div>
                     <div id="question" class='questionContent'>
                         <input type="hidden" id="firstNameQuestion" name="firstName" value="{{this.User.dataValues.firstName}}">
-                        <input type="hidden" id="lastNameQuestion" name="lastName" value="{{this.User.dataValues.lastName}}">
                         <input type="hidden" id="userIdQuestion" name="userId" value="{{this.User.dataValues.id}}">
                         <span name="questionTopic" id = "questionTopic">{{this.topic}}</span>
                         <h4 name="questionsubject" id="questionSubject">{{this.dataValues.subject}}</h4>

@@ -99,7 +99,7 @@ function test(){
 
 $(".profilePictureQuestion").click(function(){
     let firstName = document.getElementById('firstNameQuestion').value;
-    let lastName = document.getElementById('lastNameQuestion').value;
     let id = document.getElementById('userIdQuestion').value;
-    console.log(firstName, lastName, id);
+    let url = '/' + firstName + '/' + id;
+    window.location.href = url;
 })
