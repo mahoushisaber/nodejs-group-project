@@ -41,12 +41,44 @@ function searchLastestDiscussionByTopic(){
 
 function clearUpDisplayNone(){
     let content = document.getElementsByClassName('questionContent');
+    console.log(content)
     for(let i=0;i<content.length;i++){
         content[i].parentNode.style.display = 'none';
     }
 }
+//this was for trhen ext function
+function nextfunc(){
+  
+    let lastquest = document.getElementsByClassName("questdate");
+    let createdAt= lastquest[lastquest.length-1].defaultValue
 
+       let  strcreatedAt  = String(createdAt);
+      
+      let dstrcreatedAt;
+      dstrcreatedAt = strcreatedAt.replace(/ /g, "_")
+          
+      let url = '/home/next5discuession/' + dstrcreatedAt;
+     
+      window.location.href = url;
+  
+  }
+//this was for the previous function on home page
+function previousfunc(){
+    let lastquest = document.getElementsByClassName("questdate");
+   
+    let createdAt= lastquest[lastquest.length-1].defaultValue
+       let  strcreatedAt  = String(createdAt);
+      
+      let dstrcreatedAt;
+  
+      dstrcreatedAt = strcreatedAt.replace(/ /g, "_")
+              
 
+      
+      let url = '/home/previous5discussion/' + dstrcreatedAt;
+      window.location.href = url;
+    
+  }
 $(".repliesBox").click(function(){
     let spanReply = document.getElementsByClassName('repliesBox');
     let eachDiscussion = document.getElementsByClassName('eachDiscussion');

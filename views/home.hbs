@@ -45,7 +45,7 @@
                         <option value="zend">zend</option>
                     </select>
                     <button onClick='searchLastestDiscussionByTopic()'>go-></button>
-                    <button onClick='clearUpDisplayNone()'>clear</button>
+                    <button onClick='clearUpDisplayNone()' >clear</button>
                 </div>
             </div>
 <script>
@@ -78,8 +78,8 @@
        
        
             <div class="nextPage">
-                <button type="button" id="next" onclick='nextfunc()'>Next</button>
-                <button type="button" id="next" onclick='previousfunc()'>Previous</button>
+                <button type="button" id="next">Next</button>
+                <button type="button" id="next" >Previous</button>
             </div>
             </div>
               
@@ -88,36 +88,3 @@
          </div>
     </div>
 </div>
-<script>
- function nextfunc(){
-  
-    let lastquest = document.getElementsByClassName("questdate");
-    let createdAt= lastquest[lastquest.length-1].defaultValue
-
-       let  strcreatedAt  = String(createdAt);
-      
-      let dstrcreatedAt;
-      dstrcreatedAt = strcreatedAt.replace(/ /g, "_")
-          
-      let url = '/home/next5discuession/' + dstrcreatedAt;
-     
-      window.location.href = url;
-  
-  }
-function previousfunc(){
-    let lastquest = document.getElementsByClassName("questdate");
-   
-    let createdAt= lastquest[lastquest.length-1].defaultValue
-       let  strcreatedAt  = String(createdAt);
-      
-      let dstrcreatedAt;
-  
-      dstrcreatedAt = strcreatedAt.replace(/ /g, "_")
-              
-
-      
-      let url = '/home/previous5discussion/' + dstrcreatedAt;
-      window.location.href = url;
-    
-  }
-</script>
