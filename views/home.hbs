@@ -72,7 +72,8 @@
                         <p name="questionDetails" id="questionsContent">{{this.dataValues.details}}</p>
                         <div class = "dateReply"></div>
                             <span class= 'repliesBox'>Replies</span>
-                            <input name="date" id ="questiondate">{{{this.dataValues.createdAt}}}"</input>
+                            {{{this.dataValues.createdAt}}}
+                            {{!-- <input name="date" id ="questiondate">{{{this.dataValues.createdAt}}}</input> --}}
                     </div>
                 </div>
             {{/each}}
