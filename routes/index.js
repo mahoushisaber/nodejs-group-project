@@ -22,7 +22,9 @@ router
     
     /* Routes for home page*/
     .get('/home', checkSignIn, profilecontroller.home)
-   .post('/home/next5discuession', profilecontroller.next5discussion)
+   .get('/home/next5discuession/:createdAt', profilecontroller.next5discussion)
+   .get('/home/previous5discussion/:createdAt', profilecontroller.previous5discussion)
+   
     /* Routes for editing profile */
     .get('/edit', function(req, res){res.render('edit', {editCSS: true});})
     .post('/editProfile', profilecontroller.editProfile)

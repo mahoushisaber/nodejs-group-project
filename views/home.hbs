@@ -49,15 +49,12 @@
                 </div>
             </div>
 <script>
-    function submitcheck(element)
-{
-  alert("The action to execute is " + element.action);
-  return true;
-}
+
 </script>
         <div class="discussions">
             <h3>Latest discussions</h3>
-            <form method= "POST", action="/home/next5discuession">
+            
+            {{!-- <form method= "POST" action="/home/next5discuession">  --}}
             {{#each context.questions}}
                 <div class="eachDiscussion">
                     <div id="questionPic">
@@ -70,18 +67,71 @@
                         <div class = "dateReply">   </div>
                             <span class= 'repliesBox'>Replies</span>
                               <span name="questionDate">{{this.dataValues.createdAt}}</span>
-                            <input name="date" type="hidden" id ="questiondate" value="{{this.dataValues.createdAt}}"></input>
+                            <input name="date" type="hidden" id ="questiondate" class ="questdate"value="{{this.dataValues.createdAt}}"></input>
                            
                     </div>
                 </div>
             {{/each}}
        
+       
             <div class="nextPage">
-                <button type="submit">Next-></button>
+                <button type="button" id="next" onclick='nextfunc()'>Next</button>
+                <button type="button" id="next" onclick='previousfunc()'>Previous</button>
             </div>
-              </form>
+            {{!-- <div class="nextPage">
+                <button type="button"id= "Back" onclick ="" >Back</button>
+            </div> --}}
+            {{!-- </form> --}}
+             
+      
+            
+            </div>
+              
         </div>
       
          </div>
     </div>
 </div>
+<script >
+    function nextfunc(){
+  
+      let lastquest = document.getElementsByClassName("questdate");
+      let createdAt= lastquest[lastquest.length-1].defaultValue
+      console.log(createdAt);
+         let  strcreatedAt  = String(createdAt);
+        
+        let dstrcreatedAt;
+      
+        //console.log(strcreatedAt);
+        dstrcreatedAt = strcreatedAt.replace(/ /g, "_")
+                 console.log(dstrcreatedAt);
+    //Add code here to do the translation
+
+        console.log(dstrcreatedAt)
+        let url = '/home/next5discuession/' + dstrcreatedAt;
+        console.log(url)
+        window.location.href = url;
+    
+    }
+ function previousfunc(){
+      let lastquest = document.getElementsByClassName("questdate");
+     
+      let createdAt= lastquest[lastquest.length-1].defaultValue
+      console.log(createdAt);
+         let  strcreatedAt  = String(createdAt);
+        
+        let dstrcreatedAt;
+      
+        //console.log(strcreatedAt);
+        dstrcreatedAt = strcreatedAt.replace(/ /g, "_")
+                 console.log(dstrcreatedAt);
+    //Add code here to do the translation
+
+        console.log(dstrcreatedAt)
+        let url = '/home/previous5discussion/' + dstrcreatedAt;
+        console.log(url)
+        window.location.href = url;
+      
+    }
+
+</script>
