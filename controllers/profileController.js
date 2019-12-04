@@ -211,8 +211,28 @@ const editProfile = (req, res) => {
     res.render('edit', {error:"Something went wrong with updating profile.", editCSS: true});
   })
 };
-
+const next5discussion =(req,res) => {
+  console.log(req);
+  res.end();
+  // models.Question.findAll({
+  //   limit: 5,
+  //   order: [['createdAt', 'DESC']],
+  //   include: [{
+  //     model: models.User,
+  //     attributes: ['imageUrl']
+   
+  //   }],
+  //   where:req.questiondate > req[5].questiondate
+  // })
+  // .then(questions => {
+  //   console.log("Im in question")
+  //   console.log(questions);
+  //   // Assign questions to variable
+  //   next5questions = questions;
+  // })
+}
 module.exports = {
+  next5discussion:next5discussion,
   checkSignIn:checkSignIn,
   getSignupPage:getSignupPage,
   signupUser:signupUser,
