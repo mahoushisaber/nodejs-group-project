@@ -65,7 +65,9 @@ router
     .post('/searchByTopic', searchTopicController.test1)
     /* Website pages */
     .get('/message', function(req, res) { res.render('message');})
-    .get('/messageInbox', function(req, res) { res.render('messageInbox');})
+    .get('/messageInbox', function(req, res) { res.render('messageInbox', {messageInboxCSS: true});})
+
+    .get('/profile', function(req, res) { res.render('profile', {profileCSS: true});})
 
     /* Profile of another user */
     .get('/:username/:userId', profilecontroller.userProfile)
